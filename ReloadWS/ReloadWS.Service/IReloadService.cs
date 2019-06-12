@@ -5,6 +5,7 @@ using System.Text;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using ReloadWS.DTO.Response;
+using ReloadWS.DTO.Request;
 
 namespace ReloadWS.Service
 {
@@ -16,6 +17,17 @@ namespace ReloadWS.Service
 		[OperationContract]
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.Bare)]
-		string logeo(LoginResponse loginResponse);
-	}
+		string logeo(LoginRequest loginRquest);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+    BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json)]
+        string registro(RegistroRequest registroRequest);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+BodyStyle = WebMessageBodyStyle.Bare,  RequestFormat = WebMessageFormat.Json)]
+        RegistroRequest saludo();
+
+    }
 }

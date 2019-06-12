@@ -10,10 +10,14 @@ using ReloadWS.DTO;
 
 namespace ReloadWS.DAL
 {
-    public class UsuariosService : Servicio
+    public static class UsuariosService 
     {
-
-        public Usuario getUsuario(string codigo)
+        public static Estado estado { get; set; }
+        static UsuariosService()
+        {
+            estado = new ReloadWS.DAL.Estado();
+        }
+        public static Usuario getUsuario(string codigo)
         {
             
             estado.iniciar();
@@ -23,16 +27,23 @@ namespace ReloadWS.DAL
             //BsonDocument bsondoc = MongoDB.Bson.Serialization.BsonSerializer.Deserialize<BsonDocument>("{ { _id: ObjectId(1) } }");
             //var result = colUsuarios.Find(bsondoc);
 
-            var result = (from d in colUsuarios.AsQueryable<Usuario>()
+            Usuario result = (from d in colUsuarios.AsQueryable<Usuario>()
                           where d.codigo.Equals(codigo)
                           select new Usuario
                           {
                               codigo = d.codigo
 
                           }).FirstOrDefault();
-                            
-            return result.tob
-
+            return result;
         }
+
+        public static void grabar(Usuario usuario)
+        {
+            var client = new MongoClient(Conexion.cadenaConexion);
+            var db = client.GetDatabase(Conexion.db);
+            IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
+            colUsuarios.InsertOne(usuario);
+        }
+
     }
 }

@@ -53,6 +53,7 @@
     <Compile Include="Rango.cs" />
     <Compile Include="Request\LoginResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\RegistroRequest.cs" />
     <Compile Include="Response\LoginResponse.cs" />
     <Compile Include="Sujeto.cs" />
     <Compile Include="User.cs" />

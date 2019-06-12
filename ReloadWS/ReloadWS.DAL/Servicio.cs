@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ReloadWS.DAL
 {
-    public abstract class Servicio
+    public  abstract class Servicio
     {
         public Estado estado { get; set; }
         public Servicio()

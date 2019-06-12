@@ -11,7 +11,7 @@ namespace ReloadWS.Security
 		{
 			//Extract the Authorization header, and parse out the credentials converting the Base64 string:  
 			var authHeader = WebOperationContext.Current.IncomingRequest.Headers["Authorization"];
-			var accion = WebOperationContext.Current.IncomingRequest.Headers["Authorization"];
+			var accion = WebOperationContext.Current.IncomingRequest.Headers["Action"];
 	
 			if ((authHeader != null) && (authHeader != string.Empty))
 			{

@@ -49,6 +49,10 @@
     <Compile Include="ReloadService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="ReloadWS.BI\ReloadWS.BI.vbproj">
+      <Project>{b61e084b-ae3d-489f-94b9-2faaf36056be}</Project>
+      <Name>ReloadWS.BI</Name>
+    </ProjectReference>
     <ProjectReference Include="ReloadWS.DTO\ReloadWS.DTO.csproj">
       <Project>{8476f026-9564-4885-a504-85baeae86eb3}</Project>
       <Name>ReloadWS.DTO</Name>
