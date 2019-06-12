@@ -63,7 +63,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="UsersModule.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -98,6 +98,20 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ReloadWS.DAL\ReloadWS.DAL.csproj">
+      <Project>{82b6c66d-6e29-4ed3-8bf6-eb60b3bec276}</Project>
+      <Name>ReloadWS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReloadWS.DTO\ReloadWS.DTO.csproj">
+      <Project>{8476f026-9564-4885-a504-85baeae86eb3}</Project>
+      <Name>ReloadWS.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReloadWS.Security\ReloadWS.Security.csproj">
+      <Project>{bff7ae08-a9c8-4168-a7ac-078fc94654ad}</Project>
+      <Name>ReloadWS.Security</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

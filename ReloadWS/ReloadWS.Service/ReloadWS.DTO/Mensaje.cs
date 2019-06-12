@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReloadWS.DTO.Response
+namespace ReloadWS.DTO
 {
-    public class LoginResponse
+    class Mensaje
     {
     }
 }

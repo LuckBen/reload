@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReloadWS.DTO.Response
+namespace ReloadWS.DTO
 {
-    public class LoginResponse
+    public class Pais
     {
+        public int codigo { get; set; }
+        public string nombre { get; set; }
+
     }
 }
