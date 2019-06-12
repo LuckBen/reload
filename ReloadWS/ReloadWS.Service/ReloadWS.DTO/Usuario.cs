@@ -8,10 +8,11 @@ namespace ReloadWS.DTO
 {
     public class Usuario
     {
-
+		public object _id { get; set; }
         public string codigo { get; set; }
         public string password { get; set; }
         public int puntos { get; set; }
+		public string mail { get; set; }
         public Rango rango { get; set; }
         public UsuarioInfo info { get; set; }
         public Medalla[] medallas { get; set; }
@@ -20,7 +21,10 @@ namespace ReloadWS.DTO
         public Sujeto[] seguidores { get; set; }
         public Sujeto[] siguiendo { get; set; }
         public Comentario[] mensajes { get; set; }
-    }
+		public Suspension suspension { get; set; }
+		public bool activo { get; set; }
+
+	}
 
     public class UsuarioInfo
     {

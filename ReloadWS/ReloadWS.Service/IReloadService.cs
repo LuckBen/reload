@@ -15,19 +15,23 @@ namespace ReloadWS.Service
 	public interface IReloadService
     {
 		[OperationContract]
-		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-			BodyStyle = WebMessageBodyStyle.Bare)]
-		string logeo(LoginRequest loginRquest);
+		[WebInvoke(	Method = "POST", 
+					ResponseFormat = WebMessageFormat.Json,
+					BodyStyle = WebMessageBodyStyle.Bare)]
+		Security.Response<DTO.Usuario> logeo(LoginRequest loginRquest);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-    BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json)]
-        string registro(RegistroRequest registroRequest);
+        [WebInvoke(	Method = "POST", ResponseFormat = WebMessageFormat.Json,
+					BodyStyle = WebMessageBodyStyle.Bare, 
+					RequestFormat = WebMessageFormat.Json)]
+        Security.Response<DTO.Usuario> registro(RegistroRequest registroRequest);
 
-        [OperationContract]
-        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-BodyStyle = WebMessageBodyStyle.Bare,  RequestFormat = WebMessageFormat.Json)]
-        RegistroRequest saludo();
+		[OperationContract]
+		[WebInvoke(	Method = "GET", 
+					BodyStyle = WebMessageBodyStyle.Bare, 
+					RequestFormat = WebMessageFormat.Json, 
+					UriTemplate = "verificar-mail/{mail}")]
+		string verificarMail(string mail);
 
-    }
+	}
 }

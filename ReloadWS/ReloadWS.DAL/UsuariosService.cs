@@ -17,29 +17,52 @@ namespace ReloadWS.DAL
         {
             estado = new ReloadWS.DAL.Estado();
         }
-        public static Usuario getUsuario(string codigo)
+
+		public static Usuario obtenerUsuarioPorMail(string mail)
+		{
+			var client = new MongoClient(Conexion.getSettings());
+			var db = client.GetDatabase(Conexion.db);
+			IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
+
+			Usuario result = (from d in colUsuarios.AsQueryable<Usuario>()
+							  where d.mail == mail
+							  select d).FirstOrDefault();
+			return result;
+		}
+
+		/// <summary>
+		/// busca un usuario por su mail, y lo pone como activo.
+		/// </summary>
+		public static void actualizarActivoPorMail(string mail)
+		{
+			var client = new MongoClient(Conexion.getSettings());
+			var db = client.GetDatabase(Conexion.db);
+			IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
+
+			var result = colUsuarios.FindOneAndUpdate(
+				Builders<Usuario>.Filter.Eq("mail",mail),
+				Builders<Usuario>.Update.Set("activo", true)
+				);
+		}
+
+        public static Usuario obtenerUsuario(string codigo)
         {
             
-            estado.iniciar();
-            var client = new MongoClient(Conexion.cadenaConexion);
-            var db = client.GetDatabase(Conexion.db);
+            var client = new MongoClient(Conexion.getSettings());
+			var db = client.GetDatabase(Conexion.db);
             IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
-            //BsonDocument bsondoc = MongoDB.Bson.Serialization.BsonSerializer.Deserialize<BsonDocument>("{ { _id: ObjectId(1) } }");
-            //var result = colUsuarios.Find(bsondoc);
 
             Usuario result = (from d in colUsuarios.AsQueryable<Usuario>()
-                          where d.codigo.Equals(codigo)
-                          select new Usuario
-                          {
-                              codigo = d.codigo
+								where d.codigo.Equals(codigo)
+								select d).FirstOrDefault();
+			
 
-                          }).FirstOrDefault();
             return result;
         }
 
         public static void grabar(Usuario usuario)
         {
-            var client = new MongoClient(Conexion.cadenaConexion);
+            var client = new MongoClient(Conexion.getSettings());
             var db = client.GetDatabase(Conexion.db);
             IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
             colUsuarios.InsertOne(usuario);

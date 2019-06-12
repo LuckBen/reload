@@ -63,13 +63,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cEmail.cs" />
     <Compile Include="DistributorValidator.cs" />
+    <Compile Include="Estado.cs" />
+    <Compile Include="IResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response.cs" />
     <Compile Include="TokenGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReloadWS.DTO\ReloadWS.DTO.csproj">
+      <Project>{8476f026-9564-4885-a504-85baeae86eb3}</Project>
+      <Name>ReloadWS.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

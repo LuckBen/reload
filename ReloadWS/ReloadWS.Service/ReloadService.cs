@@ -15,27 +15,34 @@ namespace ReloadWS.Service
 	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 	public class ReloadService : IReloadService
 	{
-        public string registro(RegistroRequest registroRequest)
+        public Security.Response<DTO.Usuario> registro(RegistroRequest registroRequest)
         {
-            BI.UsersModule.Registro(registroRequest);
-            return "Ok";
+			Security.Response<DTO.Usuario> respuesta = new Security.Response<DTO.Usuario>();
+
+			BI.UsersModule.Registro(registroRequest);
+
+			respuesta.estado = BI.UsersModule.estado;
+			respuesta.httpResp = Helper.obtenerCodigoEstadoHttp(BI.UsersModule.estado);
+
+			if (!respuesta.estado.hayError)
+			{
+				Helper.enviarMailActivacionMail(registroRequest.mail);
+			}
+
+			return respuesta;
         }
 
-        string IReloadService.logeo(LoginRequest loginRquest)
+		Security.Response<DTO.Usuario> IReloadService.logeo(LoginRequest loginRquest)
 		{
-			return "OK";
+			Security.Response<DTO.Usuario> respuesta = new Security.Response<DTO.Usuario>();
+			return respuesta;
 		}
+		public string verificarMail(string mail)
+		{
+			BI.UsersModule.verificarMail(mail);
 
-        RegistroRequest IReloadService.saludo()
-        {
-            return new RegistroRequest
-            {
-                mail = "benedict.luciano@gmail.com",
-                password = "xddxxd",
-                usuario = "Lucho"
-            };
-        }
-
+			return "mail verificado con exito";
+		}
 
 	}
 }

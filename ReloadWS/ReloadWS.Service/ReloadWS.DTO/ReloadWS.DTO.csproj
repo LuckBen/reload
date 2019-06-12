@@ -56,7 +56,8 @@
     <Compile Include="Request\RegistroRequest.cs" />
     <Compile Include="Response\LoginResponse.cs" />
     <Compile Include="Sujeto.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Suspension.cs" />
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

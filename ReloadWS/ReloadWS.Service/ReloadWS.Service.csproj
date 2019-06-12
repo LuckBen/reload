@@ -57,6 +57,10 @@
       <Project>{8476f026-9564-4885-a504-85baeae86eb3}</Project>
       <Name>ReloadWS.DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="ReloadWS.Security\ReloadWS.Security.csproj">
+      <Project>{bff7ae08-a9c8-4168-a7ac-078fc94654ad}</Project>
+      <Name>ReloadWS.Security</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

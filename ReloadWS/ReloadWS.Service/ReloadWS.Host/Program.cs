@@ -16,5 +16,7 @@ namespace ReloadWS.Host
 			Console.Read();
 			host.Close();
 		}
+
+		
     }
 }
