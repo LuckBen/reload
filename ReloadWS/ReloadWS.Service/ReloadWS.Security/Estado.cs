@@ -26,6 +26,11 @@ namespace ReloadWS.Security
             this.mensaje = mensajeEx;
             this.hayError = true;
 			this.internalError = internalError;
+
+            if (internalError)
+            {
+                Logs.grabar(new Exception(mensajeEx));
+            }
         }
     }
 }

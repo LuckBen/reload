@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace ReloadWS.Security
 {
-	public class IResponse
+	public interface IResponse
 	{
-		public Estado estado;
-		public HttpStatusCode httpResp { get; set; }
+        Estado estado { get; set; }
+        HttpStatusCode httpResp { get; set; }
+
+        string extra { get; set; }
 	}
 }

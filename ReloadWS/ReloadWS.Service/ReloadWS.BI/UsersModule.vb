@@ -3,14 +3,38 @@
 Public Module UsersModule
 
     Public estado As Security.Estado
+    Public usuariosConectados As Dictionary(Of String, DTO.UsuarioConectado)
 
     Sub New()
         estado = New Security.Estado()
     End Sub
 
-    Public Function Logeo(ByVal loginRequest As DTO.Request.LoginRequest) As DTO.Response.LoginResponse
+    Public Function Logeo(ByVal loginRequest As DTO.Request.LoginRequest) As DTO.Usuario
 
-        Return New DTO.Response.LoginResponse()
+        estado.iniciar()
+        Dim usuario As New DTO.Usuario
+
+        Try
+
+            usuario = DAL.UsuariosService.obtenerUsuario(loginRequest.login)
+
+            If Not IsNothing(usuario) Then
+                If (usuario.password.ToUpper() = loginRequest.password.ToUpper()) Then
+
+                Else
+                    Throw New NullReferenceException("La contraseña no es correcta")
+                End If
+            Else
+                Throw New NullReferenceException("El usuario no es correcto")
+            End If
+
+        Catch ex As NullReferenceException
+            estado.capturarError(ex.Message, False)
+        Catch ex As Exception
+            estado.capturarError("Ocurrió un error inesperado", True)
+        End Try
+
+        Return usuario
 
     End Function
 
@@ -30,6 +54,10 @@ Public Module UsersModule
 
             If (String.IsNullOrEmpty(registroRequest.password)) Then
                 Throw New NullReferenceException("No se especifico password")
+            End If
+
+            If Not (IsNothing(DAL.UsuariosService.obtenerUsuario(registroRequest.usuario))) Then
+                Throw New SyntaxErrorException("El usuario ya existe.")
             End If
 
             If Not (IsNothing(DAL.UsuariosService.obtenerUsuarioPorMail(registroRequest.mail))) Then

@@ -20,7 +20,7 @@ Public Module Helper
 
     End Function
 
-    Private Sub enviarMail(ByVal destinatario As String, ByVal contenido As String)
+    Private Sub enviarMail(ByVal destinatario As String, ByVal asunto As String, ByVal contenido As String)
 
         Dim mail As New Security.cEmail()
         mail.Emisor = System.Configuration.ConfigurationSettings.AppSettings("mail_emisor").ToString()
@@ -28,10 +28,13 @@ Public Module Helper
         mail.Host = System.Configuration.ConfigurationSettings.AppSettings("mail_host").ToString()
         mail.Puerto = System.Configuration.ConfigurationSettings.AppSettings("mail_port").ToString()
         mail.Receptor = destinatario
+        mail.Asunto = asunto
         mail.Desarrollo = contenido
         mail.Html = True
 
-        mail.Enviar()
+        tf.StartNew(Sub()
+                        mail.Enviar()
+                    End Sub)
 
     End Sub
 
@@ -44,9 +47,9 @@ Public Module Helper
             Throw New NullReferenceException("No hay contenido en la plantilla activarMail.html")
         End If
 
-        tf.StartNew(Sub()
-                        enviarMail(destinatario, contenidoHtml)
-                    End Sub)
+        Dim asunto As String = System.Configuration.ConfigurationSettings.AppSettings("mail_asunto_activacion_mail").ToString()
+        enviarMail(destinatario,asunto, contenidoHtml)
+
 
     End Sub
 

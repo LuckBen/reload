@@ -108,7 +108,7 @@ namespace ReloadWS.Security
 	            client.Credentials = new NetworkCredential(_Emisor,_PassEmisor);
 	            client.Port = _Puerto;
 	            client.Host = _Host;
-				client.EnableSsl = false;
+				client.EnableSsl = true;
 				client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 
 				client.Send(Correo);
