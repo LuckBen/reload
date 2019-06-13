@@ -9,8 +9,13 @@ namespace ReloadWS.DTO
     public class UsuarioConectado
     {
         public Sujeto usuario { get; set; }
-        public string token { get; set; }
+        public List<string> tokens { get; set; }
         public DateTime emisionToken { get; set; }
+		
+		public UsuarioConectado()
+		{
+			tokens = new List<string>();
+		}	
 
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReloadWS.Security
+namespace ReloadWS.DTO.Request
 {
     public class Request<T> : IRequest
     {

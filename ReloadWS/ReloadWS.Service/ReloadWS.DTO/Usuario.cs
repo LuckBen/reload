@@ -24,6 +24,10 @@ namespace ReloadWS.DTO
 		public Suspension suspension { get; set; }
 		public bool activo { get; set; }
 
+		public Usuario()
+		{
+
+        }
 	}
 
     public class UsuarioInfo
@@ -37,5 +41,10 @@ namespace ReloadWS.DTO
         public string datosProfes { get; set; }
         public string habitos { get; set; }
         public string propiasPalabras { get; set; }
+
+		public UsuarioInfo()
+		{
+			pais = new Pais();
+		}
     }
 }

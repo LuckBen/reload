@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReloadWS.Security
+namespace ReloadWS.DTO.Response
 {
 	public interface IResponse
 	{

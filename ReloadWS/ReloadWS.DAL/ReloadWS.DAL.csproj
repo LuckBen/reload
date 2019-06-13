@@ -66,11 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaptchaService.cs" />
     <Compile Include="Conexion.cs" />
-    <Compile Include="DAL\Usuario.cs" />
-    <Compile Include="Estado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servicio.cs" />
     <Compile Include="UsuariosService.cs" />
   </ItemGroup>
   <ItemGroup>

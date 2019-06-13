@@ -9,8 +9,6 @@ using ReloadWS.DTO.Request;
 
 namespace ReloadWS.Service
 {
-
-
 	[ServiceContract]
 	public interface IReloadService
     {
@@ -18,20 +16,18 @@ namespace ReloadWS.Service
         [WebInvoke(Method = "POST",
                     ResponseFormat = WebMessageFormat.Json,
                     BodyStyle = WebMessageBodyStyle.Bare)]
-        Security.Response<DTO.Usuario> logeo(LoginRequest loginRquest);
+        void salir(string username);
 
-        //      [OperationContract]
-        //      [WebInvoke(	Method = "POST", ResponseFormat = WebMessageFormat.Json,
-        //			BodyStyle = WebMessageBodyStyle.Bare, 
-        //			RequestFormat = WebMessageFormat.Json)]
-        //      Security.Response<DTO.Usuario> registro(RegistroRequest registroRequest);
+		[OperationContract]
+		[WebInvoke(Method = "POST",
+			ResponseFormat = WebMessageFormat.Json,
+			BodyStyle = WebMessageBodyStyle.Bare)]
+		Response<DTO.UsuarioInfo> grabarInfo(Request<DTO.UsuarioInfo> info);
 
-        //[OperationContract]
-        //[WebInvoke(	Method = "GET", 
-        //			BodyStyle = WebMessageBodyStyle.Bare, 
-        //			RequestFormat = WebMessageFormat.Json, 
-        //			UriTemplate = "verificar-mail/{mail}")]
-        //string verificarMail(string mail);
-
-    }
+		[OperationContract]
+		[WebInvoke(Method = "POST",
+		ResponseFormat = WebMessageFormat.Json,
+		BodyStyle = WebMessageBodyStyle.Bare)]
+		Request<DTO.UsuarioInfo> obtenerInfo();
+	}
 }

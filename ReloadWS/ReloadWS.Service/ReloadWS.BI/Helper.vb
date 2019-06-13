@@ -1,4 +1,11 @@
 ﻿Imports ReloadWS.Security
+
+Imports System.Security.Cryptography
+Imports System.IO
+Imports System.ServiceModel.Channels
+Imports System.ServiceModel
+Imports System.ServiceModel.Web
+
 Public Module Helper
 
     Dim tf As New TaskFactory()
@@ -6,7 +13,7 @@ Public Module Helper
     Sub New()
 
     End Sub
-    Public Function obtenerCodigoEstadoHttp(ByVal estado As Estado) As Net.HttpStatusCode
+    Public Function obtenerCodigoEstadoHttp(ByVal estado As DTO.Estado) As Net.HttpStatusCode
 
 
         If (estado.hayError) Then
@@ -22,7 +29,7 @@ Public Module Helper
 
     Private Sub enviarMail(ByVal destinatario As String, ByVal asunto As String, ByVal contenido As String)
 
-        Dim mail As New Security.cEmail()
+        Dim mail As New DTO.cEmail()
         mail.Emisor = System.Configuration.ConfigurationSettings.AppSettings("mail_emisor").ToString()
         mail.PassEmisor = System.Configuration.ConfigurationSettings.AppSettings("mail_password").ToString()
         mail.Host = System.Configuration.ConfigurationSettings.AppSettings("mail_host").ToString()
@@ -48,9 +55,22 @@ Public Module Helper
         End If
 
         Dim asunto As String = System.Configuration.ConfigurationSettings.AppSettings("mail_asunto_activacion_mail").ToString()
-        enviarMail(destinatario,asunto, contenidoHtml)
+        enviarMail(destinatario, asunto, contenidoHtml)
 
 
     End Sub
+
+    Public Function getIPAddress() As String
+
+        Dim context As OperationContext = OperationContext.Current
+        Dim properties As MessageProperties = context.IncomingMessageProperties
+        Dim remoteEndPoint As RemoteEndpointMessageProperty = properties(RemoteEndpointMessageProperty.Name)
+        Return remoteEndPoint.Address
+
+    End Function
+
+    Public Function getToken() As String
+        Return WebOperationContext.Current.IncomingRequest.Headers("Token")
+    End Function
 
 End Module

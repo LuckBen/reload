@@ -9,7 +9,7 @@ using System.ServiceModel;
 using ReloadWS.DTO.Response;
 using ReloadWS.DTO.Request;
 using ReloadWS.BI;
-using ReloadWS.Security;
+using ReloadWS.DTO;
 
 namespace ReloadWS.Service
 {
@@ -17,9 +17,9 @@ namespace ReloadWS.Service
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ReloadServiceAuthentication : IReloadAuthentication
     {
-        Security.Response<DTO.Usuario> IReloadAuthentication.registro(RegistroRequest registroRequest)
+        DTO.Response.Response<DTO.Usuario> IReloadAuthentication.registro(RegistroRequest registroRequest)
         {
-            Security.Response<DTO.Usuario> respuesta = new Security.Response<DTO.Usuario>();
+			DTO.Response.Response<DTO.Usuario> respuesta = new DTO.Response.Response<DTO.Usuario>();
 
             BI.UsersModule.Registro(registroRequest);
 
@@ -34,18 +34,13 @@ namespace ReloadWS.Service
             return respuesta;
         }
 
-        Security.Response<DTO.Usuario> IReloadAuthentication.logeo(LoginRequest loginRquest)
+		DTO.Response.Response<DTO.Usuario> IReloadAuthentication.logeo(LoginRequest loginRquest)
         {
-            Security.Response<DTO.Usuario> respuesta = new Security.Response<DTO.Usuario>();
+			DTO.Response.Response<DTO.Usuario> respuesta = new DTO.Response.Response<DTO.Usuario>();
 
-            respuesta.contenido = BI.UsersModule.Logeo(loginRquest);
+            respuesta = BI.UsersModule.Logeo(loginRquest);
             respuesta.estado = BI.UsersModule.estado;
             respuesta.httpResp = Helper.obtenerCodigoEstadoHttp(respuesta.estado);
-
-            if (!respuesta.estado.hayError)
-            {
-                respuesta.extra = TokenGenerator.GenerateToken(loginRquest.login);
-            }
 
             return respuesta;
 
@@ -66,5 +61,15 @@ namespace ReloadWS.Service
                 usuario = "lucho"
             };
         }
-    }
+
+		public DTO.Response.Response<Captcha> obtenerCaptcha()
+		{
+			DTO.Response.Response<DTO.Captcha> respuesta = new DTO.Response.Response<DTO.Captcha>();
+			respuesta.contenido = BI.CaptchaModule.getRandom();
+			respuesta.estado = BI.CaptchaModule.estado;
+			respuesta.httpResp = Helper.obtenerCodigoEstadoHttp(respuesta.estado);
+
+			return respuesta;
+		}
+	}
 }

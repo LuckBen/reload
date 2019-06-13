@@ -17,13 +17,13 @@ namespace ReloadWS.Service
         [WebInvoke(Method = "POST",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare)]
-        Security.Response<DTO.Usuario> logeo(LoginRequest loginRquest);
+		DTO.Response.Response<DTO.Usuario> logeo(LoginRequest loginRquest);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                     BodyStyle = WebMessageBodyStyle.Bare,
                     RequestFormat = WebMessageFormat.Json)]
-        Security.Response<DTO.Usuario> registro(RegistroRequest registroRequest);
+		DTO.Response.Response<DTO.Usuario> registro(RegistroRequest registroRequest);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
@@ -39,6 +39,12 @@ namespace ReloadWS.Service
                     RequestFormat = WebMessageFormat.Json)]
         DTO.Request.RegistroRequest obtenerInfoRequest();
 
+		[OperationContract]
+		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+					BodyStyle = WebMessageBodyStyle.Bare,
+					RequestFormat = WebMessageFormat.Json)]
+		DTO.Response.Response<DTO.Captcha> obtenerCaptcha();
 
-    }
+
+	}
 }

@@ -10,7 +10,7 @@ using System;
 using System.Net.Mail;
 using System.Net;
 
-namespace ReloadWS.Security
+namespace ReloadWS.DTO
 {
 	/// <summary>
 	/// Clase utilizada para enviar Mails.

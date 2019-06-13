@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Net;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 
 namespace ReloadWS.Security
 {
-	public class DistributorValidator : ServiceAuthorizationManager
+	public class ValidatorAccessToken : ServiceAuthorizationManager
 	{
 		private string claveAccesoServicio;
-		public DistributorValidator()
+		
+		public ValidatorAccessToken()
 		{
 			this.claveAccesoServicio = System.Configuration.ConfigurationSettings.AppSettings["Clave_Acceso_Servicio"].ToString();
 		}
@@ -20,16 +22,20 @@ namespace ReloadWS.Security
 		/// <returns>true si accede, false si no</returns>
 		protected override bool CheckAccessCore(OperationContext operationContext)
 		{
-			try { 
-				var authHeader = WebOperationContext.Current.IncomingRequest.Headers["Authorization"];
-				var accion = WebOperationContext.Current.IncomingRequest.Headers["Action"];
+			try {
+				
+				ValidatorAccessService validatorService = new ValidatorAccessService();
 
-				if ((authHeader != null) && (authHeader != string.Empty))
+				if (!validatorService.CheckAccess(operationContext))
 				{
-					var token = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(authHeader)).ToString();
-
-					return token.ToString().Equals(this.claveAccesoServicio);
+					return false;
 				}
+
+				string tokenHeader = BI.TokenModule.obtenerTokenCliente();
+				string ip = ReloadWS.BI.Helper.getIPAddress();
+				
+                return (ReloadWS.BI.TokenModule.validarIntegridadToken(tokenHeader, ip) == ReloadWS.BI.TokenModule.INTEGRIDAD_TOKEN.OK);
+			
 			}
 			catch (Exception)
 			{
@@ -39,6 +45,8 @@ namespace ReloadWS.Security
 			return false;
 				
 		}
+
+
 	}
 }
 

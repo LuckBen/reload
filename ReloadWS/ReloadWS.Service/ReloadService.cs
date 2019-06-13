@@ -9,16 +9,51 @@ using System.ServiceModel;
 using ReloadWS.DTO.Response;
 using ReloadWS.DTO.Request;
 using ReloadWS.BI;
+using ReloadWS.DTO;
+
 namespace ReloadWS.Service
 {
 	[AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
 	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 	public class ReloadService : IReloadService
 	{
-        Security.Response<DTO.Usuario> IReloadService.logeo(LoginRequest loginRquest)
+		public Response<UsuarioInfo> grabarInfo(Request<UsuarioInfo> info)
+		{
+			Response<UsuarioInfo> respuesta = new Response<UsuarioInfo>();
+
+			BI.UsersModule.grabarInfo(info.usuario, info.contenido);
+
+			return respuesta;
+		}
+
+		public Request<UsuarioInfo> obtenerInfo()
+		{
+			UsuarioInfo userinfo = new UsuarioInfo();
+			userinfo.apellido = "benedict";
+			userinfo.datosProfes = "Programador";
+			userinfo.fechaNac = DateTime.Now;
+			userinfo.habitos = "gym";
+			userinfo.idiomas = "ingles";
+			userinfo.nombre = "Luciano";
+			userinfo.pais = new Pais
+			{
+				nombre = "Argentina",
+				codigo = 1
+			};
+			userinfo.propiasPalabras = "blablabla";
+			userinfo.sexo = "M";
+
+			return new Request<UsuarioInfo>()
+			{
+				contenido = userinfo,
+				token = "asdda",
+				usuario = "Lucho"
+			};
+        }
+
+		void IReloadService.salir(string username)
         {
-            Security.Response<DTO.Usuario> respuesta = new Security.Response<DTO.Usuario>();
-            return respuesta;
+			BI.UsersModule.usuariosConectados.quitarToken(username, BI.TokenModule.obtenerTokenCliente());
         }
     }
 }

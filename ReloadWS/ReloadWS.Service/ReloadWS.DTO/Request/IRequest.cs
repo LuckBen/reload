@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReloadWS.Security
+namespace ReloadWS.DTO.Request
 {
     public interface IRequest
     {
         string usuario { get; set; }
-        string token { get; set; }
     }
 }

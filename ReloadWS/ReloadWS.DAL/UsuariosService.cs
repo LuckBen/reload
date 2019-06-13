@@ -12,10 +12,8 @@ namespace ReloadWS.DAL
 {
     public static class UsuariosService 
     {
-        public static Estado estado { get; set; }
         static UsuariosService()
         {
-            estado = new ReloadWS.DAL.Estado();
         }
 
 		public static Usuario obtenerUsuarioPorMail(string mail)
@@ -53,7 +51,7 @@ namespace ReloadWS.DAL
             IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
 
             Usuario result = (from d in colUsuarios.AsQueryable<Usuario>()
-								where d.codigo.Equals(codigo)
+								where d.codigo.ToLower() == codigo.ToLower()
 								select d).FirstOrDefault();
 			
 
@@ -68,5 +66,16 @@ namespace ReloadWS.DAL
             colUsuarios.InsertOne(usuario);
         }
 
-    }
+		public static void grabarInfo(string username, UsuarioInfo info)
+		{
+			var client = new MongoClient(Conexion.getSettings());
+			var db = client.GetDatabase(Conexion.db);
+			IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
+			
+			var result = colUsuarios.FindOneAndUpdate(
+				Builders<Usuario>.Filter.Eq("codigo", username),
+				Builders<Usuario>.Update.Set("info",info)
+			);
+		}
+	}
 }

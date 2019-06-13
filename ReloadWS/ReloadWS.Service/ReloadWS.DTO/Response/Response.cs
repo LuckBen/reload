@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 
-namespace ReloadWS.Security
+namespace ReloadWS.DTO.Response
 {
 	public class Response<T> :IResponse
 	{

@@ -45,6 +45,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Channels" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,7 +66,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaptchaModule.vb" />
     <Compile Include="Helper.vb" />
+    <Compile Include="TokenModule.vb" />
     <Compile Include="UsersModule.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -80,6 +85,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="UsuariosConectados.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -108,10 +114,6 @@
     <ProjectReference Include="..\ReloadWS.DTO\ReloadWS.DTO.csproj">
       <Project>{8476f026-9564-4885-a504-85baeae86eb3}</Project>
       <Name>ReloadWS.DTO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ReloadWS.Security\ReloadWS.Security.csproj">
-      <Project>{bff7ae08-a9c8-4168-a7ac-078fc94654ad}</Project>
-      <Name>ReloadWS.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
