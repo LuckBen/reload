@@ -69,6 +69,20 @@ Public Module Helper
 
     End Function
 
+    Public Function generarID() As String
+
+        Dim r As New Random()
+
+        Dim id As String = DateTime.Today.Year.ToString() &
+                            DateTime.Today.Month.ToString() &
+                            DateTime.Today.Day.ToString() &
+                            DateTime.Now.TimeOfDay.Minutes.ToString() &
+                            DateTime.Now.TimeOfDay.Seconds.ToString() &
+                            r.Next(0, 1000).ToString()
+
+        Return id
+    End Function
+
     Public Function getToken() As String
         Return WebOperationContext.Current.IncomingRequest.Headers("Token")
     End Function

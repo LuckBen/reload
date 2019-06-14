@@ -8,7 +8,7 @@ namespace ReloadWS.DTO
 {
     public class Usuario
     {
-		public object _id { get; set; }
+		public string _id { get; set; }
         public string codigo { get; set; }
         public string password { get; set; }
         public int puntos { get; set; }
@@ -17,7 +17,7 @@ namespace ReloadWS.DTO
         public UsuarioInfo info { get; set; }
         public Medalla[] medallas { get; set; }
         public Post[] publicaciones { get; set; }
-        public Post[] posts { get; set; }
+        public List<Post> posts { get; set; }
         public Sujeto[] seguidores { get; set; }
         public Sujeto[] siguiendo { get; set; }
         public Comentario[] mensajes { get; set; }
@@ -26,7 +26,7 @@ namespace ReloadWS.DTO
 
 		public Usuario()
 		{
-
+			posts = new List<Post>();
         }
 	}
 

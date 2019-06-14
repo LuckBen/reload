@@ -8,7 +8,8 @@ namespace ReloadWS.DTO
 {
     public class Comentario
     {
-        public int nro { get; set; }
+		public string _id { get; set; }
+		public string postid { get; set; }
         public Sujeto emisor { get; set; }
         public Sujeto receptor { get; set; }
         public string contenido { get; set; }

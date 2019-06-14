@@ -11,21 +11,26 @@ namespace ReloadWS.Host
 
 		public static void Main(string[] args)
 		{
-            //Security.TokenGenerator.validarIntegridadToken("lucho", DateTime.Now, "0X7pDS51y2BDPCGuUMzU55s+11F/G7CYfFPRMpqzWT4=");
-			System.ServiceModel.ServiceHost hostServicioReload = new System.ServiceModel.ServiceHost(typeof(ReloadWS.Service.ReloadService));
-            System.ServiceModel.ServiceHost hostServicioReloadAuthentication = new System.ServiceModel.ServiceHost(typeof(ReloadWS.Service.ReloadServiceAuthentication));
-            try { 
-                hostServicioReload.Open();
-                hostServicioReloadAuthentication.Open();
+			System.ServiceModel.ServiceHost hostUserService = new System.ServiceModel.ServiceHost(typeof(ReloadWS.Service.UsuarioService));
+            System.ServiceModel.ServiceHost hostAuthenticationService = new System.ServiceModel.ServiceHost(typeof(ReloadWS.Service.AuthenticationService));
+			System.ServiceModel.ServiceHost hostPostService = new System.ServiceModel.ServiceHost(typeof(ReloadWS.Service.PostService));
+
+            try {
+
+				hostUserService.Open();
+				hostAuthenticationService.Open();
+				hostPostService.Open();
                 Console.Read();
+
             } catch(Exception ex)
             {
                 Security.Logs.grabar(ex);
             }
             finally
             {
-                hostServicioReload.Close();
-                hostServicioReloadAuthentication.Close();
+				hostUserService.Close();
+				hostAuthenticationService.Close();
+				hostPostService.Close();
             }
 
         }

@@ -15,9 +15,9 @@ namespace ReloadWS.Service
 {
 	[AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
 	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-	public class ReloadService : IReloadService
+	public class UsuarioService : IUsuarioService
 	{
-		public Response<UsuarioInfo> grabarInfo(Request<UsuarioInfo> info)
+		public Response<UsuarioInfo> saveInfo(Request<UsuarioInfo> info)
 		{
 			Response<UsuarioInfo> respuesta = new Response<UsuarioInfo>();
 
@@ -51,7 +51,7 @@ namespace ReloadWS.Service
 			};
         }
 
-		void IReloadService.salir(string username)
+		void IUsuarioService.exit(string username)
         {
 			BI.UsersModule.usuariosConectados.quitarToken(username, BI.TokenModule.obtenerTokenCliente());
         }

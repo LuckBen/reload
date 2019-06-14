@@ -9,7 +9,7 @@ using MongoDB.Driver;
 
 namespace ReloadWS.DAL
 {
-	public static class CaptchaService
+	public static class CaptchaDB
 	{
 		public static List<DTO.Captcha> getAll()
 		{

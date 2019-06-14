@@ -13,7 +13,7 @@ Public Module CaptchaModule
         Dim listado As New List(Of DTO.Captcha)()
         Try
 
-            listado = CaptchaService.getAll()
+            listado = CaptchaDB.getAll()
 
         Catch ex As Exception
             estado.capturarError(ex, True)

@@ -11,19 +11,19 @@ using ReloadWS.DTO.Request;
 namespace ReloadWS.Service
 {
     [ServiceContract]
-    public interface IReloadAuthentication
+    public interface IAuthenticationService
     {
         [OperationContract]
         [WebInvoke(Method = "POST",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare)]
-		DTO.Response.Response<DTO.Usuario> logeo(LoginRequest loginRquest);
+		DTO.Response.Response<DTO.Usuario> login(LoginRequest loginRquest);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                     BodyStyle = WebMessageBodyStyle.Bare,
                     RequestFormat = WebMessageFormat.Json)]
-		DTO.Response.Response<DTO.Usuario> registro(RegistroRequest registroRequest);
+		DTO.Response.Response<DTO.Usuario> register(RegistroRequest registroRequest);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
@@ -43,7 +43,7 @@ namespace ReloadWS.Service
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
 					BodyStyle = WebMessageBodyStyle.Bare,
 					RequestFormat = WebMessageFormat.Json)]
-		DTO.Response.Response<DTO.Captcha> obtenerCaptcha();
+		DTO.Response.Response<DTO.Captcha> getCaptcha();
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,

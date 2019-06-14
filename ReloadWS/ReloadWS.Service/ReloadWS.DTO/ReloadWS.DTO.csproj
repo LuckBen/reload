@@ -53,6 +53,7 @@
     <Compile Include="Mensaje.cs" />
     <Compile Include="Pais.cs" />
     <Compile Include="Post.cs" />
+    <Compile Include="PostDestacado.cs" />
     <Compile Include="Publicacion.cs" />
     <Compile Include="Rango.cs" />
     <Compile Include="Request\IRequest.cs" />

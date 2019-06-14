@@ -10,9 +10,9 @@ using ReloadWS.DTO;
 
 namespace ReloadWS.DAL
 {
-    public static class UsuariosService 
+    public static class UsuariosDB 
     {
-        static UsuariosService()
+        static UsuariosDB()
         {
         }
 
@@ -54,17 +54,40 @@ namespace ReloadWS.DAL
 								where d.codigo.ToLower() == codigo.ToLower()
 								select d).FirstOrDefault();
 			
-
             return result;
         }
 
-        public static void grabar(Usuario usuario)
+		public static void addPost(Post post)
+		{
+			var client = new MongoClient(Conexion.getSettings());
+			var db = client.GetDatabase(Conexion.db);
+			IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
+
+			var result = colUsuarios.FindOneAndUpdate(
+				Builders<Usuario>.Filter.Eq("_id", post.propietario._id),
+				Builders<Usuario>.Update.Push("posts", post)
+			);
+		}
+
+		public static void grabar(Usuario usuario)
         {
             var client = new MongoClient(Conexion.getSettings());
             var db = client.GetDatabase(Conexion.db);
             IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
             colUsuarios.InsertOne(usuario);
         }
+
+		public static void deletePost(Post post)
+		{
+			var client = new MongoClient(Conexion.getSettings());
+			var db = client.GetDatabase(Conexion.db);
+			IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
+
+			var result = colUsuarios.FindOneAndUpdate(
+				Builders<Usuario>.Filter.Where(x => x._id.Equals(post.propietario._id) && x.posts.Any(y => y._id.Equals(post._id))),
+				Builders<Usuario>.Update.Set("posts.$.activo", false)
+			);
+		}
 
 		public static void grabarInfo(string username, UsuarioInfo info)
 		{
@@ -75,6 +98,18 @@ namespace ReloadWS.DAL
 			var result = colUsuarios.FindOneAndUpdate(
 				Builders<Usuario>.Filter.Eq("codigo", username),
 				Builders<Usuario>.Update.Set("info",info)
+			);
+		}
+
+		public static void editPost(Post post)
+		{
+			var client = new MongoClient(Conexion.getSettings());
+			var db = client.GetDatabase(Conexion.db);
+			IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
+
+			var result = colUsuarios.FindOneAndUpdate(
+				Builders<Usuario>.Filter.Where(x => x._id.Equals(post.propietario._id) && x.posts.Any(y => y._id.Equals(post._id))),
+				Builders<Usuario>.Update.Set("posts.$.contenido", post.contenido)
 			);
 		}
 	}

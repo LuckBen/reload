@@ -8,10 +8,17 @@ namespace ReloadWS.DTO
 {
     public class Sujeto
     {
+		public string _id { get; set; }
         public string codigo { get; set; }
         public string alias { get; set; }
         public string imagen { get; set; }
         public Rango rango { get; set; }
         public Pais pais { get; set; }
+		
+		public Sujeto()
+		{
+			rango = new Rango();
+			pais = new Pais();
+		}
     }
 }

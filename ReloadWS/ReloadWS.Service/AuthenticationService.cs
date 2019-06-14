@@ -15,9 +15,9 @@ namespace ReloadWS.Service
 {
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    public class ReloadServiceAuthentication : IReloadAuthentication
-    {
-        DTO.Response.Response<DTO.Usuario> IReloadAuthentication.registro(RegistroRequest registroRequest)
+    public class AuthenticationService : IAuthenticationService
+	{
+        DTO.Response.Response<DTO.Usuario> IAuthenticationService.register(RegistroRequest registroRequest)
         {
 			DTO.Response.Response<DTO.Usuario> respuesta = new DTO.Response.Response<DTO.Usuario>();
 
@@ -34,7 +34,7 @@ namespace ReloadWS.Service
             return respuesta;
         }
 
-		DTO.Response.Response<DTO.Usuario> IReloadAuthentication.logeo(LoginRequest loginRquest)
+		DTO.Response.Response<DTO.Usuario> IAuthenticationService.login(LoginRequest loginRquest)
         {
 			DTO.Response.Response<DTO.Usuario> respuesta = new DTO.Response.Response<DTO.Usuario>();
 
@@ -45,7 +45,7 @@ namespace ReloadWS.Service
             return respuesta;
 
         }
-        string IReloadAuthentication.verificarMail(string mail)
+        string IAuthenticationService.verificarMail(string mail)
         {
             BI.UsersModule.verificarMail(mail);
 
@@ -69,7 +69,7 @@ namespace ReloadWS.Service
             return listapais.ToArray();
         }
 
-		public DTO.Response.Response<Captcha> obtenerCaptcha()
+		public DTO.Response.Response<Captcha> getCaptcha()
 		{
 			DTO.Response.Response<DTO.Captcha> respuesta = new DTO.Response.Response<DTO.Captcha>();
 			respuesta.contenido = BI.CaptchaModule.getRandom();

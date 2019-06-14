@@ -9,7 +9,7 @@ using MongoDB.Driver;
 using ReloadWS.DTO;
 namespace ReloadWS.DAL
 {
-    public static class PaisesService
+    public static class PaisesDB
     {
         public static void insertarPaises(DTO.Pais[] paises)
         {

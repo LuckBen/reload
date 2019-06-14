@@ -15,7 +15,8 @@ namespace ReloadWS.DTO
 		public UsuarioConectado()
 		{
 			tokens = new List<string>();
-		}	
+			usuario = new Sujeto();
+        }	
 
     }
 }

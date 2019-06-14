@@ -8,13 +8,13 @@ namespace ReloadWS.DTO
 {
     public class Post
     {
-        public int nro { get; set; }
+        public string _id { get; set; }
         public Sujeto propietario { get; set; }
         public string titulo { get; set; }
         public string imagen { get; set; }
         public string contenido { get; set; }
         public Categoria categoria { get; set; }
-        public string[] tags { get; set; }
+        public List<string> tags { get; set; }
         public int puntos { get; set; }
         public bool sticky { get; set; }
         public int visitas { get; set; }
@@ -22,7 +22,16 @@ namespace ReloadWS.DTO
         public int favoritos { get; set; }
         public DateTime fechaAlta { get; set; }
         public DateTime fechaModificacion { get; set; }
-        public Comentario[] comentarios;
+        public List<Comentario> comentarios;
+		public bool activo { get; set; }
+		
+		public Post()
+		{
+			comentarios = new List<Comentario>();
+			categoria = new Categoria();
+			propietario = new Sujeto();
+			tags = new List<string>();
+        }
 
-    }
+	}
 }

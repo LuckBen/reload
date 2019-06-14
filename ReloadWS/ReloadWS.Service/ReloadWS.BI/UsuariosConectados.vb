@@ -41,6 +41,10 @@
         Return usuariosConectados.ContainsKey(usuario)
     End Function
 
+    Public Function obtenerUsuario(ByVal usuario As String) As DTO.Sujeto
+        Return usuariosConectados(usuario).usuario
+    End Function
+
     Public Function obtenerTokens(ByVal usuario As String) As List(Of String)
 
 

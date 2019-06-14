@@ -12,7 +12,7 @@ Public Module PaisesModule
 
         estado.iniciar()
         Try
-            DAL.PaisesService.insertarPaises(paises)
+            DAL.PaisesDB.insertarPaises(paises)
         Catch ex As Exception
             estado.capturarError(ex, True)
         End Try

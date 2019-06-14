@@ -10,7 +10,6 @@ Public Module UsersModule
         usuariosConectados = New UsuariosConectados()
     End Sub
 
-
     Public Function Logeo(ByVal loginRequest As DTO.Request.LoginRequest) As DTO.Response.Response(Of DTO.Usuario)
 
         estado.iniciar()
@@ -19,7 +18,7 @@ Public Module UsersModule
 
         Try
 
-            usuario = DAL.UsuariosService.obtenerUsuario(loginRequest.login)
+            usuario = DAL.UsuariosDB.obtenerUsuario(loginRequest.login)
 
             If IsNothing(usuario) Then
                 Throw New DTO.InvalidDataException("El usuario no es correcto")
@@ -40,6 +39,7 @@ Public Module UsersModule
             respuesta.contenido = usuario
 
             usuariosConectados.agregar(New DTO.Sujeto With {
+                                          ._id = usuario._id,
                                           .codigo = usuario.codigo.ToUpper()
                                           }, token)
 
@@ -62,7 +62,7 @@ Public Module UsersModule
                 Throw New InvalidDataException("Datos invalidos")
             End If
 
-            DAL.UsuariosService.grabarInfo(username, info)
+            DAL.UsuariosDB.grabarInfo(username, info)
 
         Catch ex As InvalidDataException
             estado.capturarError(ex, False)
@@ -91,15 +91,16 @@ Public Module UsersModule
                 Throw New DTO.InvalidDataException("No se especifico password")
             End If
 
-            If Not (IsNothing(DAL.UsuariosService.obtenerUsuario(registroRequest.usuario))) Then
+            If Not (IsNothing(DAL.UsuariosDB.obtenerUsuario(registroRequest.usuario))) Then
                 Throw New DTO.InvalidDataException("El usuario ya existe.")
             End If
 
-            If Not (IsNothing(DAL.UsuariosService.obtenerUsuarioPorMail(registroRequest.mail))) Then
+            If Not (IsNothing(DAL.UsuariosDB.obtenerUsuarioPorMail(registroRequest.mail))) Then
                 Throw New DTO.InvalidDataException("El mail ya existe.")
             End If
 
-            DAL.UsuariosService.grabar(New DTO.Usuario With {
+            DAL.UsuariosDB.grabar(New DTO.Usuario With {
+                                       ._id = Helper.generarID(),
                                        .codigo = registroRequest.usuario,
                                        .password = registroRequest.password,
                                        .mail = registroRequest.mail,
@@ -116,6 +117,7 @@ Public Module UsersModule
 
     End Sub
 
+
     ''' <summary>
     ''' verificar el mail 
     ''' </summary>
@@ -129,7 +131,7 @@ Public Module UsersModule
                 Throw New DTO.InvalidDataException("Mail no especificado")
             End If
 
-            DAL.UsuariosService.actualizarActivoPorMail(mail)
+            DAL.UsuariosDB.actualizarActivoPorMail(mail)
 
         Catch ex As DTO.InvalidDataException
             estado.capturarError(ex, False)
