@@ -38,7 +38,7 @@ namespace ReloadWS.Service
 			userinfo.pais = new Pais
 			{
 				nombre = "Argentina",
-				codigo = 1
+				codigo = "AR"
 			};
 			userinfo.propiasPalabras = "blablabla";
 			userinfo.sexo = "M";

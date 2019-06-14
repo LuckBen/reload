@@ -37,7 +37,7 @@ namespace ReloadWS.Service
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
                     BodyStyle = WebMessageBodyStyle.Bare,
                     RequestFormat = WebMessageFormat.Json)]
-        DTO.Request.RegistroRequest obtenerInfoRequest();
+        DTO.Pais[] obtenerInfoRequest();
 
 		[OperationContract]
 		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
@@ -45,6 +45,13 @@ namespace ReloadWS.Service
 					RequestFormat = WebMessageFormat.Json)]
 		DTO.Response.Response<DTO.Captcha> obtenerCaptcha();
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            RequestFormat = WebMessageFormat.Json)]
+        void insertarPaises(DTO.Pais[] paises);
 
-	}
+
+
+    }
 }

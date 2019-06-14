@@ -52,14 +52,21 @@ namespace ReloadWS.Service
             return "mail verificado con exito";
         }
 
-        public RegistroRequest obtenerInfoRequest()
+        public Pais[] obtenerInfoRequest()
         {
-            return new RegistroRequest
+            List<Pais> listapais = new List<Pais>();
+            listapais.Add(new Pais
             {
-                mail = "benedict.luciano@gmail.com",
-                password = "xddxxd",
-                usuario = "lucho"
-            };
+                codigo = "AR",
+                nombre = "Argentina"
+            });
+
+            listapais.Add(new Pais
+            {
+                codigo = "AL",
+                nombre = "Alemania"
+            });
+            return listapais.ToArray();
         }
 
 		public DTO.Response.Response<Captcha> obtenerCaptcha()
@@ -71,5 +78,10 @@ namespace ReloadWS.Service
 
 			return respuesta;
 		}
+
+        public void insertarPaises(DTO.Pais[] paises)
+        {
+            BI.PaisesModule.insertarPaises(paises);
+        }
 	}
 }

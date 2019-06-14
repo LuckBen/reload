@@ -8,7 +8,7 @@ namespace ReloadWS.DTO
 {
     public class Pais
     {
-        public int codigo { get; set; }
+        public string codigo { get; set; }
         public string nombre { get; set; }
 
     }
