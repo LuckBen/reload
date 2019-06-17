@@ -20,8 +20,13 @@ namespace ReloadWS.Security
 		/// <returns>true si accede, false si no</returns>
 		protected override bool CheckAccessCore(OperationContext operationContext)
 		{
-			try { 
-				var authHeader = WebOperationContext.Current.IncomingRequest.Headers["Authorization"];
+			try {
+
+                WebOperationContext.Current.OutgoingResponse.Headers.Add("Access-Control-Allow-Origin", "*");
+
+                return true;
+
+                var authHeader = WebOperationContext.Current.IncomingRequest.Headers["Authorization"];
 
 				if ((authHeader != null) && (authHeader != string.Empty))
 				{

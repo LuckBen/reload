@@ -19,12 +19,12 @@ namespace ReloadWS.Service
 	{
         DTO.Response.Response<DTO.Usuario> IAuthenticationService.register(RegistroRequest registroRequest)
         {
-			DTO.Response.Response<DTO.Usuario> respuesta = new DTO.Response.Response<DTO.Usuario>();
+
+            DTO.Response.Response<DTO.Usuario> respuesta = new DTO.Response.Response<DTO.Usuario>();
 
             BI.UsersModule.Registro(registroRequest);
 
             respuesta.estado = BI.UsersModule.estado;
-            respuesta.httpResp = Helper.obtenerCodigoEstadoHttp(BI.UsersModule.estado);
 
             if (!respuesta.estado.hayError)
             {
@@ -40,7 +40,6 @@ namespace ReloadWS.Service
 
             respuesta = BI.UsersModule.Logeo(loginRquest);
             respuesta.estado = BI.UsersModule.estado;
-            respuesta.httpResp = Helper.obtenerCodigoEstadoHttp(respuesta.estado);
 
             return respuesta;
 
@@ -74,7 +73,6 @@ namespace ReloadWS.Service
 			DTO.Response.Response<DTO.Captcha> respuesta = new DTO.Response.Response<DTO.Captcha>();
 			respuesta.contenido = BI.CaptchaModule.getRandom();
 			respuesta.estado = BI.CaptchaModule.estado;
-			respuesta.httpResp = Helper.obtenerCodigoEstadoHttp(respuesta.estado);
 
 			return respuesta;
 		}
@@ -83,5 +81,10 @@ namespace ReloadWS.Service
         {
             BI.PaisesModule.insertarPaises(paises);
         }
-	}
+
+        public string hola()
+        {
+            return "hola";
+        }
+    }
 }

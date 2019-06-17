@@ -17,7 +17,6 @@ namespace ReloadWS.Service
 			Response<Post> respuesta = new Response<Post>();
 			BI.PostModule.addPost(requestPost.contenido);
 			respuesta.estado = BI.PostModule.estado;
-			respuesta.httpResp = Helper.obtenerCodigoEstadoHttp(respuesta.estado);
 
 			return respuesta;
 		}
@@ -27,7 +26,6 @@ namespace ReloadWS.Service
 			Response<string> respuesta = new Response<string>();
             BI.PostModule.comment(commentary.contenido);
 			respuesta.estado = BI.PostModule.estado;
-			respuesta.httpResp = Helper.obtenerCodigoEstadoHttp(respuesta.estado);
 			return respuesta;
 		}
 
@@ -41,7 +39,6 @@ namespace ReloadWS.Service
 			Response<Post> respuesta = new Response<Post>();
 			respuesta.contenido = BI.PostModule.editPost(post.contenido);
 			respuesta.estado = BI.PostModule.estado;
-			respuesta.httpResp = Helper.obtenerCodigoEstadoHttp(respuesta.estado);
 
 			return respuesta;
 		}

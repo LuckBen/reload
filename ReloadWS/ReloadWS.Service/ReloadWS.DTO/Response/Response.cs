@@ -8,7 +8,6 @@ namespace ReloadWS.DTO.Response
 	{
         private Estado _estado;
         private string _extra;
-        private HttpStatusCode _httResp;
 		public T contenido { get; set; }
 
         public Estado estado
@@ -37,17 +36,5 @@ namespace ReloadWS.DTO.Response
             }
         }
 
-        public HttpStatusCode httpResp
-        {
-            get
-            {
-                return _httResp;
-            }
-
-            set
-            {
-                _httResp = value;
-            }
-        }
     }
 }

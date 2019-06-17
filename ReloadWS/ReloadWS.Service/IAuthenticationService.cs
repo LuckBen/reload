@@ -20,10 +20,11 @@ namespace ReloadWS.Service
 		DTO.Response.Response<DTO.Usuario> login(LoginRequest loginRquest);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-                    BodyStyle = WebMessageBodyStyle.Bare,
-                    RequestFormat = WebMessageFormat.Json)]
-		DTO.Response.Response<DTO.Usuario> register(RegistroRequest registroRequest);
+        [WebInvoke(Method = "*",
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare)]
+        DTO.Response.Response<DTO.Usuario> register(RegistroRequest registroRequest);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
@@ -51,7 +52,11 @@ namespace ReloadWS.Service
             RequestFormat = WebMessageFormat.Json)]
         void insertarPaises(DTO.Pais[] paises);
 
-
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json,
+            UriTemplate = "hola")]
+        string hola();
 
     }
 }

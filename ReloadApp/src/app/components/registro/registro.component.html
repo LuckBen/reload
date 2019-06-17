@@ -1,0 +1,52 @@
+<div style="margin-top:50px">
+
+    <mat-grid-list cols="4" rowHeight="90px">
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <h1 class="mat-display-1">Bienvenido a Reload!</h1>
+        </mat-grid-tile>
+
+        <!-- <mat-grid-tile colspan="4" rowspan="4">
+            <img src="../../../assets/img/Lake.png">
+        </mat-grid-tile> -->
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Nombre de usuario</mat-label>
+                <input [(ngModel)]="nombre" matInput placeholder="Ingresar Nick">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Contraseña</mat-label>
+                <input [(ngModel)]="password" type="password" matInput placeholder="Ingresar la clave">
+                <mat-icon matSuffix>vpn_key</mat-icon>
+                <!--<mat-hint>Hint</mat-hint>-->
+            </mat-form-field>
+
+        </mat-grid-tile>
+
+
+        <mat-grid-tile colspan="4" rowspan="1">
+
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Mail</mat-label>
+                <input [(ngModel)]="mail" matInput placeholder="Ingresar el mail">
+                <mat-icon matSuffix>mail</mat-icon>
+                <!--<mat-hint>Hint</mat-hint>-->
+            </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile colspan="4" rowspan="1">
+
+            <div style="text-align: center; margin-top:30px;margin-bottom:5%">
+                <button mat-raised-button (click)="registrarse()" color="primary"><strong>Registrarse</strong></button>
+            </div>
+        </mat-grid-tile>
+
+
+    </mat-grid-list>
+</div>

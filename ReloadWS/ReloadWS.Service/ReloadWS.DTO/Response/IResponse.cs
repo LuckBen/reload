@@ -10,7 +10,6 @@ namespace ReloadWS.DTO.Response
 	public interface IResponse
 	{
         Estado estado { get; set; }
-        HttpStatusCode httpResp { get; set; }
 
         string extra { get; set; }
 	}

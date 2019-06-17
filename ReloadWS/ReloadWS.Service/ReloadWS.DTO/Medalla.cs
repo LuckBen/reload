@@ -8,7 +8,7 @@ namespace ReloadWS.DTO
 {
     public class Medalla
     {
-        public int nro { get; set; }
+        public string _id { get; set; }
         public string nombre { get; set; }
         public string mensaje { get; set; }
         public string logo { get; set; }
