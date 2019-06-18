@@ -1,31 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
-import { RegistroRequest } from '../../models/request/registro.request';
+import { LoginRequest } from '../../models/request/login.request';
 import { Usuario } from '../../models/Usuario.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { CaptchaService } from '../../services/captcha.service';
 import { Captcha } from '../../models/Captcha.model';
 import { Router } from "@angular/router";
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   mail:string;
   nombre:string;
   password:string;
   cargando:boolean = false;
-  regRequest:RegistroRequest;
+  logRequest:LoginRequest;
   captchaValido:boolean;
   captcha:Captcha;
+
   constructor(private usService:UsuarioService,
               private captchaService:CaptchaService,
               private messageBox: MatSnackBar,
               private router: Router) { 
-    this.regRequest = new RegistroRequest();
+    this.logRequest = new LoginRequest();
     
   }
 
@@ -45,47 +47,40 @@ export class RegistroComponent implements OnInit {
       this.show('Ocurrió un error inesperado, inténtelo de nuevo','Aceptar');
     });
   }
-
   show(message: string, action: string) {
     this.messageBox.open(message, action, {
-      duration: 3000,
+      duration: 10000,
     });
   }
 
-  registrarse(){
+  
+  logearse(){
       
-      this.regRequest.usuario = this.nombre;
-      this.regRequest.mail = this.mail;
-      this.regRequest.password = this.password;
+    this.logRequest.login = this.nombre;
+    this.logRequest.password = this.password;
+    
+    if(!this.logRequest.login){
+      this.show('Ingrese el nombre','Aceptar');
+      return;
+    }
+
+    if(!this.logRequest.password){
+      this.show('Ingrese el password','Aceptar');
+      return;
+    }
+
+    this.cargando = true;
+
+    this.usService.logearse(this.logRequest).then((data)=>{
+      this.router.navigate(['/posts'])
+
+    })
+    .catch((err)=>{
       
-      if(!this.regRequest.usuario){
-        this.show('Ingrese el nombre','Aceptar');
-        return;
-      }
-            
-      if(!this.regRequest.mail){
-        this.show('Ingrese el mail','Aceptar');
-        return;
-      }
-
-      if(!this.regRequest.password){
-        this.show('Ingrese el password','Aceptar');
-        return;
-      }
-
-      this.cargando = true;
-
-      this.usService.registrarse(this.regRequest).then((data)=>{
-        this.show(data.estado.mensaje,'Registro');
-        this.router.navigate(['/posts'])
-
-      })
-      .catch((err)=>{
-        
-        this.show(err,'Aceptar');
-      
-      }).finally(()=>{
-        this.cargando = false;
-      });
-  }
+      this.show(err,'Aceptar');
+    
+    }).finally(()=>{
+      this.cargando = false;
+    });
+}
 }

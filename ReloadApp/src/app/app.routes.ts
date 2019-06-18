@@ -2,10 +2,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { LoginComponent } from './components/login/login.component';
+import { CuentaComponent } from './components/cuenta/cuenta.component';
 
 const APP_ROUTES: Routes = [
-    { path: 'posts', component: HomeComponent },
+    { path:'posts', component:HomeComponent },
     { path:'registro', component:RegistroComponent},
+    { path:'login' , component:LoginComponent},
+    { path:'cuenta', component:CuentaComponent},
     { path: '**', pathMatch: 'full', redirectTo: 'posts' }
   ];
   

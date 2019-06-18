@@ -47,15 +47,17 @@ Public Module Helper
 
     Public Sub enviarMailActivacionMail(ByVal destinatario As String)
 
-        Dim path As String = System.IO.Directory.GetCurrentDirectory() + "\\plantillas\activarMail.html"
-        Dim contenidoHtml As String = System.IO.File.ReadAllText(path).Replace("@mail@", destinatario)
+        Try
 
-        If (String.IsNullOrEmpty(contenidoHtml)) Then
-            Throw New NullReferenceException("No hay contenido en la plantilla activarMail.html")
-        End If
+            Dim path As String = System.IO.Directory.GetCurrentDirectory() + "\\plantillas\activarMail.html"
+            Dim contenidoHtml As String = System.IO.File.ReadAllText(path).Replace("@mail@", destinatario)
 
-        Dim asunto As String = System.Configuration.ConfigurationSettings.AppSettings("mail_asunto_activacion_mail").ToString()
-        enviarMail(destinatario, asunto, contenidoHtml)
+            Dim asunto As String = System.Configuration.ConfigurationSettings.AppSettings("mail_asunto_activacion_mail").ToString()
+            enviarMail(destinatario, asunto, contenidoHtml)
+
+        Catch ex As Exception
+
+        End Try
 
 
     End Sub

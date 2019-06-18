@@ -29,17 +29,6 @@
 
         </mat-grid-tile>
 
-
-        <mat-grid-tile colspan="4" rowspan="1">
-
-            <mat-form-field appearance="legacy" style="width: 50%">
-                <mat-label>Mail</mat-label>
-                <input [(ngModel)]="mail" [disabled]="cargando" matInput placeholder="Ingresar el mail">
-                <mat-icon matSuffix>mail</mat-icon>
-                <!--<mat-hint>Hint</mat-hint>-->
-            </mat-form-field>
-        </mat-grid-tile>
-
         <!--<mat-grid-tile colspan="4" rowspan="1">
 
             <mat-form-field appearance="legacy" style="width: 50%">
@@ -50,7 +39,7 @@
         <mat-grid-tile colspan="4" rowspan="1">
 
             <div style="text-align: center; margin-top:30px;margin-bottom:5%">
-                <button mat-raised-button (click)="registrarse()" [disabled]="cargando" color="primary"><strong>Registrarse</strong></button>
+                <button mat-raised-button (click)="logearse()" [disabled]="cargando" color="primary"><strong>Login</strong></button>
             </div>
         </mat-grid-tile>
 

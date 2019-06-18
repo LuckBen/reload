@@ -19,7 +19,14 @@ Public Module PaisesModule
 
     End Sub
 
-
+    Public Function getPaises() As Pais()
+        estado.iniciar()
+        Try
+            Return DAL.PaisesDB.getPaises()
+        Catch ex As Exception
+            estado.capturarError(ex, True)
+        End Try
+    End Function
 End Module
 
 

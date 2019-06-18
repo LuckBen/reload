@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-barra-logeo',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraLogeoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router ) {
+  }
 
   ngOnInit() {
   }
 
+  login(){
+    this.router.navigate(['/login'])
+  }
+
+  registro(){
+    this.router.navigate(['/registro'])
+
+  }
 }

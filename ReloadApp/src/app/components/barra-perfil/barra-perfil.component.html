@@ -1,14 +1,14 @@
 <button mat-button><mat-icon matBadge="22" matBadgeColor="warn" matBadgePosition="above after"> remove_red_eye
   </mat-icon></button>
 
-<button mat-button><mat-icon matBadge="15" matBadgeColor="warn">mail</mat-icon>
-  </button>
+<button mat-button><mat-icon matBadge="15" matBadgeColor="warn">mail</mat-icon></button>
 
+<button mat-button><mat-icon >star</mat-icon></button>
 
-<button mat-button><mat-icon >star</mat-icon>
-  </button>
-
-<button mat-button>
-<!--            <span style="margin-right:5px"><strong>ME</strong></span>-->
-          <mat-icon>person</mat-icon>
-  </button>
+<button mat-button [matMenuTriggerFor]="menuPerfil"><mat-icon>person</mat-icon></button>
+<mat-menu #menuPerfil="matMenu">
+    <button mat-menu-item>Perfil</button>
+    <button mat-menu-item (click)="cuenta()">Cuenta</button>
+    <button mat-menu-item>Borradores</button>
+    <button mat-menu-item>Salir</button>
+</mat-menu>

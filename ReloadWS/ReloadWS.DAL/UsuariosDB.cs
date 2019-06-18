@@ -77,7 +77,24 @@ namespace ReloadWS.DAL
             colUsuarios.InsertOne(usuario);
         }
 
-		public static void deletePost(Post post)
+        public static void grabarMail(string mail)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void grabarMail(string usuarioCodigo,string mail )
+        {
+            var client = new MongoClient(Conexion.getSettings());
+            var db = client.GetDatabase(Conexion.db);
+            IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
+
+            var result = colUsuarios.FindOneAndUpdate(
+                Builders<Usuario>.Filter.Eq("codigo", usuarioCodigo),
+                Builders<Usuario>.Update.Set("mail", mail )
+            );
+        }
+
+        public static void deletePost(Post post)
 		{
 			var client = new MongoClient(Conexion.getSettings());
 			var db = client.GetDatabase(Conexion.db);

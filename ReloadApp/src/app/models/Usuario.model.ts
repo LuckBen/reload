@@ -22,4 +22,17 @@ export class Usuario{
     public siguiendo?:Sujeto[];
     public mensajes?:Comentario[];
     public suspension?:Suspension;
+
+    constructor(){
+        this._id = "";
+        this.codigo ="";
+        this.password = "";
+        this.puntos = 0;
+        this.mail = "";
+        this.activo = false;
+        this.rango = new Rango();
+        this.info = new  UsuarioInfo();
+        
+
+    }
 }

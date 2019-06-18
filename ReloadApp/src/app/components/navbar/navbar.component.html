@@ -1,11 +1,13 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="animated fadeIn fast">
     <span>Reload!</span>
-    <button mat-button><strong>Posts</strong></button>
-    <button mat-button><strong>Mi R!</strong></button>
-    <button mat-button><strong>Comunidades</strong></button>
-    <button mat-button><strong>Tops</strong></button>
+    <div style="margin-left:10px">
+        <button mat-button routerLinkActive="active" [routerLink]="['posts']">Posts</button>
+        <button mat-button>Mi R!</button>
+        <button mat-button>Comunidades</button>
+        <button mat-button>Tops</button>
+    </div>
     <span class="example-fill-remaining-space"></span>
 
-    <app-barra-perfil *ngIf="logeado"></app-barra-perfil>
-    <app-barra-logeo *ngIf="!logeado"></app-barra-logeo>
+    <app-barra-perfil *ngIf="estaLogeado()"></app-barra-perfil>
+    <app-barra-logeo *ngIf="!estaLogeado()"></app-barra-logeo>
 </mat-toolbar>

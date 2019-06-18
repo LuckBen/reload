@@ -18,5 +18,14 @@ namespace ReloadWS.DAL
             IMongoCollection<Pais> colPaises = db.GetCollection<Pais>("paises");
             colPaises.InsertMany(paises);
         }
+
+        public static Pais[] getPaises()
+        {
+            var client = new MongoClient(Conexion.getSettings());
+            var db = client.GetDatabase(Conexion.db);
+            IMongoCollection<Pais> colPaises = db.GetCollection<Pais>("paises");
+            return (from a in colPaises.AsQueryable<Pais>() select new Pais { codigo = a.codigo, nombre = a.nombre }).ToArray();
+
+        }
     }
 }

@@ -13,21 +13,30 @@ namespace ReloadWS.Service
 	public interface IUsuarioService
     {
         [OperationContract]
-        [WebInvoke(Method = "POST",
+        [WebInvoke(Method = "*",
                     ResponseFormat = WebMessageFormat.Json,
                     BodyStyle = WebMessageBodyStyle.Bare)]
         void exit(string username);
 
 		[OperationContract]
-		[WebInvoke(Method = "POST",
+		[WebInvoke(Method = "*",
 			ResponseFormat = WebMessageFormat.Json,
+            RequestFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.Bare)]
-		Response<DTO.UsuarioInfo> saveInfo(Request<DTO.UsuarioInfo> info);
+		Response<DTO.UsuarioInfo> saveInfo(Request<DTO.Request.UsuarioInfoRequest> info);
 
 		[OperationContract]
-		[WebInvoke(Method = "POST",
+		[WebInvoke(Method = "*",
 		ResponseFormat = WebMessageFormat.Json,
 		BodyStyle = WebMessageBodyStyle.Bare)]
 		Request<DTO.UsuarioInfo> obtenerInfo();
-	}
+
+        [OperationContract]
+        [WebInvoke(Method = "*",
+        BodyStyle = WebMessageBodyStyle.Bare,
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "paises")]
+        Response<DTO.Pais[]> getPaises();
+    }
 }

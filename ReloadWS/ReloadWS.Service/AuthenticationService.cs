@@ -26,10 +26,12 @@ namespace ReloadWS.Service
 
             respuesta.estado = BI.UsersModule.estado;
 
+      
             if (!respuesta.estado.hayError)
             {
                 Helper.enviarMailActivacionMail(registroRequest.mail);
             }
+            
 
             return respuesta;
         }
@@ -82,9 +84,12 @@ namespace ReloadWS.Service
             BI.PaisesModule.insertarPaises(paises);
         }
 
+
+
         public string hola()
         {
             return "hola";
         }
+
     }
 }

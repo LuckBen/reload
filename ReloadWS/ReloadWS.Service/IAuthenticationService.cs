@@ -14,10 +14,12 @@ namespace ReloadWS.Service
     public interface IAuthenticationService
     {
         [OperationContract]
-        [WebInvoke(Method = "POST",
-            ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Bare)]
-		DTO.Response.Response<DTO.Usuario> login(LoginRequest loginRquest);
+        [WebInvoke(Method = "*",
+                    BodyStyle = WebMessageBodyStyle.Bare,
+                    RequestFormat = WebMessageFormat.Json,
+                    ResponseFormat = WebMessageFormat.Json,
+                    UriTemplate = "login")]
+        DTO.Response.Response<DTO.Usuario> login(LoginRequest loginRquest);
 
         [OperationContract]
         [WebInvoke(Method = "*",
@@ -27,33 +29,41 @@ namespace ReloadWS.Service
         DTO.Response.Response<DTO.Usuario> register(RegistroRequest registroRequest);
 
         [OperationContract]
-        [WebInvoke(Method = "GET",
+        [WebInvoke(Method = "*",
                     BodyStyle = WebMessageBodyStyle.Bare,
                     RequestFormat = WebMessageFormat.Json,
+                    ResponseFormat = WebMessageFormat.Json,
                     UriTemplate = "verificar-mail/{mail}")]
         string verificarMail(string mail);
 
+        [OperationContract]
+        [WebInvoke(Method = "*",
+                    BodyStyle = WebMessageBodyStyle.Bare,
+                    RequestFormat = WebMessageFormat.Json,
+                    ResponseFormat = WebMessageFormat.Json,
+                    UriTemplate = "getCaptcha")]
+        Response<DTO.Captcha> getCaptcha();
 
         [OperationContract]
-        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+        [WebInvoke(Method = "*",
                     BodyStyle = WebMessageBodyStyle.Bare,
-                    RequestFormat = WebMessageFormat.Json)]
+                    RequestFormat = WebMessageFormat.Json,
+                    ResponseFormat = WebMessageFormat.Json,
+                    UriTemplate = "obtenerInfoRequest")]
         DTO.Pais[] obtenerInfoRequest();
 
-		[OperationContract]
-		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-					BodyStyle = WebMessageBodyStyle.Bare,
-					RequestFormat = WebMessageFormat.Json)]
-		DTO.Response.Response<DTO.Captcha> getCaptcha();
-
         [OperationContract]
-        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Bare,
-            RequestFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "*",
+                    BodyStyle = WebMessageBodyStyle.Bare,
+                    RequestFormat = WebMessageFormat.Json,
+                    ResponseFormat = WebMessageFormat.Json,
+                    UriTemplate = "insertarPaises")]
         void insertarPaises(DTO.Pais[] paises);
 
+    
+
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json,
+        [WebInvoke(Method = "*", ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json,
             UriTemplate = "hola")]
         string hola();

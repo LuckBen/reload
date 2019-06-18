@@ -1,0 +1,68 @@
+<mat-progress-bar *ngIf="cargando" mode="indeterminate"></mat-progress-bar>
+
+<div style="margin-top:20px" class="animated fadeIn fast">
+    <mat-grid-list cols="4" rowHeight="75px">
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Nombre de usuario</mat-label>
+                <input [(ngModel)]="usuario.info.nombre" [disabled]="cargando" matInput placeholder="Ingresar Nick">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Mail</mat-label>
+                <input [(ngModel)]="usuario.mail" [disabled]="cargando" matInput placeholder="Ingresar el mail">
+                <mat-icon matSuffix>mail</mat-icon>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Pais</mat-label>
+                <mat-select [disabled]="cargando" [(ngModel)]="usuario.info.pais" placeholder="Seleccionar el pais">
+                    <mat-option *ngFor="let pais of paises" [value]="pais">{{pais.nombre}}</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>language</mat-icon>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <div class="form-container">
+                <mat-radio-group [disabled]="cargando" [(ngModel)]="usuario.info.sexo" aria-label="Select an option">
+                    <mat-radio-button color="warn" style="margin-right:15px" value="1">Hombre</mat-radio-button>
+                    <mat-radio-button style="margin-right:15px" value="2">Mujer</mat-radio-button>
+                    <mat-radio-button color="primary" style="margin-right:15px" value="3">Alien</mat-radio-button>
+                    <mat-radio-button color="warn" style="margin-right:15px" value="4">Bicicleta</mat-radio-button>
+                    <mat-radio-button style="margin-right:15px" value="5">Cosa indefinida</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <input matInput [disabled]="cargando" [(ngModel)]="usuario.info.fechaNac" [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <textarea matInput [disabled]="cargando" [(ngModel)]="usuario.info.propiasPalabras" placeholder="Firma"></textarea>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+
+            <div style="text-align: center; margin-top:50px;margin-bottom:5%">
+                <button [disabled]="cargando" (click)="cambiarInfo()" mat-raised-button [disabled]="cargando" color="primary"><strong>Cambiar Datos</strong></button>
+            </div>
+        </mat-grid-tile>
+
+
+    </mat-grid-list>
+</div>

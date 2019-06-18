@@ -15,7 +15,7 @@ namespace ReloadWS.DAL
 		{
 			var client = new MongoClient(Conexion.getSettings());
 			var db = client.GetDatabase(Conexion.db);
-			IMongoCollection<DTO.Captcha> colCaptchas = db.GetCollection<DTO.Captcha>("Captchas");
+			IMongoCollection<DTO.Captcha> colCaptchas = db.GetCollection<DTO.Captcha>("captchas");
 
 			List<DTO.Captcha> result = (from d in colCaptchas.AsQueryable<DTO.Captcha>()
 										select d).ToList();

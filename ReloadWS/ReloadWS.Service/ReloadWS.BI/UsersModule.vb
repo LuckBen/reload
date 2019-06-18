@@ -18,6 +18,10 @@ Public Module UsersModule
 
         Try
 
+            If (IsNothing(loginRequest)) Then
+                Throw New InvalidDataException("No se especificaron datos")
+            End If
+
             usuario = DAL.UsuariosDB.obtenerUsuario(loginRequest.login)
 
             If IsNothing(usuario) Then
@@ -26,6 +30,10 @@ Public Module UsersModule
 
             If Not (usuario.password.ToUpper() = loginRequest.password.ToUpper()) Then
                 Throw New DTO.InvalidDataException("La contraseña no es correcta")
+            End If
+
+            If Not (usuario.activo) Then
+                Throw New DTO.InvalidDataException("Debe activar la cuenta, revise su email")
             End If
 
             Dim token As String = TokenModule.generarToken(loginRequest.login)
@@ -52,6 +60,29 @@ Public Module UsersModule
         Return respuesta
 
     End Function
+
+    Public Sub grabarMail(usuarioCodigo As String, mail As String)
+        estado.iniciar()
+        Try
+            Dim usuario = DAL.UsuariosDB.obtenerUsuarioPorMail(mail)
+
+            Try
+                Dim mailAddress = New System.Net.Mail.MailAddress(mail)
+            Catch ex As Exception
+                Throw New InvalidDataException("El mail no es valido")
+            End Try
+
+            If (Not IsNothing(usuario) AndAlso usuario.codigo <> usuarioCodigo) Then
+                Throw New InvalidDataException("El mail está en uso")
+            End If
+
+            DAL.UsuariosDB.grabarMail(usuarioCodigo, mail)
+        Catch ex As InvalidDataException
+            estado.capturarError(ex, False)
+        Catch ex As Exception
+            estado.capturarError(ex, True)
+        End Try
+    End Sub
 
     Public Sub grabarInfo(ByVal username As String, ByVal info As UsuarioInfo)
 
@@ -99,6 +130,13 @@ Public Module UsersModule
                 Throw New DTO.InvalidDataException("El mail ya existe.")
             End If
 
+            Try
+                Dim dirCorreo As New System.Net.Mail.MailAddress(registroRequest.mail)
+
+            Catch ex As Exception
+                Throw New InvalidDataException("El mail no es válido")
+            End Try
+
             DAL.UsuariosDB.grabar(New DTO.Usuario With {
                                        ._id = Helper.generarID(),
                                        .codigo = registroRequest.usuario,
@@ -106,6 +144,8 @@ Public Module UsersModule
                                        .mail = registroRequest.mail,
                                        .activo = False
                                    })
+
+            estado.mensaje = "Registrado satisfactoriamente, verifique su mail!"
 
         Catch ex As DTO.InvalidDataException
 

@@ -17,11 +17,17 @@ namespace ReloadWS.Service
 	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 	public class UsuarioService : IUsuarioService
 	{
-		public Response<UsuarioInfo> saveInfo(Request<UsuarioInfo> info)
+		public Response<UsuarioInfo> saveInfo(Request<UsuarioInfoRequest> info)
 		{
 			Response<UsuarioInfo> respuesta = new Response<UsuarioInfo>();
+            if(info == null)
+            {
+                return respuesta;
+            }
+			BI.UsersModule.grabarInfo(info.usuario, info.contenido.usuarioInfo);
+            BI.UsersModule.grabarMail(info.usuario, info.contenido.mail);
 
-			BI.UsersModule.grabarInfo(info.usuario, info.contenido);
+            respuesta.estado = BI.UsersModule.estado;
 
 			return respuesta;
 		}
@@ -50,8 +56,14 @@ namespace ReloadWS.Service
 				usuario = "Lucho"
 			};
         }
-
-		void IUsuarioService.exit(string username)
+        public Response<DTO.Pais[]> getPaises()
+        {
+            Response<DTO.Pais[]> respuesta = new Response<DTO.Pais[]>();
+            respuesta.contenido = BI.PaisesModule.getPaises();
+            respuesta.estado = BI.PaisesModule.estado;
+            return respuesta;
+        }
+        void IUsuarioService.exit(string username)
         {
 			BI.UsersModule.usuariosConectados.quitarToken(username, BI.TokenModule.obtenerTokenCliente());
         }
