@@ -5,12 +5,12 @@ export class UsuarioInfo{
     public apellido:string;
     public pais:Pais;
     public sexo:string;
-    public fechaNac:Date
+    public fechaNac:string;
     public idiomas:string;
     public datosProfes:string;
     public habitos:string;
     public propiasPalabras:string;
-
+    public fechaAlta:string;
     constructor(){
  
     }

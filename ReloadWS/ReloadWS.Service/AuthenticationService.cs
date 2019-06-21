@@ -84,6 +84,13 @@ namespace ReloadWS.Service
             BI.PaisesModule.insertarPaises(paises);
         }
 
+        DTO.Response.Response<DTO.Usuario> IAuthenticationService.obtenerUsuario(Request<string> obtenerUsuarioRequest)
+        {
+            Response<Usuario> respuesta = new Response<Usuario>();
+            respuesta.contenido = BI.UsersModule.obtenerUsuario(obtenerUsuarioRequest);
+            respuesta.estado = UsersModule.estado;
+            return respuesta;
+        }
 
 
         public string hola()

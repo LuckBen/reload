@@ -25,13 +25,15 @@ namespace ReloadWS.Security
 			try {
 				
 				ValidatorAccessService validatorService = new ValidatorAccessService();
-                return true;
 				if (!validatorService.CheckAccess(operationContext))
 				{
 					return false;
 				}
 
-				string tokenHeader = BI.TokenModule.obtenerTokenCliente();
+                return true;
+
+
+                string tokenHeader = BI.TokenModule.obtenerTokenCliente();
 				string ip = ReloadWS.BI.Helper.getIPAddress();
 				
                 return (ReloadWS.BI.TokenModule.validarIntegridadToken(tokenHeader, ip) == ReloadWS.BI.TokenModule.INTEGRIDAD_TOKEN.OK);

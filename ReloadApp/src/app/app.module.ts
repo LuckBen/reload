@@ -13,34 +13,43 @@ import { UsuarioService, CustomInterceptor } from './services/usuario.service';
 
 // angular material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar'; 
-import {MatMenuModule} from '@angular/material/menu'; 
-import {MatButtonModule} from '@angular/material/button'; 
-import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
-import {MatIconModule} from '@angular/material/icon'; 
-import {MatFormFieldModule} from '@angular/material/form-field'; 
-import {MatInputModule} from '@angular/material/input'; 
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatToolbarModule} from '@angular/material/toolbar'; 
+import { MatMenuModule} from '@angular/material/menu'; 
+import { MatButtonModule} from '@angular/material/button'; 
+import { MatButtonToggleModule} from '@angular/material/button-toggle'; 
+import { MatIconModule} from '@angular/material/icon'; 
+import { MatFormFieldModule} from '@angular/material/form-field'; 
+import { MatInputModule} from '@angular/material/input'; 
+import { MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatBadgeModule} from '@angular/material/badge';
 import { BarraPerfilComponent } from './components/barra-perfil/barra-perfil.component';
 import { BarraLogeoComponent } from './components/barra-logeo/barra-logeo.component';
 import { RegistroComponent } from './components/registro/registro.component'; 
-import {MatGridListModule} from '@angular/material/grid-list'; 
+import { MatGridListModule} from '@angular/material/grid-list'; 
 import { FormsModule } from '@angular/forms';
 import { Usuario } from './models/Usuario.model';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginComponent } from './components/login/login.component';
 import { CheckLoginPipe } from './pipes/check-login.pipe';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule} from '@angular/material/dialog';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatSelectModule} from '@angular/material/select';
+import { MatTabsModule} from '@angular/material/tabs';
+import { MatSelectModule} from '@angular/material/select';
 import { CuentaDatosComponent } from './components/cuenta/cuenta-datos/cuenta-datos.component';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatRadioModule} from '@angular/material/radio';
+import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CuentaPerfilComponent } from './components/cuenta/cuenta-perfil/cuenta-perfil.component';
+import { CuentaCambiarClaveComponent } from './components/cuenta/cuenta-cambiar-clave/cuenta-cambiar-clave.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { UsuarioInfoComponent } from './components/perfil/usuario-info/usuario-info.component';
+import { MatCardModule} from '@angular/material/card';
+import { CabeceraPerfilComponent } from './components/perfil/cabecera-perfil/cabecera-perfil.component';
+import { MatChipsModule} from '@angular/material/chips';
+import { ImgPaisPipe } from './pipes/img-pais.pipe';
+import { InfoComponent } from './components/perfil/info/info.component';
 
-     
+/// editor
 
 @NgModule({
   declarations: [
@@ -53,7 +62,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     LoginComponent,
     CheckLoginPipe,
     CuentaComponent,
-    CuentaDatosComponent
+    CuentaDatosComponent,
+    CuentaPerfilComponent,
+    CuentaCambiarClaveComponent,
+    PerfilComponent,
+    UsuarioInfoComponent,
+    CabeceraPerfilComponent,
+    ImgPaisPipe,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +94,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCardModule,
+    MatChipsModule
   ],
   providers: [
     UsuarioService,

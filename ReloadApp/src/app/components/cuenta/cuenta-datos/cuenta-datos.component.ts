@@ -15,12 +15,13 @@ export class CuentaDatosComponent implements OnInit {
   usuario:Usuario;
   cargando:boolean = false;
   paises:Pais[] = [];
-  
+  fechaCumple:Date;  
   constructor(private   ucService:UsuarioService,
               private messageBox: MatSnackBar,
               private helper:HelperService
     ) { 
-    this.usuario = new Usuario();
+    this.usuario = UsuarioService.usuario;
+    this.fechaCumple = new Date(this.usuario.info.fechaNac);
     helper.getPaises().then(data=>{
       this.paises = data.contenido;
     });
@@ -32,6 +33,9 @@ export class CuentaDatosComponent implements OnInit {
 
   cambiarInfo(){
     
+      
+    this.usuario.info.fechaNac = this.fechaCumple.toLocaleDateString();
+
     this.cargando = true;
     this.ucService.saveInfo(this.usuario).then(data=>{
       UsuarioService.usuario = data.contenido;

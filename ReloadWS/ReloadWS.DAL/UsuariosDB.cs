@@ -94,6 +94,18 @@ namespace ReloadWS.DAL
             );
         }
 
+        public static void grabarClave(string codigo, string claveNueva)
+        {
+            var client = new MongoClient(Conexion.getSettings());
+            var db = client.GetDatabase(Conexion.db);
+            IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
+
+            var result = colUsuarios.FindOneAndUpdate(
+                Builders<Usuario>.Filter.Where(x => x.codigo == codigo),
+                Builders<Usuario>.Update.Set("password", claveNueva)
+            );
+        }
+
         public static void deletePost(Post post)
 		{
 			var client = new MongoClient(Conexion.getSettings());

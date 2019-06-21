@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-barra-perfil',
@@ -14,5 +15,9 @@ export class BarraPerfilComponent implements OnInit {
   }
   cuenta(){
     this.router.navigate(['/cuenta']);
+  }
+
+  perfil(){
+    this.router.navigate(['/perfil', UsuarioService.usuario.codigo]);
   }
 }

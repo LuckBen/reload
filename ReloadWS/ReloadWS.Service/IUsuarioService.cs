@@ -14,22 +14,31 @@ namespace ReloadWS.Service
     {
         [OperationContract]
         [WebInvoke(Method = "*",
-                    ResponseFormat = WebMessageFormat.Json,
-                    BodyStyle = WebMessageBodyStyle.Bare)]
+            ResponseFormat = WebMessageFormat.Json,
+            RequestFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare)]
         void exit(string username);
 
-		[OperationContract]
+        [OperationContract]
+        [WebInvoke(Method = "*",
+    ResponseFormat = WebMessageFormat.Json,
+    RequestFormat = WebMessageFormat.Json,
+    BodyStyle = WebMessageBodyStyle.Bare)]
+        Response<string> cambiarClave(Request<DTO.Request.RequestCambioClave> requestCambioClave);
+
+        [OperationContract]
 		[WebInvoke(Method = "*",
 			ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.Bare)]
 		Response<DTO.UsuarioInfo> saveInfo(Request<DTO.Request.UsuarioInfoRequest> info);
 
-		[OperationContract]
-		[WebInvoke(Method = "*",
-		ResponseFormat = WebMessageFormat.Json,
-		BodyStyle = WebMessageBodyStyle.Bare)]
-		Request<DTO.UsuarioInfo> obtenerInfo();
+        [OperationContract]
+        [WebInvoke(Method = "*",
+            ResponseFormat = WebMessageFormat.Json,
+            RequestFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare)]
+        Request<DTO.UsuarioInfo> obtenerInfo();
 
         [OperationContract]
         [WebInvoke(Method = "*",

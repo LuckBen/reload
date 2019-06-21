@@ -1,0 +1,18 @@
+.perfil-card {
+    max-width: 120px;
+}
+
+.perfil-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.material-icons {
+    display: inline-flex;
+    vertical-align: top;
+}
+
+#txt1 {
+    font-size: 18px;
+    line-height: 24px;
+}

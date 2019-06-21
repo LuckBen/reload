@@ -10,5 +10,6 @@ namespace ReloadWS.DTO.Request
     {
         public UsuarioInfo usuarioInfo { get; set; }
         public string mail { get; set; }
+        public string nick { get; set; }
     }
 }

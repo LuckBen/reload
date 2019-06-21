@@ -1,0 +1,60 @@
+<mat-progress-bar *ngIf="cargando" mode="indeterminate"></mat-progress-bar>
+
+<div style="margin-top:20px" class="animated fadeIn fast">
+    <mat-grid-list cols="4" rowHeight="90px">
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Nombre</mat-label>
+                <input [(ngModel)]="usuario.info.nombre" [disabled]="cargando" matInput placeholder="Ingresa tu nombre">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Apellido</mat-label>
+                <input [(ngModel)]="usuario.info.apellido" [disabled]="cargando" matInput placeholder="Ingresa tu apellido">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Idiomas</mat-label>
+                <input [(ngModel)]="usuario.info.idiomas" [disabled]="cargando" matInput placeholder="Ingresa tus idiomas">
+                <mat-icon matSuffix>language</mat-icon>
+            </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <textarea matInput [(ngModel)]="usuario.info.datosProfes" placeholder="Datos profesionales"></textarea>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <textarea matInput [(ngModel)]="usuario.info.habitos" placeholder="habitos"></textarea>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <textarea matInput [(ngModel)]="usuario.info.propiasPalabras" placeholder="Propias palabras.."></textarea>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="1">
+
+            <div style="text-align: center; margin-top:50px;margin-bottom:5%">
+                <button [disabled]="cargando" (click)="cambiarInfo()" mat-raised-button [disabled]="cargando" color="primary">
+                  Guardar
+                </button>
+            </div>
+        </mat-grid-tile>
+
+
+    </mat-grid-list>
+</div>

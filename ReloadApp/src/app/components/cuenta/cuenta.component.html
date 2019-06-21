@@ -1,15 +1,15 @@
 <div style="text-align: center">
-    <mat-tab-group>
+    <mat-tab-group mat-stretch-tabs>
         <mat-tab label="Cuenta">
-
-
             <app-cuenta-datos></app-cuenta-datos>
-
-
         </mat-tab>
-        <mat-tab label="Perfil"> Content 2 </mat-tab>
-        <mat-tab label="Bloqueados"> Content 3 </mat-tab>
-        <mat-tab label="Cambiar Clave"> Content 3 </mat-tab>
-        <mat-tab label="Cambiar Nick"> Content 3 </mat-tab>
+        <mat-tab label="Perfil">
+            <app-cuenta-perfil></app-cuenta-perfil>
+        </mat-tab>
+        <!-- <mat-tab label="Bloqueados"> Content 3 </mat-tab> -->
+        <mat-tab label="Cambiar Clave">
+            <app-cuenta-cambiar-clave></app-cuenta-cambiar-clave>
+        </mat-tab>
+        <!--<mat-tab label="Cambiar Nick"> Content 3 </mat-tab>-->
     </mat-tab-group>
 </div>

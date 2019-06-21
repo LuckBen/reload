@@ -9,6 +9,7 @@ import { LoginRequest } from '../models/request/login.request';
 import { Request } from '../models/request/Request.request';
 import { UsuarioInfo } from '../models/UsuarioInfo.model';
 import { UsuarioInfoRequest } from '../models/request/UsuarioInfo.request';
+import { CambioClaveRequest } from '../models/request/CambioClave.request';
 
 @Injectable({
   providedIn: 'root'
@@ -47,21 +48,17 @@ export class UsuarioService {
   
   }
 
-  public saveInfo(usuario:Usuario):Promise<Response<Usuario>>{
+  public saveInfo(_usuario:Usuario):Promise<Response<Usuario>>{
     
     let url = URL_USER_SERVICE + "saveInfo";
 
     return new Promise<Response<Usuario>>((resolve,reject)=>{
       let infoReq:Request<UsuarioInfoRequest> = new Request<UsuarioInfoRequest>();
-      infoReq.usuario = usuario.codigo;
+      infoReq.usuario = _usuario.codigo;
+      infoReq.token = "asd";
       infoReq.contenido = new UsuarioInfoRequest();
-      infoReq.contenido.usuarioInfo = usuario.info;
-      infoReq.contenido.usuarioInfo.apellido = "1";
-      infoReq.contenido.usuarioInfo.datosProfes  ="asd";
-      infoReq.contenido.usuarioInfo.habitos ="asd";
-      infoReq.contenido.usuarioInfo.idiomas =" asdd";
-      
-      infoReq.contenido.mail = usuario.mail;
+      infoReq.contenido.usuarioInfo = _usuario.info;      
+      infoReq.contenido.mail = _usuario.mail;
       console.log(infoReq);
       this.http.post<Response<Usuario>>(url,infoReq).subscribe((data=>{
             
@@ -87,8 +84,7 @@ export class UsuarioService {
     return new Promise<Response<Usuario>>((resolve,reject)=>{
   
       this.http.post<Response<Usuario>>(url,logRequest).subscribe((data=>{
-        console.log(data);
-        
+
         if(data.estado.hayError){
           reject(data.estado.mensaje);
         }
@@ -99,9 +95,52 @@ export class UsuarioService {
       }),
       (err)=>{
         console.log(err);
-        reject(err);
+        reject('Ocurrió un error inesperado');
       });
     
+    });
+  }
+
+  public cambiarClave(claveActual:string, claveNueva:string):Promise<Response<string>>{
+    
+    let url = URL_USER_SERVICE + 'cambiarClave'
+    let reqCambioClave:Request<CambioClaveRequest> = new Request<CambioClaveRequest>();
+    reqCambioClave.usuario = UsuarioService.usuario.codigo;
+    reqCambioClave.contenido = new CambioClaveRequest();
+    reqCambioClave.contenido.claveActual = claveActual;
+    reqCambioClave.contenido.claveNueva = claveNueva;
+    reqCambioClave.token = "1";
+
+    return new Promise<Response<string>>((resolve,reject) =>{
+        this.http.post<Response<string>>(url,reqCambioClave).subscribe((data) =>{
+            if(data.estado.hayError){
+              reject(data.estado.mensaje);  
+            }else{
+              resolve(data);
+            }
+        }, (err)=>{
+            reject('Ocurrió un error inesperado');
+        }); 
+    });
+  }
+
+  public obtenerUsuario(codigo:string):Promise<Response<Usuario>>{
+    
+    let url = URL_AUTHENTICATION_SERVICE + 'obtenerUsuario';
+    let request:Request<string> = new Request<string>();
+    request.contenido = codigo;
+    request.token = "1";
+    request.usuario = UsuarioService.usuario.codigo;
+    return new Promise<Response<Usuario>>((resolve,reject)=>{
+      this.http.post<Response<Usuario>>(url,request).subscribe(data=>{
+        if(data.estado.hayError){
+          reject(data);
+        }else{
+          resolve(data);
+        }
+      },(err)=>{
+        reject('Ocurrió un error inesperado');
+      });
     });
   }
 

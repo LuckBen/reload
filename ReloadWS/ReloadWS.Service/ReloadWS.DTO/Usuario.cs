@@ -24,7 +24,7 @@ namespace ReloadWS.DTO
 		public Suspension suspension { get; set; }
 		public bool activo { get; set; }
 
-		public Usuario()
+        public Usuario()
 		{
 			posts = new List<Post>();
         }
@@ -36,13 +36,14 @@ namespace ReloadWS.DTO
         public string apellido { get; set; }
         public Pais pais { get; set; }
         public string sexo { get; set; }
-        public DateTime fechaNac { get; set; }
+        public string fechaNac { get; set; }
         public string idiomas { get; set; }
         public string datosProfes { get; set; }
         public string habitos { get; set; }
         public string propiasPalabras { get; set; }
+        public string fechaAlta { get; set; }
 
-		public UsuarioInfo()
+        public UsuarioInfo()
 		{
 			pais = new Pais();
 		}

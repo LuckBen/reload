@@ -46,6 +46,14 @@ namespace ReloadWS.Service
 
         [OperationContract]
         [WebInvoke(Method = "*",
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare)]
+        DTO.Response.Response<DTO.Usuario> obtenerUsuario(Request<string> obtenerUsuario);
+
+
+        [OperationContract]
+        [WebInvoke(Method = "*",
                     BodyStyle = WebMessageBodyStyle.Bare,
                     RequestFormat = WebMessageFormat.Json,
                     ResponseFormat = WebMessageFormat.Json,

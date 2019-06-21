@@ -1,0 +1,32 @@
+<mat-progress-bar *ngIf="cargando" mode="indeterminate"></mat-progress-bar>
+
+<div style="margin-top:20px" class="animated fadeIn fast">
+    <mat-grid-list cols="4" rowHeight="75px">
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Clave actual</mat-label>
+                <input type="password" [(ngModel)]="passwordOriginal" [disabled]="cargando" matInput placeholder="Ingresa tu clave actual">
+                <!-- <mat-icon matSuffix>vpn</mat-icon> -->
+            </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile colspan="4" rowspan="1">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Nueva clave</mat-label>
+                <input type="password" [(ngModel)]="passwordNuevo" [disabled]="cargando" matInput placeholder="Ingresa tu nueva clave">
+                <!-- <mat-icon matSuffix>vpn</mat-icon> -->
+            </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile colspan="4" rowspan="1">
+
+            <div style="text-align: center; margin-top:50px;margin-bottom:5%">
+                <button [disabled]="cargando" (click)="cambiarClave()" mat-raised-button [disabled]="cargando" color="primary">Cambiar Datos</button>
+            </div>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+</div>

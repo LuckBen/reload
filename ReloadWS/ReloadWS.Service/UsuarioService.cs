@@ -17,6 +17,15 @@ namespace ReloadWS.Service
 	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 	public class UsuarioService : IUsuarioService
 	{
+
+         Response<string> IUsuarioService.cambiarClave(Request<RequestCambioClave> requestCambioClave)
+        {
+            Response<string> respuesta = new Response<string>();
+            BI.UsersModule.cambiarClave(requestCambioClave);
+            respuesta.estado = BI.UsersModule.estado;
+            return respuesta;
+        }
+
 		public Response<UsuarioInfo> saveInfo(Request<UsuarioInfoRequest> info)
 		{
 			Response<UsuarioInfo> respuesta = new Response<UsuarioInfo>();
@@ -37,7 +46,7 @@ namespace ReloadWS.Service
 			UsuarioInfo userinfo = new UsuarioInfo();
 			userinfo.apellido = "benedict";
 			userinfo.datosProfes = "Programador";
-			userinfo.fechaNac = DateTime.Now;
+            userinfo.fechaNac = DateTime.Now.ToShortDateString();
 			userinfo.habitos = "gym";
 			userinfo.idiomas = "ingles";
 			userinfo.nombre = "Luciano";
