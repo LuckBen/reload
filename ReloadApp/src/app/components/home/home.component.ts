@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Post } from '../../models/Post.model';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  posts:Post[] = [];
 
-  ngOnInit() {
+
+  constructor(private router:Router,
+              private postService:PostService ) {
   }
 
+
+  ngOnInit() {
+    // this.posts = this.postService.getRecientes();
+  }
+  crearPost(){
+    this.router.navigate(['/crear/post'])
+
+  }
+
+  
 }

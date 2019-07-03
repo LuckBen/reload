@@ -50,6 +50,17 @@ import { ImgPaisPipe } from './pipes/img-pais.pipe';
 import { InfoComponent } from './components/perfil/info/info.component';
 
 /// editor
+import { EditorComponent } from './components/editor/editor.component';
+import { PerfilMiComponent } from './components/perfil/perfil-mi/perfil-mi.component';
+import { PerfilPostsComponent } from './components/perfil/perfil-posts/perfil-posts.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { PostComponent } from './components/post/post.component';
+import { CategoriaPipe } from './pipes/categoria.pipe';
+import { CrearPostComponent } from './components/post/crear-post/crear-post.component';
+import { CargaArchivosComponent } from './components/carga-archivos/carga-archivos.component';
+import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
+import { PostContenidoComponent } from './components/post/post-contenido/post-contenido.component';
+import { InputComponent } from './components/otros/input/input.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +80,18 @@ import { InfoComponent } from './components/perfil/info/info.component';
     UsuarioInfoComponent,
     CabeceraPerfilComponent,
     ImgPaisPipe,
-    InfoComponent
+    InfoComponent,
+    EditorComponent,
+    PerfilMiComponent,
+    PerfilPostsComponent,
+    PostsComponent,
+    PostComponent,
+    CategoriaPipe,
+    CrearPostComponent,
+    CargaArchivosComponent,
+    NgDropFilesDirective,
+    PostContenidoComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,

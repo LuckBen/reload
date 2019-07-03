@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaptchaService.cs" />
+    <Compile Include="Common.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="PaisesDB.cs" />
     <Compile Include="PostDB.cs" />

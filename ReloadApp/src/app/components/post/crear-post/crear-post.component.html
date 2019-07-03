@@ -1,0 +1,113 @@
+<div class="container" style="margin-bottom:30px">
+    <div class="row" style="margin-top:30px">
+        <div class=" col-8">
+            <h4>Título del post</h4>
+            <mat-form-field appearance="legacy" style="width: 100%">
+                <input [(ngModel)]="titulo" matInput placeholder="Ingrese el título del post">
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <h4>Categoría</h4>
+            <mat-form-field style="width: 100%">
+                <select matNativeControl [(ngModel)]="categoriaID" required>
+                    <option  *ngFor="let c of categorias" [value]="c._id">{{c.nombre}}</option>
+                </select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:30px">
+        <div class="col-8">
+            <textarea id="editor" [(ngModel)]="contenido" style="min-height: 450px; max-height: 250px"></textarea>
+            <div style="text-align: right; margin-top:15px">
+                <button (click)="previsualizarPost()" mat-raised-button style="background-color:#16dc16; color:white">Previsualizar</button>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row justify-content-md-center">
+                <!-- <app-carga-archivos (getInfo64)="cargarImagen($event)"></app-carga-archivos> -->
+
+                <div class="row">
+                    <img *ngIf="imgPost" style="max-width:300px;max-height:300px" [src]="imgPost">
+                </div>
+                <mat-form-field style="width: 90%">
+                    <input [(ngModel)]="imgPost" matInput placeholder="URL de la imagen">
+                </mat-form-field>
+
+                <!-- <button (click)="getImagen()" mat-raised-button color="primary">Cargar Imagen</button> -->
+            </div>
+            <div class="row" style="margin-top:15px">
+                <h4>Etiquetas</h4>
+                <mat-form-field style="width: 100%">
+                    <input [(ngModel)]="etiquetas" matInput placeholder="naturaleza, diversión, comedia, reload!">
+                </mat-form-field>
+            </div>
+            <div class="row" style="margin-top:15px">
+                <h4>¿Quiénes pueden comentar?</h4>
+                <mat-form-field style="width: 100%">
+                    <select matNativeControl required [(ngModel)]="seComenta">
+                        <option value="true">Todos pueden comentar</option>
+                        <option value="false">Nadie puede comentar</option>
+                    </select>
+                </mat-form-field>
+            </div>
+            <div class="row" style="margin-top:30px">
+                <div class="offset-3 col-6">
+                    <button mat-raised-button>Guardar en borradores</button>
+                </div>
+                <div class="col-3">
+                    <button (click)="publicar()" mat-raised-button color="primary">Publicar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- <div class="row">
+    <div class="offset-6 col-7">
+
+        <button mat-raised-button style="background-color:#16dc16;">Previsualizar</button>
+
+    </div>
+</div> -->
+<!-- 
+<div class="row" style="margin-top:10px">
+    <div class="offset-1 col-10 offset-1">
+        <textarea id="editor"></textarea>
+    </div>
+</div>
+
+<div class="row" style="margin-top:30px">
+    <div class="offset-1 col-3">
+        <h4>Categoría</h4>
+        <mat-form-field style="width: 100%">
+            <select matNativeControl required>
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+        </mat-form-field>
+    </div>
+    <div class="col-4">
+        <h4>Etiquetas</h4>
+        <mat-form-field style="width: 100%">
+            <input matInput placeholder="naturaleza, diversión, comedia, reload!">
+        </mat-form-field>
+    </div>
+    <div class="col-3 ">
+        <h4>¿Quiénes pueden comentar?</h4>
+        <mat-form-field style="width: 100%">
+            <select matNativeControl required>
+                    <option value="1">Todos pueden comentar</option>
+                    <option value="0">Nadie puede comentar</option>
+                </select>
+        </mat-form-field>
+    </div>
+
+</div>
+
+<app-carga-archivos></app-carga-archivos> -->

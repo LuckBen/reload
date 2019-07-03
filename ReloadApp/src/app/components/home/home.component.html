@@ -1,3 +1,36 @@
-<p>
-  home works!
-</p>
+<div class="row">
+    <div class="col-md-6">
+        <mat-tab-group mat-stretch-tabs selectedIndex="0">
+            <mat-tab label="Destacados">
+                <div class="row">
+                    <app-post></app-post>
+                </div>
+                <div class="row">
+                    <app-post></app-post>
+                </div>
+                <div class="row">
+                    <app-post></app-post>
+                </div>
+                <div class="row">
+                    <app-post></app-post>
+                </div>
+            </mat-tab>
+            <mat-tab label="En ascenso">
+
+            </mat-tab>
+            <mat-tab label="Más recientes">
+
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="offset-4 col-4 offset-4">
+                <button mat-raised-button (click)="crearPost()" style="background-color:#162adc; Color:white; margin-right:10px">Crear Post</button>
+            </div>
+        </div>
+        <div class="row">
+            asdkjasdskjaj
+        </div>
+    </div>
+</div>

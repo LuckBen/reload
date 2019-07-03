@@ -32,25 +32,29 @@ namespace ReloadWS.DAL
 				);
 		}
 
-		public static List<Post> obtenerPostPorPuntos(int cuantos)
+		public static List<PostDestacado> obtenerPostPorPuntos(int cuantos)
 		{
 			var client = new MongoClient(Conexion.getSettings());
 			var colPost = client.GetDatabase(Conexion.db).GetCollection<Post>("posts");
-			return colPost.AsQueryable<Post>().Where(x => x.activo).OrderByDescending(x => x.puntos).Take(cuantos).ToList();
+            return (from p in colPost.AsQueryable<Post>().Where(x => x.activo).OrderByDescending(x => x.puntos).Take(cuantos).ToList()
+                    select new PostDestacado { destaque = PostDestacado.TIPO_DESTAQUE.PUNTOS, post = p }).ToList();
+                    
 		}
 
-		public static List<Post> obtenerPostPorComentarios(int cuantos)
+		public static List<PostDestacado> obtenerPostPorComentarios(int cuantos)
 		{
 			var client = new MongoClient(Conexion.getSettings());
 			var colPost = client.GetDatabase(Conexion.db).GetCollection<Post>("posts");
-			return colPost.AsQueryable<Post>().Where(x => x.activo).OrderByDescending(x => x.comentarios.Count).Take(cuantos).ToList();
+            return (from p in colPost.AsQueryable<Post>().Where(x => x.activo).OrderByDescending(x => x.comentarios.Count).Take(cuantos).ToList()
+                    select new PostDestacado { post = p, destaque = PostDestacado.TIPO_DESTAQUE.COMENTARIO }).ToList();
 		}
 
-		public static List<Post> obtenerPostRecientes(int cuantos)
+		public static List<PostDestacado> obtenerPostRecientes(int cuantos)
 		{
 			var client = new MongoClient(Conexion.getSettings());
 			var colPost = client.GetDatabase(Conexion.db).GetCollection<Post>("posts");
-			return colPost.AsQueryable<Post>().Where(x => x.activo).OrderByDescending(x => x.fechaAlta).Take(cuantos).ToList();
+            return (from p in colPost.AsQueryable<Post>().Where(x => x.activo).OrderByDescending(x => x.fechaAlta).Take(cuantos).ToList()
+                    select new PostDestacado { destaque = PostDestacado.TIPO_DESTAQUE.RECIENTE, post = p }).ToList();
 		}
 
 		public static Post editPost(Post post)

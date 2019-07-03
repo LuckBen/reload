@@ -6,12 +6,6 @@ Public Module PostModule
 
     Public estado As Estado
 
-    Public Enum POST_DESTACADO
-        PUNTOS
-        RECIENTE
-        COMENTARIOS
-    End Enum
-
     Public postsDestacados As List(Of DTO.PostDestacado)
 
     Sub New()
@@ -32,7 +26,9 @@ Public Module PostModule
 
             SyncLock postsDestacados
 
-
+                postsDestacados.AddRange(DAL.PostDB.obtenerPostRecientes(postsMemoriaRecientes))
+                postsDestacados.AddRange(DAL.PostDB.obtenerPostPorPuntos(postsMemoriaPuntos))
+                '   postsDestacados.AddRange(DAL.PostDB.obtenerPostPorComentarios(postsMemoriaComentarios))
 
             End SyncLock
 
@@ -87,16 +83,10 @@ Public Module PostModule
 
             verifyPost(post)
 
-            post._id = Helper.generarID()
-            post.favoritos = 0
-            post.puntos = 0
-            post.visitas = 0
-            post.activo = True
-            post.fechaAlta = DateTime.Now
-            post.fechaModificacion = DateTime.Now
-            post.comentarios = New List(Of Comentario)()
+            assingDefaultValues(post)
 
             DAL.PostDB.addPost(post)
+
             DAL.UsuariosDB.addPost(post)
 
         Catch ex As InvalidDataException
@@ -106,6 +96,17 @@ Public Module PostModule
             estado.capturarError(ex, True)
         End Try
 
+    End Sub
+
+    Private Sub assingDefaultValues(post As Post)
+        post._id = Helper.generarID()
+        post.favoritos = 0
+        post.puntos = 0
+        post.visitas = 0
+        post.activo = True
+        post.fechaAlta = DateTime.Now
+        post.fechaModificacion = DateTime.Now
+        post.comentarios = New List(Of Comentario)()
     End Sub
 
     Public Sub deletePost(post As Post)
@@ -148,4 +149,17 @@ Public Module PostModule
 
     End Function
 
+    Public Function getRecientes() As Post()
+        estado.iniciar()
+        Try
+
+            Return (From p In postsDestacados Where p.destaque = PostDestacado.TIPO_DESTAQUE.RECIENTE
+                    Select p.post).ToArray()
+
+        Catch ex As Exception
+            estado.capturarError(ex, True)
+        End Try
+        Return Nothing
+
+    End Function
 End Module

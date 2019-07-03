@@ -1,0 +1,47 @@
+<div class="row justify-content-md-center" style="margin-bottom:30px">
+    <div class="offset-1 col-10 offset-1">
+        <img [src]="imageSrc" style="max-width:300px;max-height:300px" class="well drop-zone">
+
+
+        <!-- <div appNgDropFiles [archivos]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{ 'file-over': estaSobreElemento }" class="well drop-zone">
+            <img src="./assets/img/drop-images.png">
+        </div> -->
+
+
+    </div>
+    <!-- <div class=" col-7 ">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo of archivos">
+                    <td [ngClass]="{ 'text-green': archivo.progreso >= 100 }">
+                        {{ archivo.nombreArchivo }}
+                    </td>
+                    <td>
+                        {{ archivo.archivo.size / 1024 | number: '.2-2' }} MB
+                    </td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': archivo.progreso + '%' }"></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button [disabled]="archivos.length === 0" mat-raised-button color="primary">Subir Archivo</button>
+
+    </div> -->
+
+</div>
+<div class="row justify-content-md-center">
+    <div class="offset-1 col-10 offset-1">
+        <input id="input-file-id" hidden name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />
+        <label for="input-file-id" class="btn btn-outline-primary">Subir imagen</label>
+    </div>
+</div>

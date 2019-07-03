@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Pais } from '../models/Pais.model';
 import { HttpClient } from '@angular/common/http';
 import { Response } from '../models/response/response.response';
-import { URL_USER_SERVICE } from './urlservicios.url';
+import { URL_USER_SERVICE, URL_HELPER_SERVICE } from './urlservicios.url';
+import { Categoria } from '../models/Categoria.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,22 @@ export class HelperService {
       });
     });
   }
+
+  public getCategorias():Promise<Response<Categoria[]>>{
+    let url = URL_HELPER_SERVICE + 'categorias';
+    return new Promise<Response<Categoria[]>>((resolve,reject)=>{
+      this.http.get<Response<Categoria[]>>(url).subscribe((data)=>{
+        if(data.estado.hayError){
+          reject(data);
+        }else{
+          resolve(data);
+        }
+      },(err)=>{
+        reject('Ocurrió un error inesperado');
+      });
+    });
+  }
+
 
 
 }

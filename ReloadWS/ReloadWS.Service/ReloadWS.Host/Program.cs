@@ -11,15 +11,15 @@ namespace ReloadWS.Host
 
 		public static void Main(string[] args)
 		{
-			System.ServiceModel.ServiceHost hostUserService = new System.ServiceModel.ServiceHost(typeof(ReloadWS.Service.UsuarioService));
+			System.ServiceModel.ServiceHost hostReload = new System.ServiceModel.ServiceHost(typeof(ReloadWS.Service.ReloadService));
             System.ServiceModel.ServiceHost hostAuthenticationService = new System.ServiceModel.ServiceHost(typeof(ReloadWS.Service.AuthenticationService));
-			System.ServiceModel.ServiceHost hostPostService = new System.ServiceModel.ServiceHost(typeof(ReloadWS.Service.PostService));
+			//System.ServiceModel.ServiceHost hostPostService = new System.ServiceModel.ServiceHost(typeof(ReloadWS.Service.PostService));
 
             try {
 
-				hostUserService.Open();
+                hostReload.Open();
 				hostAuthenticationService.Open();
-				hostPostService.Open();
+				
                 Console.Read();
 
             } catch(Exception ex)
@@ -28,9 +28,8 @@ namespace ReloadWS.Host
             }
             finally
             {
-				hostUserService.Close();
-				hostAuthenticationService.Close();
-				hostPostService.Close();
+                hostReload.Close();
+                hostAuthenticationService.Close();
             }
 
         }

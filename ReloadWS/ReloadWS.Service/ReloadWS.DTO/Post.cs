@@ -22,7 +22,12 @@ namespace ReloadWS.DTO
         public int favoritos { get; set; }
         public DateTime fechaAlta { get; set; }
         public DateTime fechaModificacion { get; set; }
+
         public List<Comentario> comentarios;
+
+        public bool seComenta { get; set; }
+
+        public string etiquetas { get; set; }
 		public bool activo { get; set; }
 		
 		public Post()

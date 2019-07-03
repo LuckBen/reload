@@ -63,6 +63,9 @@ namespace ReloadWS.DAL
 			var db = client.GetDatabase(Conexion.db);
 			IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
 
+            post.contenido = string.Empty;
+            post.comentarios = new List<Comentario>();
+
 			var result = colUsuarios.FindOneAndUpdate(
 				Builders<Usuario>.Filter.Eq("_id", post.propietario._id),
 				Builders<Usuario>.Update.Push("posts", post)

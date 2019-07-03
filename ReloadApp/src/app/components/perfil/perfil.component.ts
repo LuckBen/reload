@@ -20,13 +20,15 @@ export class PerfilComponent implements OnInit {
   ngOnInit() {
     this.cargando = true;
       this.codigo = this.route.snapshot.params.codigo;
-      this.usService.obtenerUsuario(this.codigo).then(data=>{
-      this.usuario = data.contenido;
-    }).catch(data =>{
-        console.log(data);
-    }).finally(()=>{
-      this.cargando = false;
-    });
+      if(this.codigo){
+        this.usService.obtenerUsuario(this.codigo).then(data=>{
+        this.usuario = data.contenido;
+      }).catch(data =>{
+          console.log(data);
+      }).finally(()=>{
+        this.cargando = false;
+      });
+    }
   }
 
 }

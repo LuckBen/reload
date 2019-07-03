@@ -5,6 +5,7 @@ Imports System.IO
 Imports System.ServiceModel.Channels
 Imports System.ServiceModel
 Imports System.ServiceModel.Web
+Imports ReloadWS.DTO
 
 Public Module Helper
 
@@ -87,6 +88,15 @@ Public Module Helper
 
     Public Function getToken() As String
         Return WebOperationContext.Current.IncomingRequest.Headers("Token")
+    End Function
+
+    Public Function getCategorias() As Categoria()
+        Try
+            Return DAL.Common.getCategorias()
+
+        Catch ex As Exception
+            Return Nothing
+        End Try
     End Function
 
 End Module

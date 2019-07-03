@@ -5,6 +5,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { LoginComponent } from './components/login/login.component';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { CrearPostComponent } from './components/post/crear-post/crear-post.component';
 
 const APP_ROUTES: Routes = [
     { path:'posts', component:HomeComponent },
@@ -12,6 +13,7 @@ const APP_ROUTES: Routes = [
     { path:'login' , component:LoginComponent},
     { path:'cuenta', component:CuentaComponent},
     { path:'perfil/:codigo', component: PerfilComponent},
+    { path:'crear/post',component:CrearPostComponent},
     { path: '**', pathMatch: 'full', redirectTo: 'posts' }
   ];
   

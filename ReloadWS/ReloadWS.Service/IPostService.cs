@@ -15,31 +15,40 @@ namespace ReloadWS.Service
 	{
 
 		[OperationContract]
-		[WebInvoke(Method = "POST",
+		[WebInvoke(Method = "*",
 					ResponseFormat = WebMessageFormat.Json,
-					BodyStyle = WebMessageBodyStyle.Bare)]
+					BodyStyle = WebMessageBodyStyle.Bare,
+                    UriTemplate ="publicar")]
 		Response<DTO.Post> addPost(Request<DTO.Post> post);
 
+        [OperationContract]
+        [WebInvoke(Method = "*",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "recientes")]
+        Response<DTO.Post[]> getRecientes();
+
+
 		[OperationContract]
-		[WebInvoke(Method = "POST",
+		[WebInvoke(Method = "*",
 			ResponseFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.Bare)]
 		Request<DTO.Post> getPost();
 
 		[OperationContract]
-		[WebInvoke(Method = "PUT",
+		[WebInvoke(Method = "*",
 					ResponseFormat = WebMessageFormat.Json,
 					BodyStyle = WebMessageBodyStyle.Bare)]
 		Response<DTO.Post> editPost(Request<DTO.Post> post);
 
 		[OperationContract]
-		[WebInvoke(	Method = "DELETE",
+		[WebInvoke(	Method = "*",
 					ResponseFormat = WebMessageFormat.Json,
 					BodyStyle = WebMessageBodyStyle.Bare)]
 		void deletePost(Request<DTO.Post> post);
 
 		[OperationContract]
-		[WebInvoke(Method = "POST",
+		[WebInvoke(Method = "*",
 			ResponseFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.Bare)]
 		Response<string> comment(Request<DTO.Comentario> commentary);

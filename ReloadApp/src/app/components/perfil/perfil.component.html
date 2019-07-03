@@ -1,7 +1,6 @@
 <div style="text-align: center; ">
 
     <app-cabecera-perfil class="animated fadeIn fast" [usuario]="usuario"></app-cabecera-perfil>
-
     <mat-tab-group mat-stretch-tabs selectedIndex="3">
         <mat-tab label="Actividad">
 
@@ -11,10 +10,15 @@
         </mat-tab>
 
         <mat-tab label="Mi">
+            <div>
+                <app-perfil-mi></app-perfil-mi>
 
+            </div>
         </mat-tab>
 
         <mat-tab label="Posts">
+
+            <app-posts></app-posts>
 
         </mat-tab>
         <mat-tab label="Temas">

@@ -19,4 +19,6 @@ export class Post{
     public fechaModificacion?:Date;
     public activo:Boolean;
     public comentarios?:Comentario[];
+    public etiquetas:string;
+    public seComenta:boolean;
 }

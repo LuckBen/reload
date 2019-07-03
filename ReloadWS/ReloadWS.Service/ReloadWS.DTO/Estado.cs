@@ -16,6 +16,7 @@ namespace ReloadWS.DTO
         {
             this.mensaje = null;
             this.hayError = false;
+            this.internalError = false;
         }
         public Estado()
         {
