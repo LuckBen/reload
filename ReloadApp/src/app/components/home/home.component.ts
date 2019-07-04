@@ -10,21 +10,45 @@ import { PostService } from '../../services/post.service';
 })
 export class HomeComponent implements OnInit {
 
-  posts:Post[] = [];
-
-
+  postsRecientes:Post[] = [];
+  postsDestacados:Post[] = [];
+  cargandoRecientes:boolean;
+  cargandoDestacados:boolean;
+  cargandoAs:boolean;
   constructor(private router:Router,
               private postService:PostService ) {
+                this.cargandoRecientes = false;
   }
 
 
   ngOnInit() {
-    // this.posts = this.postService.getRecientes();
+      this.cargarRecientes();
+      this.cargarDestacados();
   }
   crearPost(){
     this.router.navigate(['/crear/post'])
 
   }
-
   
+  irPost(p:Post){
+    this.router.navigate(['/post', p._id]);
+  }
+  cargarDestacados(){
+    this.cargandoDestacados = true;
+    this.postService.getDestacados().then(data=>{
+      this.postsDestacados = data;
+    }).finally(()=>{
+      this.cargandoDestacados = false;
+    });
+  }
+  cargarRecientes(){
+    
+    this.cargandoRecientes = true;
+    this.postService.getRecientes().then((data)=>{
+      this.postsRecientes = data;   
+     }).finally(()=>{
+      this.cargandoRecientes = false;
+     });
+  }
+
 }

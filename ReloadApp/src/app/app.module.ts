@@ -48,6 +48,7 @@ import { CabeceraPerfilComponent } from './components/perfil/cabecera-perfil/cab
 import { MatChipsModule} from '@angular/material/chips';
 import { ImgPaisPipe } from './pipes/img-pais.pipe';
 import { InfoComponent } from './components/perfil/info/info.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 /// editor
 import { EditorComponent } from './components/editor/editor.component';
@@ -118,7 +119,8 @@ import { InputComponent } from './components/otros/input/input.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    MatChipsModule
+    MatChipsModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     UsuarioService,

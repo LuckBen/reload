@@ -28,12 +28,26 @@ namespace ReloadWS.Service
             UriTemplate = "recientes")]
         Response<DTO.Post[]> getRecientes();
 
+        [OperationContract]
+        [WebInvoke(Method = "*",
+        ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare,
+        UriTemplate = "destacados/puntos")]
+        Response<DTO.Post[]> getDestacadosPuntos();
 
-		[OperationContract]
+        [OperationContract]
+        [WebInvoke(Method = "*",
+        ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare,
+        UriTemplate = "destacados/comentarios")]
+        Response<DTO.Post[]> getDestacadosComentarios();
+
+        [OperationContract]
 		[WebInvoke(Method = "*",
 			ResponseFormat = WebMessageFormat.Json,
-			BodyStyle = WebMessageBodyStyle.Bare)]
-		Request<DTO.Post> getPost();
+			BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate ="post/{idpost}")]
+		Response<DTO.Post> getPost(string idpost);
 
 		[OperationContract]
 		[WebInvoke(Method = "*",

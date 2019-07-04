@@ -1,28 +1,25 @@
-<div class="info-container">
-    <mat-card class="card-container">
-        <table>
-            <tr>
-                <td>
-                    <img src="./assets/img/mantenimiento.gif" style="width: 70px; height: 50px" mat-card-sm-image>
-                </td>
-                <td>
-                    <mat-card-title>Título del post</mat-card-title>
-                    <mat-card-subtitle>asdsads6s5d46sa5d46sa54d6as4d6blablabla</mat-card-subtitle>
-                    <mat-card-content>
-                        <div style="margin:auto; justify-content: center; align-items: center">
-                            <div style="right:10px; top:0px ">
-                                <h4 id="txt1" class="mat-typography">
-                                    <img src="./assets/img/icons/cat/flash.png"> Animaciones
-                                    <img src="./assets/img/icons/clock-select.png">Hace más de 1 año
-                                    <img src="./assets/img/icons/comments.png"> 12299
-                                    <img src="./assets/img/icons/user.png"> Medwar</h4>
-                            </div>
-                        </div>
-                    </mat-card-content>
-                </td>
-            </tr>
-
-        </table>
-
-    </mat-card>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <img [src]="post.imagen" style="width: 90px; height: 68px" mat-card-sm-image>
+            <!-- <mat-card-subtitle>  </mat-card-subtitle> -->
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <h3> {{post.titulo}} </h3>
+            </div>
+            <div class="row">
+                <div>
+                    <div style="right:10px; top:0px ">
+                        <h4 id="txt1" class="mat-typography">
+                            <img src="./assets/img/icons/cat/flash.png"> {{post.categoria.nombre}}
+                            <img style="margin-left: 10px" src="./assets/img/icons/clock-select.png">{{post.fechaAlta | date}}
+                            <img style="margin-left: 10px" src="./assets/img/icons/comments.png"> {{post.comentarios.length}}
+                            <img style="margin-left: 10px" src="./assets/img/icons/user.png"> {{post.propietario.codigo}}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

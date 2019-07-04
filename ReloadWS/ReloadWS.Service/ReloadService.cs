@@ -15,7 +15,7 @@ namespace ReloadWS.Service
 {
     
 	[AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Multiple)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class ReloadService : IPostService, IUsuarioService, IHelperService
     {
         #region USUARIO
@@ -110,49 +110,12 @@ namespace ReloadWS.Service
             return respuesta;
         }
 
-        public Request<Post> getPost()
+        public Response<Post> getPost(string idpost)
         {
-            Request<Post> req = new Request<Post>();
-            Post post = new Post();
-            post.contenido = "dldd";
-            post.categoria = new Categoria
-            {
-                descripcion = "descrp",
-                logo = "logo",
-                nombre = "nombre"
-            };
-            post.favoritos = 2;
-            post.fechaAlta = DateTime.Now;
-            post.fechaModificacion = DateTime.Now;
-            post.imagen = "eso.png";
-            post.titulo = "titulo";
-            post.contenido = "contenido";
-            post.tags.Add("tag1");
-            post.tags.Add("tag2");
-
-            post.propietario = new Sujeto
-            {
-                alias = "Lucho",
-                imagen = "lucho.png",
-                codigo = "lucho",
-                pais = new Pais
-                {
-                    codigo = "AR",
-                    nombre = "Argentina"
-                },
-                rango = new Rango
-                {
-                    nombre = "Administrador",
-                    imagen = "admin.png",
-                    descripcion = "Administrador del sitio"
-                }
-            };
-
-            req.contenido = post;
-            req.token = "asdads";
-            req.usuario = "Lucho";
-
-            return req;
+            Response<Post> respuesta = new Response<Post>();
+            respuesta.contenido = BI.PostModule.getPost(idpost);
+            respuesta.estado = BI.PostModule.estado;
+            return respuesta;
         }
 
         public Response<Categoria[]> getCategorias()
@@ -171,5 +134,24 @@ namespace ReloadWS.Service
             respuesta.estado = BI.PostModule.estado;
             return respuesta;
         }
+
+        public Response<Post[]> getDestacadosPuntos()
+        {
+            Response<Post[]> respuesta = new Response<Post[]>();
+            respuesta.contenido = BI.PostModule.getPostDestacados(PostDestacado.TIPO_DESTAQUE.PUNTOS);
+            respuesta.estado = BI.PostModule.estado;
+
+            return respuesta;
+        }
+
+        public Response<Post[]> getDestacadosComentarios()
+        {
+            Response<Post[]> respuesta = new Response<Post[]>();
+            respuesta.contenido = BI.PostModule.getPostDestacados(PostDestacado.TIPO_DESTAQUE.COMENTARIO);
+            respuesta.estado = BI.PostModule.estado;
+
+            return respuesta;
+        }
+
     }
 }

@@ -91,6 +91,7 @@ export class CrearPostComponent implements OnInit {
     })[0];
     post.categoria._id = this.categoriaID;
     post.tags = this.etiquetas.split(",");
+    
     this._postService.publicar(post).then(data=>{
       console.log(data);
     }).catch((err)=>{

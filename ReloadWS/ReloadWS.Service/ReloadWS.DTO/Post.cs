@@ -20,10 +20,12 @@ namespace ReloadWS.DTO
         public int visitas { get; set; }
         public int seguidores { get; set; }
         public int favoritos { get; set; }
-        public DateTime fechaAlta { get; set; }
-        public DateTime fechaModificacion { get; set; }
+        public string fechaAlta { get; set; }
+        public string fechaModificacion { get; set; }
 
         public List<Comentario> comentarios;
+
+        public int contComentarios;
 
         public bool seComenta { get; set; }
 

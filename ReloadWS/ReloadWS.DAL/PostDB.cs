@@ -45,7 +45,7 @@ namespace ReloadWS.DAL
 		{
 			var client = new MongoClient(Conexion.getSettings());
 			var colPost = client.GetDatabase(Conexion.db).GetCollection<Post>("posts");
-            return (from p in colPost.AsQueryable<Post>().Where(x => x.activo).OrderByDescending(x => x.comentarios.Count).Take(cuantos).ToList()
+            return (from p in colPost.AsQueryable<Post>().Where(x => x.activo).OrderByDescending(x => x.contComentarios).Take(cuantos).ToList()
                     select new PostDestacado { post = p, destaque = PostDestacado.TIPO_DESTAQUE.COMENTARIO }).ToList();
 		}
 
@@ -86,5 +86,12 @@ namespace ReloadWS.DAL
 			);
 
 		}
-	}
+
+        public static DTO.Post getPost(string idPost)
+        {
+            var client = new MongoClient(Conexion.getSettings());
+            var colPost = client.GetDatabase(Conexion.db).GetCollection<Post>("posts");
+            return colPost.AsQueryable<Post>().Single(x => x._id == idPost);
+        }
+    }
 }

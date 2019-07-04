@@ -15,10 +15,11 @@ export class Post{
     public visitas?:number;
     public favoritos?:number;
     public seguidores?:number;
-    public fechaAlta?:Date;
-    public fechaModificacion?:Date;
+    public fechaAlta?:string;
+    public fechaModificacion?:string;
     public activo:Boolean;
     public comentarios?:Comentario[];
     public etiquetas:string;
     public seComenta:boolean;
+    public contComentarios:number;
 }

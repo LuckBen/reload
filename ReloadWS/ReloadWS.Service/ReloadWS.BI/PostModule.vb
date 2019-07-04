@@ -28,7 +28,7 @@ Public Module PostModule
 
                 postsDestacados.AddRange(DAL.PostDB.obtenerPostRecientes(postsMemoriaRecientes))
                 postsDestacados.AddRange(DAL.PostDB.obtenerPostPorPuntos(postsMemoriaPuntos))
-                '   postsDestacados.AddRange(DAL.PostDB.obtenerPostPorComentarios(postsMemoriaComentarios))
+                postsDestacados.AddRange(DAL.PostDB.obtenerPostPorComentarios(postsMemoriaComentarios))
 
             End SyncLock
 
@@ -106,6 +106,11 @@ Public Module PostModule
         post.activo = True
         post.fechaAlta = DateTime.Now
         post.fechaModificacion = DateTime.Now
+
+        If (post.contenido.Contains("<img")) Then
+            post.contenido = post.contenido.Replace("<img src", "<img style='width: 100%' src")
+        End If
+
         post.comentarios = New List(Of Comentario)()
     End Sub
 
@@ -149,6 +154,16 @@ Public Module PostModule
 
     End Function
 
+    Public Function getPost(idPost As String) As Post
+        estado.iniciar()
+        Try
+            Return DAL.PostDB.getPost(idPost)
+        Catch ex As Exception
+            estado.capturarError(ex, True)
+        End Try
+        Return Nothing
+    End Function
+
     Public Function getRecientes() As Post()
         estado.iniciar()
         Try
@@ -160,6 +175,13 @@ Public Module PostModule
             estado.capturarError(ex, True)
         End Try
         Return Nothing
+
+    End Function
+
+    Public Function getPostDestacados(ByVal tipoDestaque As PostDestacado.TIPO_DESTAQUE) As Post()
+
+        Return (From p In postsDestacados.Where(Function(x) x.destaque = tipoDestaque)
+                Select p.post).ToArray()
 
     End Function
 End Module
