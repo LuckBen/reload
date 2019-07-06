@@ -14,6 +14,13 @@ namespace ReloadWS.Service
 	public interface IPostService
 	{
 
+        [OperationContract]
+        [WebInvoke(Method = "*",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "comentar")]
+        void comentar(Request<DTO.Comentario> comentario);
+
 		[OperationContract]
 		[WebInvoke(Method = "*",
 					ResponseFormat = WebMessageFormat.Json,

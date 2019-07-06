@@ -8,6 +8,7 @@ import { Post } from '../models/Post.model';
 import { URL_POST_SERVICE } from './urlservicios.url';
 import { UsuarioService } from './usuario.service';
 import { post } from 'selenium-webdriver/http';
+import { Comentario } from '../models/Comentario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -80,6 +81,17 @@ export class PostService {
     });
  
 
+  }
+
+
+  comentar(comentario:Comentario){
+    let url = URL_POST_SERVICE + 'comentar';
+    let req:Request<Comentario> = new Request<Comentario>();
+    req.contenido = comentario;
+    req.usuario = UsuarioService.usuario.codigo;
+    this._http.post(url,req).subscribe(data=>{
+      console.log(data);
+    });
   }
 
 }

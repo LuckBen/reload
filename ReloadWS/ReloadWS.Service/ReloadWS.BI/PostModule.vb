@@ -7,10 +7,18 @@ Public Module PostModule
     Public estado As Estado
 
     Public postsDestacados As List(Of DTO.PostDestacado)
-
+    Private tmrPost As Timers.Timer
     Sub New()
-        estado = New Estado()
+        init()
         cargarPostDestacados()
+    End Sub
+
+    Sub init()
+        estado = New Estado()
+        Dim min As Integer = System.Configuration.ConfigurationSettings.AppSettings("minutos_recarga_posts_destacados_cache")
+        tmrPost = New Timers.Timer(TimeSpan.FromMinutes(min).TotalMilliseconds)
+        AddHandler tmrPost.Elapsed, AddressOf cargarPostDestacados
+        tmrPost.Start()
     End Sub
 
     Private Sub cargarPostDestacados()
@@ -19,7 +27,6 @@ Public Module PostModule
         Try
 
             postsDestacados = New List(Of PostDestacado)()
-
             Dim postsMemoriaPuntos = Integer.Parse(System.Configuration.ConfigurationSettings.AppSettings("cuantos_posts_destacados_por_puntos_en_memoria"))
             Dim postsMemoriaComentarios = Integer.Parse(System.Configuration.ConfigurationSettings.AppSettings("cuantos_posts_destacados_por_comentarios_en_memoria"))
             Dim postsMemoriaRecientes = Integer.Parse(System.Configuration.ConfigurationSettings.AppSettings("cuantos_posts_destacados_por_recientes_en_memoria"))
@@ -29,7 +36,6 @@ Public Module PostModule
                 postsDestacados.AddRange(DAL.PostDB.obtenerPostRecientes(postsMemoriaRecientes))
                 postsDestacados.AddRange(DAL.PostDB.obtenerPostPorPuntos(postsMemoriaPuntos))
                 postsDestacados.AddRange(DAL.PostDB.obtenerPostPorComentarios(postsMemoriaComentarios))
-
             End SyncLock
 
         Catch ex As Exception
@@ -89,6 +95,8 @@ Public Module PostModule
 
             DAL.UsuariosDB.addPost(post)
 
+            agregarPostReciente(post)
+
         Catch ex As InvalidDataException
             estado.capturarError(ex, False)
 
@@ -96,6 +104,14 @@ Public Module PostModule
             estado.capturarError(ex, True)
         End Try
 
+    End Sub
+
+    Private Sub agregarPostReciente(post As Post)
+        SyncLock postsDestacados
+            postsDestacados.Add(New PostDestacado With {
+                                .destaque = PostDestacado.TIPO_DESTAQUE.RECIENTE,
+                                .post = post})
+        End SyncLock
     End Sub
 
     Private Sub assingDefaultValues(post As Post)
@@ -169,7 +185,7 @@ Public Module PostModule
         Try
 
             Return (From p In postsDestacados Where p.destaque = PostDestacado.TIPO_DESTAQUE.RECIENTE
-                    Select p.post).ToArray()
+                    Select p.post).OrderByDescending(Function(x) x.fechaAlta).ToArray()
 
         Catch ex As Exception
             estado.capturarError(ex, True)

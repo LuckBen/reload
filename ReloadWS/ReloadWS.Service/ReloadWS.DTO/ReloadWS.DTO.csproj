@@ -48,6 +48,7 @@
     <Compile Include="cEmail.cs" />
     <Compile Include="Comentario.cs" />
     <Compile Include="Estado.cs" />
+    <Compile Include="CacheComponent.cs" />
     <Compile Include="InvalidDataException.cs" />
     <Compile Include="Logo.cs" />
     <Compile Include="Medalla.cs" />

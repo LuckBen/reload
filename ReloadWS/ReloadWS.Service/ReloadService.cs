@@ -153,5 +153,10 @@ namespace ReloadWS.Service
             return respuesta;
         }
 
+        public void comentar(Request<Comentario> comentario)
+        {
+            BI.PostModule.comment(comentario?.contenido);
+
+        }
     }
 }

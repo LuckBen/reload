@@ -12,7 +12,7 @@
             </mat-tab>
             <mat-tab label="Más recientes">
                 <div *ngFor="let p of postsRecientes" class="row animated fadeIn fast" style=" padding:10px; width: 100%">
-                    <app-post (click)="irPost(p)" style="width: 100%" [post]="p"></app-post>
+                    <app-post style="width: 100%" [post]="p"></app-post>
                 </div>
             </mat-tab>
         </mat-tab-group>

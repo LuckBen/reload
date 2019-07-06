@@ -66,6 +66,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheModule.vb" />
     <Compile Include="CaptchaModule.vb" />
     <Compile Include="Helper.vb" />
     <Compile Include="PaisesModule.vb" />

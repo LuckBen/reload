@@ -12,13 +12,12 @@
         <mat-tab label="Mi">
             <div>
                 <app-perfil-mi></app-perfil-mi>
-
             </div>
         </mat-tab>
 
         <mat-tab label="Posts">
 
-            <app-posts></app-posts>
+            <app-post style="margin-top:5px" *ngFor="let post of usuario.posts" [post]="post"></app-post>
 
         </mat-tab>
         <mat-tab label="Temas">

@@ -62,6 +62,7 @@ import { CargaArchivosComponent } from './components/carga-archivos/carga-archiv
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 import { PostContenidoComponent } from './components/post/post-contenido/post-contenido.component';
 import { InputComponent } from './components/otros/input/input.component';
+import { ComentarioComponent } from './components/comentario/comentario.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { InputComponent } from './components/otros/input/input.component';
     CargaArchivosComponent,
     NgDropFilesDirective,
     PostContenidoComponent,
-    InputComponent
+    InputComponent,
+    ComentarioComponent
   ],
   imports: [
     BrowserModule,

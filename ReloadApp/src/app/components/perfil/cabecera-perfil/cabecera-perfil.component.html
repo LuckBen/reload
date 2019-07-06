@@ -1,4 +1,68 @@
-<div id="fondo">
+<div id="fondo" class="row">
+    <div class="col-2">
+        <img src="../../../../assets/img/alf.jpg" witdh="120px" height="120px" alt="Photo of a Shiba Inu">
+    </div>
+    <div class="col-3">
+        <div class="row">
+            <h1 class="body-1">{{usuario.codigo}}</h1>
+        </div>
+        <div class="row">
+            <mat-chip class="mat-h5">
+                Administrador
+                <!-- {{ usuario.rango }} -->
+            </mat-chip>
+        </div>
+        <div class="row">
+            <h4 id="txt1" class="mat-typography">
+                <span><mat-icon class="material-icons">person</mat-icon>Es {{usuario.info.sexo}}</span>
+                <span style="margin-left:5px"><mat-icon class="material-icons">calendar_today</mat-icon>Tiene .. años</span>
+                <span style="margin-left:5px"><mat-icon class="material-icons">location_on</mat-icon>Vive en {{usuario.info.pais.nombre}}</span>
+                <!-- <span style="margin-left:5px"><mat-icon class="material-icons">av_timer</mat-icon>Se unió a Reload el {{usuario.info.fechaAlta}}</span> -->
+            </h4>
+        </div>
+        <!-- <div class="row">
+            <div style="position:absolute;margin-top:2px; left:20px;">
+                <h5 id="txt1" class="mat-typography">
+                    <mat-icon class="material-icons">av_timer</mat-icon>Se unió a Reload el {{usuario.info.fechaAlta}}
+                </h5>
+            </div>
+        </div> -->
+    </div>
+    <div class="col-7">
+        <div class="col-1 offset-11">
+            <mat-card class="card-container">
+                <div style="margin:auto; justify-content: center; align-items: center">
+                    <img [src]=" usuario.info.pais | imgPais">
+                </div>
+            </mat-card>
+        </div>
+        <div class="col-12" style="position:absolute; bottom: 10px">
+            <mat-chip-list>
+                <mat-chip class="mat-h5" style="color:blue">
+                    {{usuario.puntos}} Puntos
+                </mat-chip>
+                <mat-chip class="mat-h5" style="color:blue">
+                    {{usuario.posts.length}} Posts
+                </mat-chip>
+                <mat-chip class="mat-h5" style="color:blue">
+                    ... Comentarios
+                </mat-chip>
+                <mat-chip class="mat-h5" style="color:blue">
+                    ... Temas
+                </mat-chip>
+                <mat-chip class="mat-h5" style="color:blue">
+                    {{usuario.seguidores}} Seguidores
+                </mat-chip>
+                <mat-chip class="mat-h5" style="color:blue">
+                    Siguiendo {{usuario.siguiendo}}
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+
+</div>
+
+<!-- <div id="fondo">
     <mat-grid-list cols="12" rowHeight="20px">
         <mat-grid-tile colspan="1" rowspan="7">
             <div style="position:absolute; left:10px">
@@ -23,33 +87,9 @@
             <mat-chip-list>
                 <mat-chip class="mat-h5" style="color:blue; position: absolute;margin-top:0px; left: 15px">
                     {{ usuario.rango }}
-                    <!-- Rango -->
                 </mat-chip>
             </mat-chip-list>
         </mat-grid-tile>
-
-        <!-- <mat-grid-tile colspan="8" rowspan="2">
-            <mat-chip-list>
-                <mat-chip class="mat-h5" style="color:blue">
-                    3399200 Puntos
-                </mat-chip>
-                <mat-chip class="mat-h5" style="color:blue">
-                    3399200 Posts
-                </mat-chip>
-                <mat-chip class="mat-h5" style="color:blue">
-                    3399200 Comentarios
-                </mat-chip>
-                <mat-chip class="mat-h5" style="color:blue">
-                    200 Temas
-                </mat-chip>
-                <mat-chip class="mat-h5" style="color:blue">
-                    26500 Seguidores
-                </mat-chip>
-                <mat-chip class="mat-h5" style="color:blue">
-                    Siguiendo 10000
-                </mat-chip>
-            </mat-chip-list>
-        </mat-grid-tile> -->
 
         <mat-grid-tile colspan="11" rowspan="1">
 
@@ -91,30 +131,7 @@
                 </mat-chip>
             </mat-chip-list>
         </mat-grid-tile>
-        <!-- <mat-grid-tile colspan="11" rowspan="1">
-
-            <div style="position:absolute; left:10px;">
-                <h4 id="txt1" class="mat-typography">
-                    <mat-icon class="material-icons">av_timer</mat-icon>Se unió a Reload el 24/08/1995</h4>
-            </div>
-
-        </mat-grid-tile> -->
-
-        <!-- <mat-grid-tile colspan="4" rowspan="1">
-    </mat-grid-tile>
-
-    <mat-grid-tile colspan="4" rowspan="1">
-    </mat-grid-tile>
-
-    <mat-grid-tile colspan="4" rowspan="1">
-    </mat-grid-tile>
-
-
-    <mat-grid-tile colspan="4" rowspan="1">
-
-    </mat-grid-tile> -->
-
 
     </mat-grid-list>
 
-</div>
+</div> -->
