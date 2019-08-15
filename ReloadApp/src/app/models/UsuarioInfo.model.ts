@@ -11,6 +11,7 @@ export class UsuarioInfo{
     public habitos:string;
     public propiasPalabras:string;
     public fechaAlta:string;
+    public imagen?:string;
     constructor(){
  
     }

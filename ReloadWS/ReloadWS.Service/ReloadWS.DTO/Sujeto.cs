@@ -14,6 +14,7 @@ namespace ReloadWS.DTO
         public string imagen { get; set; }
         public Rango rango { get; set; }
         public Pais pais { get; set; }
+        public int nroComentarios { get; set; }
 		
 		public Sujeto()
 		{

@@ -11,7 +11,11 @@ export class PostComponent implements OnInit {
 
   @Input()post:Post;
 
-  constructor(private router:Router) { }   
+  constructor(private router:Router) { 
+    
+
+
+  }   
 
   categoria:string;  
   

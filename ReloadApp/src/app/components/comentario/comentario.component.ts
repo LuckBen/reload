@@ -32,7 +32,9 @@ export class ComentarioComponent implements OnInit {
   comentar(){
     let comentario:Comentario = new Comentario();
     comentario.postid = this.post._id;
-    comentario.contenido = document.getElementById("editor").innerHTML;
+    
+    comentario.contenido = document.getElementsByClassName("wysibb-text-editor wysibb-body")[0].innerHTML;
+    console.log(comentario.contenido);
     comentario.emisor = new Sujeto();
     comentario.emisor._id = UsuarioService.usuario._id;
     comentario.emisor.codigo = UsuarioService.usuario.codigo;

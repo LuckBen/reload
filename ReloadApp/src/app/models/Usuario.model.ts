@@ -22,6 +22,7 @@ export class Usuario{
     public siguiendo?:Sujeto[];
     public mensajes?:Comentario[];
     public suspension?:Suspension;
+    public nroComentarios?:number;
 
     constructor(){
         this._id = "";

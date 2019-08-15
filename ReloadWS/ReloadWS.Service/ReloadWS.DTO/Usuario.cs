@@ -22,7 +22,8 @@ namespace ReloadWS.DTO
         public Sujeto[] siguiendo { get; set; }
         public Comentario[] mensajes { get; set; }
 		public Suspension suspension { get; set; }
-		public bool activo { get; set; }
+        public int nroComentarios { get; set; }
+        public bool activo { get; set; }
 
         public Usuario()
 		{
@@ -42,6 +43,7 @@ namespace ReloadWS.DTO
         public string habitos { get; set; }
         public string propiasPalabras { get; set; }
         public string fechaAlta { get; set; }
+        public string imagen { get; set; }
 
         public UsuarioInfo()
 		{

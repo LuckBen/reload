@@ -63,6 +63,7 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 import { PostContenidoComponent } from './components/post/post-contenido/post-contenido.component';
 import { InputComponent } from './components/otros/input/input.component';
 import { ComentarioComponent } from './components/comentario/comentario.component';
+import { ComentarioVisComponent } from './components/comentario-vis/comentario-vis.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { ComentarioComponent } from './components/comentario/comentario.componen
     NgDropFilesDirective,
     PostContenidoComponent,
     InputComponent,
-    ComentarioComponent
+    ComentarioComponent,
+    ComentarioVisComponent
   ],
   imports: [
     BrowserModule,

@@ -128,8 +128,8 @@ namespace ReloadWS.DAL
 			IMongoCollection<Usuario> colUsuarios = db.GetCollection<Usuario>("usuarios");
 			
 			var result = colUsuarios.FindOneAndUpdate(
-				Builders<Usuario>.Filter.Eq("codigo", username),
-				Builders<Usuario>.Update.Set("info",info)
+				Builders<Usuario>.Filter.Eq("codigo", username),                
+                Builders<Usuario>.Update.Set("info",info)
 			);
 		}
 

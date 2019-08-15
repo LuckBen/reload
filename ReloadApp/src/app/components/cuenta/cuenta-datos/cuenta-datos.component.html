@@ -3,6 +3,14 @@
 <div style="margin-top:20px" class="animated fadeIn fast">
     <mat-grid-list cols="4" rowHeight="75px">
 
+        <mat-grid-tile colspan="4" rowspan="2">
+            <mat-form-field appearance="legacy" style="width: 50%">
+                <mat-label>Imagen</mat-label>
+                <img witdh="120px" height="120px" [src]="usuario.info.imagen">
+                <input [(ngModel)]="usuario.info.imagen" [disabled]="cargando" matInput placeholder="Ingresa tu imagen">
+            </mat-form-field>
+        </mat-grid-tile>
+
         <mat-grid-tile colspan="4" rowspan="1">
             <mat-form-field appearance="legacy" style="width: 50%">
                 <mat-label>Nick</mat-label>

@@ -49,6 +49,7 @@
     <Compile Include="IAuthenticationService.cs" />
     <Compile Include="IHelperService.cs" />
     <Compile Include="IPostService.cs" />
+    <Compile Include="IRangoService.cs" />
     <Compile Include="IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AuthenticationService.cs" />
