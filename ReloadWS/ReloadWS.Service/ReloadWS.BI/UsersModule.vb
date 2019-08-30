@@ -1,4 +1,4 @@
-﻿Imports ReloadWS
+﻿Imports ReloadWS.DAL.Api
 Imports ReloadWS.DTO
 Imports ReloadWS.DTO.Request
 
@@ -23,7 +23,7 @@ Public Module UsersModule
                 Throw New InvalidDataException("No se especificaron datos")
             End If
 
-            usuario = DAL.UsuariosDB.obtenerUsuario(loginRequest.login)
+            usuario = UsuariosDB.obtenerUsuario(loginRequest.login)
 
             If IsNothing(usuario) Then
                 Throw New DTO.InvalidDataException("El usuario no es correcto")
@@ -48,7 +48,7 @@ Public Module UsersModule
             respuesta.contenido = usuario
 
             usuariosConectados.agregar(New DTO.Sujeto With {
-                                          ._id = usuario._id,
+                                          .id = usuario.id,
                                           .codigo = usuario.codigo.ToUpper()
                                           }, token)
 
@@ -70,7 +70,7 @@ Public Module UsersModule
                 Return
             End If
 
-            Dim usuario = DAL.UsuariosDB.obtenerUsuario(requestCambioClave.usuario)
+            Dim usuario = UsuariosDB.obtenerUsuario(requestCambioClave.usuario)
 
             If (IsNothing(usuario)) Then
                 Throw New InvalidDataException("Usuario inexistente")
@@ -84,7 +84,7 @@ Public Module UsersModule
                 Throw New InvalidDataException("La clave no es correcta")
             End If
 
-            DAL.UsuariosDB.grabarClave(usuario.codigo, requestCambioClave.contenido.claveNueva)
+            UsuariosDB.grabarClave(usuario.codigo, requestCambioClave.contenido.claveNueva)
 
             estado.mensaje = "Clave actualizada con éxito!"
 
@@ -103,7 +103,7 @@ Public Module UsersModule
                 Throw New InvalidDataException("No se especifico usuario")
             End If
 
-            Return DAL.UsuariosDB.obtenerUsuario(obtenerUsuarioRequest.contenido)
+            Return UsuariosDB.obtenerUsuario(obtenerUsuarioRequest.contenido)
 
         Catch ex As InvalidDataException
             estado.capturarError(ex, False)
@@ -115,7 +115,7 @@ Public Module UsersModule
     Public Sub grabarMail(usuarioCodigo As String, mail As String)
         estado.iniciar()
         Try
-            Dim usuario = DAL.UsuariosDB.obtenerUsuarioPorMail(mail)
+            Dim usuario = UsuariosDB.obtenerUsuarioPorMail(mail)
 
             Try
                 Dim mailAddress = New System.Net.Mail.MailAddress(mail)
@@ -127,7 +127,7 @@ Public Module UsersModule
                 Throw New InvalidDataException("El mail está en uso")
             End If
 
-            DAL.UsuariosDB.grabarMail(usuarioCodigo, mail)
+            UsuariosDB.grabarMail(usuarioCodigo, mail)
         Catch ex As InvalidDataException
             estado.capturarError(ex, False)
         Catch ex As Exception
@@ -144,7 +144,7 @@ Public Module UsersModule
                 Throw New InvalidDataException("Datos invalidos")
             End If
 
-            DAL.UsuariosDB.grabarInfo(username, info)
+            UsuariosDB.grabarInfo(username, info)
 
         Catch ex As InvalidDataException
             estado.capturarError(ex, False)
@@ -173,11 +173,11 @@ Public Module UsersModule
                 Throw New DTO.InvalidDataException("No se especifico password")
             End If
 
-            If Not (IsNothing(DAL.UsuariosDB.obtenerUsuario(registroRequest.usuario))) Then
+            If Not (IsNothing(UsuariosDB.obtenerUsuario(registroRequest.usuario))) Then
                 Throw New DTO.InvalidDataException("El usuario ya existe.")
             End If
 
-            If Not (IsNothing(DAL.UsuariosDB.obtenerUsuarioPorMail(registroRequest.mail))) Then
+            If Not (IsNothing(UsuariosDB.obtenerUsuarioPorMail(registroRequest.mail))) Then
                 Throw New DTO.InvalidDataException("El mail ya existe.")
             End If
 
@@ -188,18 +188,21 @@ Public Module UsersModule
                 Throw New InvalidDataException("El mail no es válido")
             End Try
 
+            Dim rango = BI.RangosModule.getRangos().Where(Function(x) x.puntosRequeridos = 0).FirstOrDefault()
+
             Dim usuario = New DTO.Usuario With {
-                                       ._id = Helper.generarID(),
+                                       .id = Helper.generarID(),
                                        .codigo = registroRequest.usuario,
                                        .password = registroRequest.password,
                                        .mail = registroRequest.mail,
                                        .activo = False,
                                        .info = New UsuarioInfo With {
                                        .fechaAlta = DateTime.Now.ToShortDateString()
-                                        }
+                                        },
+                                        .rango = rango
                                    }
 
-            DAL.UsuariosDB.grabar(usuario)
+            UsuariosDB.grabar(usuario)
 
             estado.mensaje = "Registrado satisfactoriamente, verifique su mail!"
 
@@ -227,7 +230,7 @@ Public Module UsersModule
                 Throw New DTO.InvalidDataException("Mail no especificado")
             End If
 
-            DAL.UsuariosDB.actualizarActivoPorMail(mail)
+            UsuariosDB.actualizarActivoPorMail(mail)
 
         Catch ex As DTO.InvalidDataException
             estado.capturarError(ex, False)

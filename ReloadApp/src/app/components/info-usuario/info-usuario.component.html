@@ -1,0 +1,24 @@
+<div class="row">
+
+    <div class="col-md-12">
+        <h3> <strong> {{usuario.codigo}} </strong></h3>
+    </div>
+
+</div>
+
+<div class="row" style="margin-top:15px">
+    <div class="col-md-12">
+        <img [src]="usuario.imagen" [alt]="usuario.codigo" witdh="120px" height="120px">
+    </div>
+</div>
+
+<div class="row" style="margin-top:15px;">
+    <div class="col-md-12">
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" selected>
+                <!-- <img [src]="usuario.rango.imagen | imgRango" }}> -->
+                <h5> {{ usuario.rango.nombre }} </h5>
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+</div>

@@ -41,7 +41,7 @@ export class CuentaCambiarClaveComponent implements OnInit {
       return;
     }
 
-    this.ucService.cambiarClave(this.passwordOriginal,this.passwordNuevo).then(data=>{
+   this.ucService.cambiarClave(this.passwordOriginal,this.passwordNuevo).then(data=>{
       this.show('Datos actualizados correctamente!','Aceptar');
     })
     .catch((err)=>{

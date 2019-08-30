@@ -84,13 +84,21 @@ export class PostService {
   }
 
 
-  comentar(comentario:Comentario){
-    let url = URL_POST_SERVICE + 'comentar';
-    let req:Request<Comentario> = new Request<Comentario>();
-    req.contenido = comentario;
-    req.usuario = UsuarioService.usuario.codigo;
-    this._http.post(url,req).subscribe(data=>{
-      console.log(data);
+  comentar(comentario:Comentario):Promise<Comentario>{
+    return new Promise<Comentario>((resolve,reject)=>{
+      let url = URL_POST_SERVICE + 'comentar';
+      let req:Request<Comentario> = new Request<Comentario>();
+      req.contenido = comentario;
+      req.usuario = UsuarioService.usuario.codigo;
+      this._http.post<Response<Comentario>>(url,req).subscribe(data=>{
+        if(data.estado.hayError){
+          reject(data.estado.mensaje);
+        }else{
+          resolve(data.contenido);
+        }
+      },(err)=>{
+        reject('Ocurrió un error inesperado');
+      });
     });
   }
 

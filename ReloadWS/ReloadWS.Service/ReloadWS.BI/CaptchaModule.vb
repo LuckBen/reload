@@ -1,4 +1,4 @@
-﻿Imports ReloadWS.DAL
+﻿Imports ReloadWS.DAL.Api
 
 Public Module CaptchaModule
 

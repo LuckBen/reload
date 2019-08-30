@@ -15,7 +15,8 @@ const APP_ROUTES: Routes = [
     { path:'cuenta', component:CuentaComponent},
     { path:'perfil/:codigo', component: PerfilComponent},
     { path:'crear/post',component:CrearPostComponent},
-    {path:'post/:idpost',component:PostContenidoComponent},
+    { path:'post/:idpost',component:PostContenidoComponent},
+    { path:'editarPost/:idpost',component:CrearPostComponent},
     { path: '**', pathMatch: 'full', redirectTo: 'posts' }
   ];
   

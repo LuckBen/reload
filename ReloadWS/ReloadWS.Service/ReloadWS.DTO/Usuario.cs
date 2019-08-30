@@ -8,7 +8,7 @@ namespace ReloadWS.DTO
 {
     public class Usuario
     {
-		public string _id { get; set; }
+		public int id { get; set; }
         public string codigo { get; set; }
         public string password { get; set; }
         public int puntos { get; set; }

@@ -20,7 +20,7 @@
     <div class="col-md-6">
         <div class="row">
             <div class="offset-4 col-4 offset-4">
-                <button mat-raised-button (click)="crearPost()" style="background-color:#162adc; Color:white; margin-right:10px">Crear Post</button>
+                <button mat-raised-button *ngIf="logeado" (click)="crearPost()" style="background-color:#162adc; Color:white; margin-right:10px">Crear Post</button>
             </div>
         </div>
         <div class="row">

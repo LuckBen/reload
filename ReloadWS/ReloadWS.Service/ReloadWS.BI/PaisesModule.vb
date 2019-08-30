@@ -1,4 +1,4 @@
-﻿Imports ReloadWS.DAL
+﻿Imports ReloadWS.DAL.Api
 Imports ReloadWS.DTO
 Public Module PaisesModule
 
@@ -8,11 +8,11 @@ Public Module PaisesModule
         estado = New Estado()
     End Sub
 
-    Public Sub insertarPaises(ByVal paises As DTO.Pais())
+    Public Sub insertarPaises()
 
         estado.iniciar()
         Try
-            DAL.PaisesDB.insertarPaises(paises)
+            PaisesDB.insertarPaises()
         Catch ex As Exception
             estado.capturarError(ex, True)
         End Try
@@ -22,7 +22,7 @@ Public Module PaisesModule
     Public Function getPaises() As Pais()
         estado.iniciar()
         Try
-            Return DAL.PaisesDB.getPaises()
+            Return PaisesDB.getPaises()
         Catch ex As Exception
             estado.capturarError(ex, True)
         End Try

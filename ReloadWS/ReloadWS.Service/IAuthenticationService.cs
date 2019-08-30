@@ -66,7 +66,7 @@ namespace ReloadWS.Service
                     RequestFormat = WebMessageFormat.Json,
                     ResponseFormat = WebMessageFormat.Json,
                     UriTemplate = "insertarPaises")]
-        void insertarPaises(DTO.Pais[] paises);
+        void insertarPaises();
 
     
 

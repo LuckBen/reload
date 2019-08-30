@@ -71,6 +71,7 @@
     <Compile Include="Helper.vb" />
     <Compile Include="PaisesModule.vb" />
     <Compile Include="PostModule.vb" />
+    <Compile Include="RangosModule.vb" />
     <Compile Include="TokenModule.vb" />
     <Compile Include="UsersModule.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

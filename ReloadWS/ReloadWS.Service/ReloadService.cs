@@ -16,11 +16,17 @@ namespace ReloadWS.Service
     
 	[AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
-    public class ReloadService : IPostService, IUsuarioService, IHelperService
+    public class ReloadService : IPostService, IUsuarioService, IHelperService, IRangoService
     {
         #region USUARIO
         Response<string> IUsuarioService.cambiarClave(Request<RequestCambioClave> requestCambioClave)
         {
+            if(requestCambioClave == null)
+            {
+                return null;
+            }
+            
+
             Response<string> respuesta = new Response<string>();
             BI.UsersModule.cambiarClave(requestCambioClave);
             respuesta.estado = BI.UsersModule.estado;
@@ -29,6 +35,12 @@ namespace ReloadWS.Service
 
         public Response<UsuarioInfo> saveInfo(Request<UsuarioInfoRequest> info)
         {
+            if(info == null)
+            {
+                return null;
+            }
+            
+
             Response<UsuarioInfo> respuesta = new Response<UsuarioInfo>();
             if (info == null)
             {
@@ -44,6 +56,9 @@ namespace ReloadWS.Service
 
         public Request<UsuarioInfo> obtenerInfo()
         {
+            
+            
+
             UsuarioInfo userinfo = new UsuarioInfo();
             userinfo.apellido = "benedict";
             userinfo.datosProfes = "Programador";
@@ -68,6 +83,8 @@ namespace ReloadWS.Service
         }
         public Response<DTO.Pais[]> getPaises()
         {
+            
+
             Response<DTO.Pais[]> respuesta = new Response<DTO.Pais[]>();
             respuesta.contenido = BI.PaisesModule.getPaises();
             respuesta.estado = BI.PaisesModule.estado;
@@ -75,14 +92,26 @@ namespace ReloadWS.Service
         }
         void IUsuarioService.exit(string username)
         {
+            if(username == null)
+            {
+                return;
+            }
+            
+
             BI.UsersModule.usuariosConectados.quitarToken(username, BI.TokenModule.obtenerTokenCliente());
         }
         #endregion
 
         public Response<Post> addPost(Request<Post> requestPost)
         {
+            if(requestPost == null)
+            {
+                return null;
+            }
+            
+
             Response<Post> respuesta = new Response<Post>();
-            BI.PostModule.addPost(requestPost?.contenido);
+            respuesta.contenido = BI.PostModule.addPost(requestPost?.contenido);
             respuesta.estado = BI.PostModule.estado;
 
             return respuesta;
@@ -90,6 +119,12 @@ namespace ReloadWS.Service
 
         public Response<string> comment(Request<Comentario> commentary)
         {
+            if(commentary == null)
+            {
+                return null;
+            }
+            
+
             Response<string> respuesta = new Response<string>();
             BI.PostModule.comment(commentary.contenido);
             respuesta.estado = BI.PostModule.estado;
@@ -98,11 +133,23 @@ namespace ReloadWS.Service
 
         public void deletePost(Request<DTO.Post> post)
         {
+            if(post == null)
+            {
+                return ;
+            }
+            
+
             BI.PostModule.deletePost(post.contenido);
         }
 
         public Response<Post> editPost(Request<Post> post)
         {
+            if(post == null)
+            {
+                return null;
+            }
+            
+
             Response<Post> respuesta = new Response<Post>();
             respuesta.contenido = BI.PostModule.editPost(post.contenido);
             respuesta.estado = BI.PostModule.estado;
@@ -112,6 +159,12 @@ namespace ReloadWS.Service
 
         public Response<Post> getPost(string idpost)
         {
+            if(idpost == null)
+            {
+                return null;
+            }
+            
+
             Response<Post> respuesta = new Response<Post>();
             respuesta.contenido = BI.PostModule.getPost(idpost);
             respuesta.estado = BI.PostModule.estado;
@@ -120,6 +173,8 @@ namespace ReloadWS.Service
 
         public Response<Categoria[]> getCategorias()
         {
+            
+
             DTO.Response.Response<DTO.Categoria[]> respuesta = new Response<Categoria[]>();
             respuesta.contenido =  BI.Helper.getCategorias();
             respuesta.estado = new Estado();
@@ -129,6 +184,8 @@ namespace ReloadWS.Service
 
         public Response<Post[]> getRecientes()
         {
+            
+
             Response<Post[]> respuesta = new Response<Post[]>();
             respuesta.contenido = BI.PostModule.getRecientes();
             respuesta.estado = BI.PostModule.estado;
@@ -137,6 +194,8 @@ namespace ReloadWS.Service
 
         public Response<Post[]> getDestacadosPuntos()
         {
+            
+
             Response<Post[]> respuesta = new Response<Post[]>();
             respuesta.contenido = BI.PostModule.getPostDestacados(PostDestacado.TIPO_DESTAQUE.PUNTOS);
             respuesta.estado = BI.PostModule.estado;
@@ -146,6 +205,8 @@ namespace ReloadWS.Service
 
         public Response<Post[]> getDestacadosComentarios()
         {
+            
+
             Response<Post[]> respuesta = new Response<Post[]>();
             respuesta.contenido = BI.PostModule.getPostDestacados(PostDestacado.TIPO_DESTAQUE.COMENTARIO);
             respuesta.estado = BI.PostModule.estado;
@@ -153,10 +214,27 @@ namespace ReloadWS.Service
             return respuesta;
         }
 
-        public void comentar(Request<Comentario> comentario)
+        public Response<Comentario> comentar(Request<Comentario> comentario)
         {
-            BI.PostModule.comment(comentario?.contenido);
+            if(comentario == null)
+            {
+                return null;
+            }
+            
 
+            Response<Comentario> respuesta = new Response<Comentario>();
+            BI.PostModule.comment(comentario?.contenido);
+            respuesta.contenido = comentario?.contenido;
+            respuesta.estado = BI.PostModule.estado;
+            return respuesta;
+        }
+
+        public Rango[] getRangos()
+        {
+            
+
+
+            return BI.RangosModule.getRangos();
         }
     }
 }

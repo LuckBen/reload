@@ -23,14 +23,33 @@ export class UsuarioService {
   //   .set('Authorization','eyJ1c2VyIjoiTHVjaG8iLCJwYXNzd29yZCI6IjEyMyJ9')
   // };
 
-  constructor(private http:HttpClient,
-              public usuario:Usuario) {
-
+  constructor(private http:HttpClient) {
                 UsuarioService.logeado = false;
-
                }
+  
+  public  cargar(){
+    UsuarioService.usuario = JSON.parse(localStorage.getItem('usuario'));
 
-  public saludo(){
+    if(UsuarioService.usuario){
+      let login:LoginRequest = new LoginRequest();
+      login.login = UsuarioService.usuario.codigo;
+      login.password = UsuarioService.usuario.password;
+        
+      this.logearse(login).then((data)=>{
+          console.log(data);
+      }).catch((data)=>{
+        console.log(data);
+
+      }).finally(()=>{
+          console.log('listo');  
+      });
+    }
+  }               
+  public  guardar(){
+    localStorage.setItem('usuario',JSON.stringify(UsuarioService.usuario));
+  }
+
+  public  saludo(){
     let url = URL_AUTHENTICATION_SERVICE + "hola";
     const httpOptions = {
       headers: new HttpHeaders({
@@ -48,7 +67,7 @@ export class UsuarioService {
   
   }
 
-  public saveInfo(_usuario:Usuario):Promise<Response<Usuario>>{
+  public   saveInfo(_usuario:Usuario):Promise<Response<Usuario>>{
     
     let url = URL_USER_SERVICE + "saveInfo";
 
@@ -77,7 +96,7 @@ export class UsuarioService {
     
   }
   
-  public logearse(logRequest:LoginRequest):Promise<Response<Usuario>> {//:Promise<Response<Usuario>>{
+  public  logearse(logRequest:LoginRequest):Promise<Response<Usuario>> {//:Promise<Response<Usuario>>{
 
     let url = URL_AUTHENTICATION_SERVICE + "login";
 
@@ -91,7 +110,7 @@ export class UsuarioService {
         UsuarioService.logeado = true;
         UsuarioService.usuario = data.contenido;
         resolve(data);
-
+        this.guardar();
       }),
       (err)=>{
         console.log(err);
@@ -101,7 +120,7 @@ export class UsuarioService {
     });
   }
 
-  public cambiarClave(claveActual:string, claveNueva:string):Promise<Response<string>>{
+  public  cambiarClave(claveActual:string, claveNueva:string):Promise<Response<string>>{
     
     let url = URL_USER_SERVICE + 'cambiarClave'
     let reqCambioClave:Request<CambioClaveRequest> = new Request<CambioClaveRequest>();
@@ -124,7 +143,7 @@ export class UsuarioService {
     });
   }
 
-  public obtenerUsuario(codigo:string):Promise<Response<Usuario>>{
+  public  obtenerUsuario(codigo:string):Promise<Response<Usuario>>{
     
     let url = URL_AUTHENTICATION_SERVICE + 'obtenerUsuario';
     let request:Request<string> = new Request<string>();
@@ -144,7 +163,7 @@ export class UsuarioService {
     });
   }
 
-  public registrarse(regReq:RegistroRequest):Promise<Response<Usuario>> {//:Promise<Response<Usuario>>{
+  public  registrarse(regReq:RegistroRequest):Promise<Response<Usuario>> {//:Promise<Response<Usuario>>{
 
     let url = URL_AUTHENTICATION_SERVICE + "register";
 
@@ -167,6 +186,7 @@ export class UsuarioService {
     });
   }
 }
+
 
 
 @Injectable()

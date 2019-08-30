@@ -19,7 +19,7 @@ namespace ReloadWS.Service
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "comentar")]
-        void comentar(Request<DTO.Comentario> comentario);
+        Response<DTO.Comentario> comentar(Request<DTO.Comentario> comentario);
 
 		[OperationContract]
 		[WebInvoke(Method = "*",

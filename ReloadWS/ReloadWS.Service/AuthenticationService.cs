@@ -19,6 +19,11 @@ namespace ReloadWS.Service
 	{
         DTO.Response.Response<DTO.Usuario> IAuthenticationService.register(RegistroRequest registroRequest)
         {
+            if(registroRequest == null)
+            {
+                return null;
+            }
+
 
             DTO.Response.Response<DTO.Usuario> respuesta = new DTO.Response.Response<DTO.Usuario>();
 
@@ -38,7 +43,10 @@ namespace ReloadWS.Service
 
 		DTO.Response.Response<DTO.Usuario> IAuthenticationService.login(LoginRequest loginRquest)
         {
-			DTO.Response.Response<DTO.Usuario> respuesta = new DTO.Response.Response<DTO.Usuario>();
+
+            
+
+            DTO.Response.Response<DTO.Usuario> respuesta = new DTO.Response.Response<DTO.Usuario>();
 
             respuesta = BI.UsersModule.Logeo(loginRquest);
             respuesta.estado = BI.UsersModule.estado;
@@ -48,6 +56,13 @@ namespace ReloadWS.Service
         }
         string IAuthenticationService.verificarMail(string mail)
         {
+            if(mail == null)
+            {
+                return null;
+            }
+
+            
+
             BI.UsersModule.verificarMail(mail);
 
             return "mail verificado con exito";
@@ -55,6 +70,8 @@ namespace ReloadWS.Service
 
         public Pais[] obtenerInfoRequest()
         {
+            
+
             List<Pais> listapais = new List<Pais>();
             listapais.Add(new Pais
             {
@@ -72,20 +89,32 @@ namespace ReloadWS.Service
 
 		public DTO.Response.Response<Captcha> getCaptcha()
 		{
-			DTO.Response.Response<DTO.Captcha> respuesta = new DTO.Response.Response<DTO.Captcha>();
+            
+
+            DTO.Response.Response<DTO.Captcha> respuesta = new DTO.Response.Response<DTO.Captcha>();
 			respuesta.contenido = BI.CaptchaModule.getRandom();
 			respuesta.estado = BI.CaptchaModule.estado;
 
 			return respuesta;
 		}
 
-        public void insertarPaises(DTO.Pais[] paises)
+        public void insertarPaises()
         {
-            BI.PaisesModule.insertarPaises(paises);
+      
+
+            
+
+            BI.PaisesModule.insertarPaises();
         }
 
         DTO.Response.Response<DTO.Usuario> IAuthenticationService.obtenerUsuario(Request<string> obtenerUsuarioRequest)
         {
+            if (obtenerUsuarioRequest == null)
+            {
+                return null;
+            }
+            
+
             Response<Usuario> respuesta = new Response<Usuario>();
             respuesta.contenido = BI.UsersModule.obtenerUsuario(obtenerUsuarioRequest);
             respuesta.estado = UsersModule.estado;
@@ -95,6 +124,8 @@ namespace ReloadWS.Service
 
         public string hola()
         {
+            
+
             return "hola";
         }
 

@@ -28,6 +28,7 @@ export class PerfilComponent implements OnInit {
       }).finally(()=>{
         this.cargando = false;
       });
+
     }
   }
 

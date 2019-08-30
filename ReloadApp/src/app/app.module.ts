@@ -8,7 +8,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule,HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //services
-import { UsuarioService, CustomInterceptor } from './services/usuario.service';
+  import { UsuarioService, CustomInterceptor } from './services/usuario.service';
+// import { UsuarioService } from './services/usuario.service';
 
 
 // angular material
@@ -64,6 +65,9 @@ import { PostContenidoComponent } from './components/post/post-contenido/post-co
 import { InputComponent } from './components/otros/input/input.component';
 import { ComentarioComponent } from './components/comentario/comentario.component';
 import { ComentarioVisComponent } from './components/comentario-vis/comentario-vis.component';
+import { PostVisualizaComponent } from './components/post/post-visualiza/post-visualiza.component';
+import { InfoUsuarioComponent } from './components/info-usuario/info-usuario.component';
+import { ImgRangoPipe } from './pipes/img-rango.pipe';
 
 @NgModule({
   declarations: [
@@ -96,7 +100,10 @@ import { ComentarioVisComponent } from './components/comentario-vis/comentario-v
     PostContenidoComponent,
     InputComponent,
     ComentarioComponent,
-    ComentarioVisComponent
+    ComentarioVisComponent,
+    PostVisualizaComponent,
+    InfoUsuarioComponent,
+    ImgRangoPipe
   ],
   imports: [
     BrowserModule,
@@ -129,7 +136,7 @@ import { ComentarioVisComponent } from './components/comentario-vis/comentario-v
   providers: [
     UsuarioService,
     Usuario,
-    {provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true},
+    // {provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true},
     MatDatepickerModule
 
   ],

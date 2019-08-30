@@ -20,4 +20,10 @@ export class BarraPerfilComponent implements OnInit {
   perfil(){
     this.router.navigate(['/perfil', UsuarioService.usuario.codigo]);
   }
+
+  salir(){
+    localStorage.clear();
+    window.location.reload();
+    this.router.navigate(['/posts']);
+  }
 }

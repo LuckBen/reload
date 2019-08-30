@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsuarioService } from './services/usuario.service';
 
 
 @Component({
@@ -10,5 +11,7 @@ export class AppComponent  {
   public htmlcontent:string;
   title = 'ReloadApp';
 
-
+  constructor(private usService:UsuarioService){
+    this.usService.cargar();
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Post } from '../../models/Post.model';
 import { PostService } from '../../services/post.service';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,9 @@ export class HomeComponent implements OnInit {
   cargandoRecientes:boolean;
   cargandoDestacados:boolean;
   cargandoAs:boolean;
+
+  logeado:boolean;
+
   constructor(private router:Router,
               private postService:PostService ) {
                 this.cargandoRecientes = false;
@@ -24,10 +28,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
       this.cargarRecientes();
       this.cargarDestacados();
+      this.logeado = !(UsuarioService.usuario == null);
   }
   crearPost(){
     this.router.navigate(['/crear/post'])
-
   }
   
   irPost(p:Post){

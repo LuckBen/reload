@@ -10,16 +10,27 @@
             <div id="contenido"></div>
         </div>
         <div class="col-2">
-            asd
+            <div class="row">
+                <app-info-usuario [usuario]="post.propietario"></app-info-usuario>
+            </div>
+            <div class="row" style="margin-top:20px">
+                <button mat-raised-button (click)="editar()" *ngIf="propio" style="background-color:#16dc16; margin-right:10px"><strong>Editar Post</strong></button>
+            </div>
         </div>
     </div>
 
+    <div class="row " style="margin-top:20px">
+        <div class="col-md-12">
+            <h3>Comentarios</h3>
+        </div>
+    </div>
     <!--comentarios-->
-    <div class="row" *ngFor="let c of post.comentarios; let i = index;">
+    <div *ngFor="let c of post.comentarios; let i = index;" style="margin-top:20px">
+
         <app-comentario-vis [comentario]="c" [index]="i"></app-comentario-vis>
     </div>
 
-    <div class="row">
+    <div class="row" *ngIf="logeado" style="margin-top:20px">
         <app-comentario [post]="post" [esPost]="true" [esPublicacion]="false"></app-comentario>
     </div>
 </div>

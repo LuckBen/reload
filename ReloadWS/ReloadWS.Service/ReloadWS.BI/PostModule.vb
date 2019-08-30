@@ -1,5 +1,5 @@
 ﻿Imports ReloadWS.DTO
-Imports ReloadWS.DAL
+Imports ReloadWS.DAL.Api
 Imports ReloadWS.DTO.Request
 
 Public Module PostModule
@@ -33,9 +33,9 @@ Public Module PostModule
 
             SyncLock postsDestacados
 
-                postsDestacados.AddRange(DAL.PostDB.obtenerPostRecientes(postsMemoriaRecientes))
-                postsDestacados.AddRange(DAL.PostDB.obtenerPostPorPuntos(postsMemoriaPuntos))
-                postsDestacados.AddRange(DAL.PostDB.obtenerPostPorComentarios(postsMemoriaComentarios))
+                'postsDestacados.AddRange(PostDB.obtenerPostRecientes(postsMemoriaRecientes))
+                'postsDestacados.AddRange(PostDB.obtenerPostPorPuntos(postsMemoriaPuntos))
+                'postsDestacados.AddRange(PostDB.obtenerPostPorComentarios(postsMemoriaComentarios))
             End SyncLock
 
         Catch ex As Exception
@@ -75,6 +75,8 @@ Public Module PostModule
         estado.iniciar()
 
         Try
+            commentary.id = Helper.generarID()
+
             PostDB.comment(commentary)
         Catch ex As Exception
             estado.capturarError(ex, True)
@@ -82,7 +84,7 @@ Public Module PostModule
 
     End Sub
 
-    Public Sub addPost(ByVal post As Post)
+    Public Function addPost(ByVal post As Post) As Post
 
         estado.iniciar()
         Try
@@ -91,9 +93,7 @@ Public Module PostModule
 
             assingDefaultValues(post)
 
-            DAL.PostDB.addPost(post)
-
-            DAL.UsuariosDB.addPost(post)
+            PostDB.addPost(post)
 
             agregarPostReciente(post)
 
@@ -104,7 +104,9 @@ Public Module PostModule
             estado.capturarError(ex, True)
         End Try
 
-    End Sub
+        Return post
+
+    End Function
 
     Private Sub agregarPostReciente(post As Post)
         SyncLock postsDestacados
@@ -115,7 +117,7 @@ Public Module PostModule
     End Sub
 
     Private Sub assingDefaultValues(post As Post)
-        post._id = Helper.generarID()
+        post.id = Helper.generarID()
         post.favoritos = 0
         post.puntos = 0
         post.visitas = 0
@@ -134,12 +136,11 @@ Public Module PostModule
 
         estado.iniciar()
         Try
-            If (String.IsNullOrEmpty(post._id)) Then
+            If (String.IsNullOrEmpty(post.id)) Then
                 Throw New NullReferenceException("No existe el post")
             End If
 
             PostDB.deletePost(post)
-            UsuariosDB.deletePost(post)
 
         Catch ex As Exception
             estado.capturarError(ex, True)
@@ -153,14 +154,13 @@ Public Module PostModule
 
         Try
 
-            If (String.IsNullOrEmpty(post._id)) Then
+            If (String.IsNullOrEmpty(post.id)) Then
                 Throw New NullReferenceException("id del post nulo")
             End If
 
             verifyPost(post)
 
-            DAL.PostDB.editPost(post)
-            DAL.UsuariosDB.editPost(post)
+            PostDB.editPost(post)
 
         Catch ex As Exception
             estado.capturarError(ex, True)
@@ -173,7 +173,7 @@ Public Module PostModule
     Public Function getPost(idPost As String) As Post
         estado.iniciar()
         Try
-            Return DAL.PostDB.getPost(idPost)
+            Return PostDB.getPost(idPost)
         Catch ex As Exception
             estado.capturarError(ex, True)
         End Try

@@ -6,6 +6,7 @@ import { PostService } from '../../services/post.service';
 import { Comentario } from 'src/app/models/Comentario.model';
 import { UsuarioService } from '../../services/usuario.service';
 import { Sujeto } from '../../models/Sujeto.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-comentario',
@@ -17,8 +18,9 @@ export class ComentarioComponent implements OnInit {
   @Input()esPost:boolean;
   @Input()esPublicacion:boolean;
   @Input()post:Post;
+  cargando:boolean;
 
-  constructor(private _postService:PostService) {
+  constructor(private _postService:PostService, private _messageBox: MatSnackBar) {
 
   }
 
@@ -34,15 +36,24 @@ export class ComentarioComponent implements OnInit {
     comentario.postid = this.post._id;
     
     comentario.contenido = document.getElementsByClassName("wysibb-text-editor wysibb-body")[0].innerHTML;
-    console.log(comentario.contenido);
+    
     comentario.emisor = new Sujeto();
     comentario.emisor._id = UsuarioService.usuario._id;
     comentario.emisor.codigo = UsuarioService.usuario.codigo;
-    comentario.emisor.imagen = "..";
+    comentario.emisor.imagen = UsuarioService.usuario.info.imagen;
     comentario.emisor.pais = UsuarioService.usuario.info.pais;
     comentario.emisor.rango = UsuarioService.usuario.rango;
-    console.log(comentario);
-    this._postService.comentar(comentario);
+    
+    this.cargando = true;
+
+    this._postService.comentar(comentario).then(data=>{
+      this.post.comentarios.push(data);
+    }).catch((err)=>{
+      this._messageBox.open(err,'Error! :(');
+    }).finally(()=>{
+      this.cargando = false;
+    });
+
   }
 
 }

@@ -34,7 +34,7 @@ export class CuentaPerfilComponent implements OnInit {
   cambiarInfo(){
     
     this.cargando = true;
-    this.ucService.saveInfo(this.usuario).then(data=>{
+     this.ucService.saveInfo(this.usuario).then(data=>{
       UsuarioService.usuario = data.contenido;
       this.show('Datos actualizados correctamente!','Aceptar');
     })

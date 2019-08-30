@@ -13,7 +13,7 @@ namespace ReloadWS.Service
     {
         [OperationContract]
         [WebInvoke(Method = "*", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "rangos")]
-        DTO.Rango getRangos();
+        DTO.Rango[] getRangos();
         
     }
 }

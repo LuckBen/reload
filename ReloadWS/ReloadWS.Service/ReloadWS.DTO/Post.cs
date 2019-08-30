@@ -8,7 +8,7 @@ namespace ReloadWS.DTO
 {
     public class Post
     {
-        public string _id { get; set; }
+        public int id { get; set; }
         public Sujeto propietario { get; set; }
         public string titulo { get; set; }
         public string imagen { get; set; }
@@ -22,6 +22,8 @@ namespace ReloadWS.DTO
         public int favoritos { get; set; }
         public string fechaAlta { get; set; }
         public string fechaModificacion { get; set; }
+
+        public string contenidoEditor { get; set; }
 
         public List<Comentario> comentarios;
 

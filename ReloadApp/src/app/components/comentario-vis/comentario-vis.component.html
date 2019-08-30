@@ -1,9 +1,9 @@
-<div class="row">
-    <div class="col-4">
-        <img [src]="comentario.emisor.imagen" style="width: 90px; height: 68px" mat-card-sm-image>
+<div class="row" style="margin-bottom:  20px">
+    <div class="col-1">
+        <img (click)="irPerfil()" [src]="comentario.emisor.imagen" style="width: 90px; height: 68px" mat-card-sm-image>
     </div>
-    <div class="col-8">
-        {{comentario.emisor.codigo}}
+    <div class="col-11">
+        <strong>{{comentario.emisor.codigo}}</strong>
         <div class="contenidoComentario"></div>
     </div>
 </div>

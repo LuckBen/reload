@@ -6,6 +6,7 @@ Imports System.ServiceModel.Channels
 Imports System.ServiceModel
 Imports System.ServiceModel.Web
 Imports ReloadWS.DTO
+Imports ReloadWS.DAL.Api
 
 Public Module Helper
 
@@ -50,7 +51,7 @@ Public Module Helper
 
         Try
 
-            Dim path As String = System.IO.Directory.GetCurrentDirectory() + "\\plantillas\activarMail.html"
+            Dim path As String = System.IO.Directory.GetCurrentDirectory() + "\plantillas\activarMail.html"
             Dim contenidoHtml As String = System.IO.File.ReadAllText(path).Replace("@mail@", destinatario)
 
             Dim asunto As String = System.Configuration.ConfigurationSettings.AppSettings("mail_asunto_activacion_mail").ToString()
@@ -92,7 +93,7 @@ Public Module Helper
 
     Public Function getCategorias() As Categoria()
         Try
-            Return DAL.Common.getCategorias()
+            Return Common.getCategorias()
 
         Catch ex As Exception
             Return Nothing
