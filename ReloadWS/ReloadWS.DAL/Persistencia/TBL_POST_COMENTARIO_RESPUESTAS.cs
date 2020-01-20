@@ -14,9 +14,9 @@ namespace ReloadWS.DAL.Persistencia
     
     public partial class TBL_POST_COMENTARIO_RESPUESTAS
     {
-        public int POST_COMENTARIO_RESPUESTAid { get; set; }
-        public int POST_COMENTARIO_RESPUESTA_COMENTARIOid { get; set; }
-        public int POST_COMENTARIO_RESPUESTA_USUARIOid { get; set; }
+        public int POST_COMENTARIO_RESPUESTA_ID { get; set; }
+        public int POST_COMENTARIO_RESPUESTA_COMENTARIO_ID { get; set; }
+        public int POST_COMENTARIO_RESPUESTA_USUARIO_ID { get; set; }
         public string POST_COMENTARIO_RESPUESTA_CONTENIDO { get; set; }
         public int POST_COMENTARIO_RESPUESTA_POS { get; set; }
         public int POST_COMENTARIO_RESPUESTA_NEG { get; set; }

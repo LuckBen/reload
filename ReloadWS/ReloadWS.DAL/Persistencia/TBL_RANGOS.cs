@@ -20,7 +20,7 @@ namespace ReloadWS.DAL.Persistencia
             this.TBL_USUARIOS = new HashSet<TBL_USUARIOS>();
         }
     
-        public int RANGOid { get; set; }
+        public int RANGO_ID { get; set; }
         public string RANGO_NOMBRE { get; set; }
         public string RANGO_DESCRP { get; set; }
         public string RANGO_IMAGEN { get; set; }

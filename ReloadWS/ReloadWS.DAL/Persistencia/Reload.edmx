@@ -7,35 +7,35 @@
     <Schema Namespace="ReloadDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TBL_CAPTCHAS">
           <Key>
-            <PropertyRef Name="CAPTCHAid" />
+            <PropertyRef Name="CAPTCHA_ID" />
           </Key>
-          <Property Name="CAPTCHAid" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CAPTCHA_ID" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="CAPTCHA_DATO" Type="varchar" MaxLength="200" />
           <Property Name="CAPTCHA_RESPUESTA" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="TBL_CATEGORIAS">
           <Key>
-            <PropertyRef Name="CATEGORIAid" />
+            <PropertyRef Name="CATEGORIA_ID" />
           </Key>
-          <Property Name="CATEGORIAid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORIA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CATEGORIA_NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="CATEGORIA_LOGO" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="TBL_MENSAJE_RESPUESTAS">
           <Key>
-            <PropertyRef Name="MENSAJE_RESPUESTAid" />
+            <PropertyRef Name="MENSAJE_RESPUESTA_ID" />
           </Key>
-          <Property Name="MENSAJE_RESPUESTAid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MENSAJE_RESPUESTA_MENSAJEid" Type="int" Nullable="false" />
+          <Property Name="MENSAJE_RESPUESTA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MENSAJE_RESPUESTA_MENSAJE_ID" Type="int" Nullable="false" />
           <Property Name="MENSAJE_RESPUESTA_CONTENIDO" Type="varchar(max)" Nullable="false" />
           <Property Name="MENSAJE_RESPUESTA_FECALT" Type="datetime" Nullable="false" />
           <Property Name="MENSAJE_RESPUESTA_DEBAJA" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_MENSAJES">
           <Key>
-            <PropertyRef Name="MENSAJEid" />
+            <PropertyRef Name="MENSAJE_ID" />
           </Key>
-          <Property Name="MENSAJEid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MENSAJE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MENSAJE_ASUNTO" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="MENSAJE_CONTENIDO" Type="varchar(max)" Nullable="false" />
           <Property Name="MENSAJE_EMISOR" Type="int" Nullable="false" />
@@ -45,19 +45,19 @@
         </EntityType>
         <EntityType Name="TBL_PAISES">
           <Key>
-            <PropertyRef Name="PAISid" />
+            <PropertyRef Name="PAIS_ID" />
           </Key>
-          <Property Name="PAISid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PAIS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PAIS_CODIGO" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="PAIS_NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_POST_COMENTARIO_RESPUESTAS">
           <Key>
-            <PropertyRef Name="POST_COMENTARIO_RESPUESTAid" />
+            <PropertyRef Name="POST_COMENTARIO_RESPUESTA_ID" />
           </Key>
-          <Property Name="POST_COMENTARIO_RESPUESTAid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="POST_COMENTARIO_RESPUESTA_COMENTARIOid" Type="int" Nullable="false" />
-          <Property Name="POST_COMENTARIO_RESPUESTA_USUARIOid" Type="int" Nullable="false" />
+          <Property Name="POST_COMENTARIO_RESPUESTA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POST_COMENTARIO_RESPUESTA_COMENTARIO_ID" Type="int" Nullable="false" />
+          <Property Name="POST_COMENTARIO_RESPUESTA_USUARIO_ID" Type="int" Nullable="false" />
           <Property Name="POST_COMENTARIO_RESPUESTA_CONTENIDO" Type="varchar(max)" />
           <Property Name="POST_COMENTARIO_RESPUESTA_POS" Type="int" Nullable="false" />
           <Property Name="POST_COMENTARIO_RESPUESTA_NEG" Type="int" Nullable="false" />
@@ -66,11 +66,11 @@
         </EntityType>
         <EntityType Name="TBL_POST_COMENTARIOS">
           <Key>
-            <PropertyRef Name="POST_COMENTARIOid" />
+            <PropertyRef Name="POST_COMENTARIO_ID" />
           </Key>
-          <Property Name="POST_COMENTARIOid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="POST_COMENTARIO_USUARIOid" Type="int" Nullable="false" />
-          <Property Name="POST_COMENTARIO_POSTid" Type="int" Nullable="false" />
+          <Property Name="POST_COMENTARIO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POST_COMENTARIO_USUARIO_ID" Type="int" Nullable="false" />
+          <Property Name="POST_COMENTARIO_POST_ID" Type="int" Nullable="false" />
           <Property Name="POST_COMENTARIO_CONTENIDO" Type="varchar(max)" Nullable="false" />
           <Property Name="POST_COMENTARIO_FECALT" Type="datetime" Nullable="false" />
           <Property Name="POST_COMENTARIO_DEBAJA" Type="bit" Nullable="false" />
@@ -79,9 +79,9 @@
         </EntityType>
         <EntityType Name="TBL_POSTS">
           <Key>
-            <PropertyRef Name="POSTid" />
+            <PropertyRef Name="POST_ID" />
           </Key>
-          <Property Name="POSTid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="POST_CANT_COMENTARIOS" Type="int" Nullable="false" />
           <Property Name="POST_PROPIETARIO" Type="int" Nullable="false" />
           <Property Name="POST_TITULO" Type="varchar" MaxLength="100" Nullable="false" />
@@ -102,32 +102,32 @@
         </EntityType>
         <EntityType Name="TBL_POSTS_FAVORITOS">
           <Key>
-            <PropertyRef Name="POST_FAVORITO_USUARIOid" />
-            <PropertyRef Name="POST_FAVORITO_POSTid" />
+            <PropertyRef Name="POST_FAVORITO_USUARIO_ID" />
+            <PropertyRef Name="POST_FAVORITO_POST_ID" />
           </Key>
-          <Property Name="POST_FAVORITO_USUARIOid" Type="int" Nullable="false" />
-          <Property Name="POST_FAVORITO_POSTid" Type="int" Nullable="false" />
+          <Property Name="POST_FAVORITO_USUARIO_ID" Type="int" Nullable="false" />
+          <Property Name="POST_FAVORITO_POST_ID" Type="int" Nullable="false" />
           <Property Name="POST_FAVORITO_DEBAJA" Type="bit" Nullable="false" />
           <Property Name="POST_FAVORITO_FECALT" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_PUBLICACION_COMENTARIO_RESPUESTAS">
           <Key>
-            <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTASid" />
+            <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTAS_ID" />
           </Key>
-          <Property Name="PUBLICACION_COMENTARIO_RESPUESTASid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIOid" Type="int" Nullable="false" />
-          <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_USUARIOid" Type="int" Nullable="false" />
+          <Property Name="PUBLICACION_COMENTARIO_RESPUESTAS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIO_ID" Type="int" Nullable="false" />
+          <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_USUARIO_ID" Type="int" Nullable="false" />
           <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_CONTENIDO" Type="varchar(max)" Nullable="false" />
           <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_FECALT" Type="datetime" Nullable="false" />
           <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_DEBAJA" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_PUBLICACION_COMENTARIOS">
           <Key>
-            <PropertyRef Name="PUBLICACION_COMENTARIOid" />
+            <PropertyRef Name="PUBLICACION_COMENTARIO_ID" />
           </Key>
-          <Property Name="PUBLICACION_COMENTARIOid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PUBLICACION_COMENTARIO_PUBLICACIONid" Type="int" Nullable="false" />
-          <Property Name="PUBLICACION_COMENTARIO_USUARIOid" Type="int" Nullable="false" />
+          <Property Name="PUBLICACION_COMENTARIO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PUBLICACION_COMENTARIO_PUBLICACION_ID" Type="int" Nullable="false" />
+          <Property Name="PUBLICACION_COMENTARIO_USUARIO_ID" Type="int" Nullable="false" />
           <Property Name="PUBLICACION_CONTENIDO" Type="varchar(max)" Nullable="false" />
           <Property Name="PUBLICACION_POS" Type="int" Nullable="false" />
           <Property Name="PUBLICACION_NEG" Type="int" Nullable="false" />
@@ -136,10 +136,10 @@
         </EntityType>
         <EntityType Name="TBL_PUBLICACIONES">
           <Key>
-            <PropertyRef Name="PUBLICACIONid" />
+            <PropertyRef Name="PUBLICACION_ID" />
           </Key>
-          <Property Name="PUBLICACIONid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PUBLICACION_USUARIOid" Type="int" Nullable="false" />
+          <Property Name="PUBLICACION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PUBLICACION_USUARIO_ID" Type="int" Nullable="false" />
           <Property Name="PUBLICACION_CONTENIDO" Type="varchar(max)" />
           <Property Name="PUBLICACION_POS" Type="int" Nullable="false" />
           <Property Name="PUBLICACION_NEG" Type="int" Nullable="false" />
@@ -149,9 +149,9 @@
         </EntityType>
         <EntityType Name="TBL_RANGOS">
           <Key>
-            <PropertyRef Name="RANGOid" />
+            <PropertyRef Name="RANGO_ID" />
           </Key>
-          <Property Name="RANGOid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RANGO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RANGO_NOMBRE" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="RANGO_DESCRP" Type="varchar" MaxLength="2000" />
           <Property Name="RANGO_IMAGEN" Type="varchar" MaxLength="200" Nullable="false" />
@@ -162,9 +162,9 @@
         </EntityType>
         <EntityType Name="TBL_USUARIOS">
           <Key>
-            <PropertyRef Name="USUARIOid" />
+            <PropertyRef Name="USUARIO_ID" />
           </Key>
-          <Property Name="USUARIOid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="USUARIO_CODIGO" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="USUARIO_PASSWORD" Type="varchar" MaxLength="2000" Nullable="false" />
           <Property Name="USUARIO_MAIL" Type="varchar" MaxLength="100" Nullable="false" />
@@ -183,20 +183,20 @@
           <Property Name="USUARIO_APELLIDO" Type="varchar" MaxLength="60" />
           <Property Name="USUARIO_FECHANAC" Type="datetime" />
           <Property Name="USUARIO_HABITOS" Type="varchar" MaxLength="1000" />
-          <Property Name="USUARIOidIOMAS" Type="varchar" MaxLength="1000" />
+          <Property Name="USUARIO_IDIOMAS" Type="varchar" MaxLength="1000" />
           <Property Name="USUARIO_IMAGEN" Type="varchar" MaxLength="3000" />
           <Property Name="USUARIO_SEXO" Type="varchar" MaxLength="30" />
           <Property Name="USUARIO_DATOS_PROF" Type="varchar" MaxLength="1000" />
-          <Property Name="USUARIO_PAISid" Type="int" />
+          <Property Name="USUARIO_PAIS_ID" Type="int" />
           <Property Name="USUARIO_FECALT" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TBL_USUARIOS_POSTS">
           <Key>
-            <PropertyRef Name="USUARIO_POST_USUARIOid" />
-            <PropertyRef Name="USUARIO_POST_POSTid" />
+            <PropertyRef Name="USUARIO_POST_USUARIO_ID" />
+            <PropertyRef Name="USUARIO_POST_POST_ID" />
           </Key>
-          <Property Name="USUARIO_POST_USUARIOid" Type="int" Nullable="false" />
-          <Property Name="USUARIO_POST_POSTid" Type="int" Nullable="false" />
+          <Property Name="USUARIO_POST_USUARIO_ID" Type="int" Nullable="false" />
+          <Property Name="USUARIO_POST_POST_ID" Type="int" Nullable="false" />
           <Property Name="USUARIO_POST_DEBAJA" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__TBL_USUAR__USUAR__3A4CA8FD">
@@ -204,10 +204,10 @@
           <End Role="TBL_USUARIOS" Type="Self.TBL_USUARIOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_PAISES">
-              <PropertyRef Name="PAISid" />
+              <PropertyRef Name="PAIS_ID" />
             </Principal>
             <Dependent Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIO_PAISid" />
+              <PropertyRef Name="USUARIO_PAIS_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -216,7 +216,7 @@
           <End Role="TBL_USUARIOS" Type="Self.TBL_USUARIOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_RANGOS">
-              <PropertyRef Name="RANGOid" />
+              <PropertyRef Name="RANGO_ID" />
             </Principal>
             <Dependent Role="TBL_USUARIOS">
               <PropertyRef Name="USUARIO_RANGO" />
@@ -228,10 +228,10 @@
           <End Role="TBL_MENSAJE_RESPUESTAS" Type="Self.TBL_MENSAJE_RESPUESTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_MENSAJES">
-              <PropertyRef Name="MENSAJEid" />
+              <PropertyRef Name="MENSAJE_ID" />
             </Principal>
             <Dependent Role="TBL_MENSAJE_RESPUESTAS">
-              <PropertyRef Name="MENSAJE_RESPUESTA_MENSAJEid" />
+              <PropertyRef Name="MENSAJE_RESPUESTA_MENSAJE_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -240,7 +240,7 @@
           <End Role="TBL_MENSAJES" Type="Self.TBL_MENSAJES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_MENSAJES">
               <PropertyRef Name="MENSAJE_EMISOR" />
@@ -252,7 +252,7 @@
           <End Role="TBL_MENSAJES" Type="Self.TBL_MENSAJES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_MENSAJES">
               <PropertyRef Name="MENSAJE_RECEPTOR" />
@@ -264,10 +264,10 @@
           <End Role="TBL_POST_COMENTARIOS" Type="Self.TBL_POST_COMENTARIOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_POSTS">
-              <PropertyRef Name="POSTid" />
+              <PropertyRef Name="POST_ID" />
             </Principal>
             <Dependent Role="TBL_POST_COMENTARIOS">
-              <PropertyRef Name="POST_COMENTARIO_POSTid" />
+              <PropertyRef Name="POST_COMENTARIO_POST_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -276,10 +276,10 @@
           <End Role="TBL_POST_COMENTARIO_RESPUESTAS" Type="Self.TBL_POST_COMENTARIO_RESPUESTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_POST_COMENTARIOS">
-              <PropertyRef Name="POST_COMENTARIOid" />
+              <PropertyRef Name="POST_COMENTARIO_ID" />
             </Principal>
             <Dependent Role="TBL_POST_COMENTARIO_RESPUESTAS">
-              <PropertyRef Name="POST_COMENTARIO_RESPUESTA_COMENTARIOid" />
+              <PropertyRef Name="POST_COMENTARIO_RESPUESTA_COMENTARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -288,10 +288,10 @@
           <End Role="TBL_POST_COMENTARIO_RESPUESTAS" Type="Self.TBL_POST_COMENTARIO_RESPUESTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_POST_COMENTARIO_RESPUESTAS">
-              <PropertyRef Name="POST_COMENTARIO_RESPUESTA_USUARIOid" />
+              <PropertyRef Name="POST_COMENTARIO_RESPUESTA_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -300,10 +300,10 @@
           <End Role="TBL_POST_COMENTARIOS" Type="Self.TBL_POST_COMENTARIOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_POST_COMENTARIOS">
-              <PropertyRef Name="POST_COMENTARIO_USUARIOid" />
+              <PropertyRef Name="POST_COMENTARIO_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -312,7 +312,7 @@
           <End Role="TBL_POSTS" Type="Self.TBL_POSTS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_CATEGORIAS">
-              <PropertyRef Name="CATEGORIAid" />
+              <PropertyRef Name="CATEGORIA_ID" />
             </Principal>
             <Dependent Role="TBL_POSTS">
               <PropertyRef Name="POST_CATEGORIA" />
@@ -324,10 +324,10 @@
           <End Role="TBL_POSTS_FAVORITOS" Type="Self.TBL_POSTS_FAVORITOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_POSTS">
-              <PropertyRef Name="POSTid" />
+              <PropertyRef Name="POST_ID" />
             </Principal>
             <Dependent Role="TBL_POSTS_FAVORITOS">
-              <PropertyRef Name="POST_FAVORITO_POSTid" />
+              <PropertyRef Name="POST_FAVORITO_POST_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -336,10 +336,10 @@
           <End Role="TBL_POSTS_FAVORITOS" Type="Self.TBL_POSTS_FAVORITOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_POSTS_FAVORITOS">
-              <PropertyRef Name="POST_FAVORITO_USUARIOid" />
+              <PropertyRef Name="POST_FAVORITO_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -348,7 +348,7 @@
           <End Role="TBL_POSTS" Type="Self.TBL_POSTS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_POSTS">
               <PropertyRef Name="POST_PROPIETARIO" />
@@ -360,10 +360,10 @@
           <End Role="TBL_PUBLICACION_COMENTARIO_RESPUESTAS" Type="Self.TBL_PUBLICACION_COMENTARIO_RESPUESTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_PUBLICACION_COMENTARIOS">
-              <PropertyRef Name="PUBLICACION_COMENTARIOid" />
+              <PropertyRef Name="PUBLICACION_COMENTARIO_ID" />
             </Principal>
             <Dependent Role="TBL_PUBLICACION_COMENTARIO_RESPUESTAS">
-              <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIOid" />
+              <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -372,10 +372,10 @@
           <End Role="TBL_PUBLICACION_COMENTARIO_RESPUESTAS" Type="Self.TBL_PUBLICACION_COMENTARIO_RESPUESTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_PUBLICACION_COMENTARIO_RESPUESTAS">
-              <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTA_USUARIOid" />
+              <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTA_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -384,10 +384,10 @@
           <End Role="TBL_PUBLICACION_COMENTARIOS" Type="Self.TBL_PUBLICACION_COMENTARIOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_PUBLICACIONES">
-              <PropertyRef Name="PUBLICACIONid" />
+              <PropertyRef Name="PUBLICACION_ID" />
             </Principal>
             <Dependent Role="TBL_PUBLICACION_COMENTARIOS">
-              <PropertyRef Name="PUBLICACION_COMENTARIO_PUBLICACIONid" />
+              <PropertyRef Name="PUBLICACION_COMENTARIO_PUBLICACION_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -396,10 +396,10 @@
           <End Role="TBL_PUBLICACION_COMENTARIOS" Type="Self.TBL_PUBLICACION_COMENTARIOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_PUBLICACION_COMENTARIOS">
-              <PropertyRef Name="PUBLICACION_COMENTARIO_USUARIOid" />
+              <PropertyRef Name="PUBLICACION_COMENTARIO_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -408,10 +408,10 @@
           <End Role="TBL_PUBLICACIONES" Type="Self.TBL_PUBLICACIONES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_PUBLICACIONES">
-              <PropertyRef Name="PUBLICACION_USUARIOid" />
+              <PropertyRef Name="PUBLICACION_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -420,10 +420,10 @@
           <End Role="TBL_USUARIOS_POSTS" Type="Self.TBL_USUARIOS_POSTS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_POSTS">
-              <PropertyRef Name="POSTid" />
+              <PropertyRef Name="POST_ID" />
             </Principal>
             <Dependent Role="TBL_USUARIOS_POSTS">
-              <PropertyRef Name="USUARIO_POST_POSTid" />
+              <PropertyRef Name="USUARIO_POST_POST_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -432,10 +432,10 @@
           <End Role="TBL_USUARIOS_POSTS" Type="Self.TBL_USUARIOS_POSTS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_USUARIOS_POSTS">
-              <PropertyRef Name="USUARIO_POST_USUARIOid" />
+              <PropertyRef Name="USUARIO_POST_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -572,6 +572,10 @@
             <End Role="TBL_USUARIOS" EntitySet="TBL_USUARIOS" />
             <End Role="TBL_MENSAJES" EntitySet="TBL_MENSAJES" />
           </AssociationSet>
+          <AssociationSet Name="FK__TBL_USUAR__USUAR__3A4CA8FD" Association="ReloadDBModel.FK__TBL_USUAR__USUAR__3A4CA8FD">
+            <End Role="TBL_PAISES" EntitySet="TBL_PAISES" />
+            <End Role="TBL_USUARIOS" EntitySet="TBL_USUARIOS" />
+          </AssociationSet>
           <AssociationSet Name="FK_TBL_POST_COMENTARIO_RESPUESTAS_COMENTARIO" Association="ReloadDBModel.FK_TBL_POST_COMENTARIO_RESPUESTAS_COMENTARIO">
             <End Role="TBL_POST_COMENTARIOS" EntitySet="TBL_POST_COMENTARIOS" />
             <End Role="TBL_POST_COMENTARIO_RESPUESTAS" EntitySet="TBL_POST_COMENTARIO_RESPUESTAS" />
@@ -632,34 +636,30 @@
             <End Role="TBL_USUARIOS" EntitySet="TBL_USUARIOS" />
             <End Role="TBL_USUARIOS_POSTS" EntitySet="TBL_USUARIOS_POSTS" />
           </AssociationSet>
-          <AssociationSet Name="FK__TBL_USUAR__USUAR__3A4CA8FD" Association="ReloadDBModel.FK__TBL_USUAR__USUAR__3A4CA8FD">
-            <End Role="TBL_PAISES" EntitySet="TBL_PAISES" />
-            <End Role="TBL_USUARIOS" EntitySet="TBL_USUARIOS" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TBL_CAPTCHAS">
           <Key>
-            <PropertyRef Name="CAPTCHAid" />
+            <PropertyRef Name="CAPTCHA_ID" />
           </Key>
-          <Property Name="CAPTCHAid" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CAPTCHA_ID" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CAPTCHA_DATO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CAPTCHA_RESPUESTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TBL_CATEGORIAS">
           <Key>
-            <PropertyRef Name="CATEGORIAid" />
+            <PropertyRef Name="CATEGORIA_ID" />
           </Key>
-          <Property Name="CATEGORIAid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORIA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CATEGORIA_NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CATEGORIA_LOGO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TBL_POSTS" Relationship="ReloadDBModel.FK_TBL_POSTS_CAT" FromRole="TBL_CATEGORIAS" ToRole="TBL_POSTS" />
         </EntityType>
         <EntityType Name="TBL_MENSAJE_RESPUESTAS">
           <Key>
-            <PropertyRef Name="MENSAJE_RESPUESTAid" />
+            <PropertyRef Name="MENSAJE_RESPUESTA_ID" />
           </Key>
-          <Property Name="MENSAJE_RESPUESTAid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MENSAJE_RESPUESTA_MENSAJEid" Type="Int32" Nullable="false" />
+          <Property Name="MENSAJE_RESPUESTA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MENSAJE_RESPUESTA_MENSAJE_ID" Type="Int32" Nullable="false" />
           <Property Name="MENSAJE_RESPUESTA_CONTENIDO" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MENSAJE_RESPUESTA_FECALT" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="MENSAJE_RESPUESTA_DEBAJA" Type="Boolean" Nullable="false" />
@@ -667,9 +667,9 @@
         </EntityType>
         <EntityType Name="TBL_MENSAJES">
           <Key>
-            <PropertyRef Name="MENSAJEid" />
+            <PropertyRef Name="MENSAJE_ID" />
           </Key>
-          <Property Name="MENSAJEid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MENSAJE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MENSAJE_ASUNTO" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="MENSAJE_CONTENIDO" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MENSAJE_EMISOR" Type="Int32" Nullable="false" />
@@ -682,20 +682,20 @@
         </EntityType>
         <EntityType Name="TBL_PAISES">
           <Key>
-            <PropertyRef Name="PAISid" />
+            <PropertyRef Name="PAIS_ID" />
           </Key>
-          <Property Name="PAISid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PAIS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PAIS_CODIGO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="PAIS_NOMBRE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TBL_USUARIOS" Relationship="ReloadDBModel.FK__TBL_USUAR__USUAR__3A4CA8FD" FromRole="TBL_PAISES" ToRole="TBL_USUARIOS" />
         </EntityType>
         <EntityType Name="TBL_POST_COMENTARIO_RESPUESTAS">
           <Key>
-            <PropertyRef Name="POST_COMENTARIO_RESPUESTAid" />
+            <PropertyRef Name="POST_COMENTARIO_RESPUESTA_ID" />
           </Key>
-          <Property Name="POST_COMENTARIO_RESPUESTAid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="POST_COMENTARIO_RESPUESTA_COMENTARIOid" Type="Int32" Nullable="false" />
-          <Property Name="POST_COMENTARIO_RESPUESTA_USUARIOid" Type="Int32" Nullable="false" />
+          <Property Name="POST_COMENTARIO_RESPUESTA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POST_COMENTARIO_RESPUESTA_COMENTARIO_ID" Type="Int32" Nullable="false" />
+          <Property Name="POST_COMENTARIO_RESPUESTA_USUARIO_ID" Type="Int32" Nullable="false" />
           <Property Name="POST_COMENTARIO_RESPUESTA_CONTENIDO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="POST_COMENTARIO_RESPUESTA_POS" Type="Int32" Nullable="false" />
           <Property Name="POST_COMENTARIO_RESPUESTA_NEG" Type="Int32" Nullable="false" />
@@ -706,11 +706,11 @@
         </EntityType>
         <EntityType Name="TBL_POST_COMENTARIOS">
           <Key>
-            <PropertyRef Name="POST_COMENTARIOid" />
+            <PropertyRef Name="POST_COMENTARIO_ID" />
           </Key>
-          <Property Name="POST_COMENTARIOid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="POST_COMENTARIO_USUARIOid" Type="Int32" Nullable="false" />
-          <Property Name="POST_COMENTARIO_POSTid" Type="Int32" Nullable="false" />
+          <Property Name="POST_COMENTARIO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POST_COMENTARIO_USUARIO_ID" Type="Int32" Nullable="false" />
+          <Property Name="POST_COMENTARIO_POST_ID" Type="Int32" Nullable="false" />
           <Property Name="POST_COMENTARIO_CONTENIDO" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="POST_COMENTARIO_FECALT" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="POST_COMENTARIO_DEBAJA" Type="Boolean" Nullable="false" />
@@ -722,9 +722,9 @@
         </EntityType>
         <EntityType Name="TBL_POSTS">
           <Key>
-            <PropertyRef Name="POSTid" />
+            <PropertyRef Name="POST_ID" />
           </Key>
-          <Property Name="POSTid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="POST_CANT_COMENTARIOS" Type="Int32" Nullable="false" />
           <Property Name="POST_PROPIETARIO" Type="Int32" Nullable="false" />
           <Property Name="POST_TITULO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -741,20 +741,20 @@
           <Property Name="POST_FECMOD" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="POST_SE_COMENTA" Type="Boolean" Nullable="false" />
           <Property Name="POST_DEBAJA" Type="Boolean" Nullable="false" />
+          <Property Name="POST_IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TBL_CATEGORIAS" Relationship="ReloadDBModel.FK_TBL_POSTS_CAT" FromRole="TBL_POSTS" ToRole="TBL_CATEGORIAS" />
           <NavigationProperty Name="TBL_POST_COMENTARIOS" Relationship="ReloadDBModel.FK_TBL_POST_COMENTARIO_POST" FromRole="TBL_POSTS" ToRole="TBL_POST_COMENTARIOS" />
           <NavigationProperty Name="TBL_POSTS_FAVORITOS" Relationship="ReloadDBModel.FK_TBL_POSTS_FAVORITOS_POST" FromRole="TBL_POSTS" ToRole="TBL_POSTS_FAVORITOS" />
           <NavigationProperty Name="TBL_USUARIOS" Relationship="ReloadDBModel.FK_TBL_POSTS_PROP" FromRole="TBL_POSTS" ToRole="TBL_USUARIOS" />
           <NavigationProperty Name="TBL_USUARIOS_POSTS" Relationship="ReloadDBModel.FK_TBL_USUARIO_POST_POST" FromRole="TBL_POSTS" ToRole="TBL_USUARIOS_POSTS" />
-          <Property Name="POST_IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TBL_POSTS_FAVORITOS">
           <Key>
-            <PropertyRef Name="POST_FAVORITO_USUARIOid" />
-            <PropertyRef Name="POST_FAVORITO_POSTid" />
+            <PropertyRef Name="POST_FAVORITO_USUARIO_ID" />
+            <PropertyRef Name="POST_FAVORITO_POST_ID" />
           </Key>
-          <Property Name="POST_FAVORITO_USUARIOid" Type="Int32" Nullable="false" />
-          <Property Name="POST_FAVORITO_POSTid" Type="Int32" Nullable="false" />
+          <Property Name="POST_FAVORITO_USUARIO_ID" Type="Int32" Nullable="false" />
+          <Property Name="POST_FAVORITO_POST_ID" Type="Int32" Nullable="false" />
           <Property Name="POST_FAVORITO_DEBAJA" Type="Boolean" Nullable="false" />
           <Property Name="POST_FAVORITO_FECALT" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="TBL_POSTS" Relationship="ReloadDBModel.FK_TBL_POSTS_FAVORITOS_POST" FromRole="TBL_POSTS_FAVORITOS" ToRole="TBL_POSTS" />
@@ -762,11 +762,11 @@
         </EntityType>
         <EntityType Name="TBL_PUBLICACION_COMENTARIO_RESPUESTAS">
           <Key>
-            <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTASid" />
+            <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTAS_ID" />
           </Key>
-          <Property Name="PUBLICACION_COMENTARIO_RESPUESTASid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIOid" Type="Int32" Nullable="false" />
-          <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_USUARIOid" Type="Int32" Nullable="false" />
+          <Property Name="PUBLICACION_COMENTARIO_RESPUESTAS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIO_ID" Type="Int32" Nullable="false" />
+          <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_USUARIO_ID" Type="Int32" Nullable="false" />
           <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_CONTENIDO" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_FECALT" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PUBLICACION_COMENTARIO_RESPUESTA_DEBAJA" Type="Boolean" Nullable="false" />
@@ -775,11 +775,11 @@
         </EntityType>
         <EntityType Name="TBL_PUBLICACION_COMENTARIOS">
           <Key>
-            <PropertyRef Name="PUBLICACION_COMENTARIOid" />
+            <PropertyRef Name="PUBLICACION_COMENTARIO_ID" />
           </Key>
-          <Property Name="PUBLICACION_COMENTARIOid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PUBLICACION_COMENTARIO_PUBLICACIONid" Type="Int32" Nullable="false" />
-          <Property Name="PUBLICACION_COMENTARIO_USUARIOid" Type="Int32" Nullable="false" />
+          <Property Name="PUBLICACION_COMENTARIO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PUBLICACION_COMENTARIO_PUBLICACION_ID" Type="Int32" Nullable="false" />
+          <Property Name="PUBLICACION_COMENTARIO_USUARIO_ID" Type="Int32" Nullable="false" />
           <Property Name="PUBLICACION_CONTENIDO" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PUBLICACION_POS" Type="Int32" Nullable="false" />
           <Property Name="PUBLICACION_NEG" Type="Int32" Nullable="false" />
@@ -791,10 +791,10 @@
         </EntityType>
         <EntityType Name="TBL_PUBLICACIONES">
           <Key>
-            <PropertyRef Name="PUBLICACIONid" />
+            <PropertyRef Name="PUBLICACION_ID" />
           </Key>
-          <Property Name="PUBLICACIONid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PUBLICACION_USUARIOid" Type="Int32" Nullable="false" />
+          <Property Name="PUBLICACION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PUBLICACION_USUARIO_ID" Type="Int32" Nullable="false" />
           <Property Name="PUBLICACION_CONTENIDO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PUBLICACION_POS" Type="Int32" Nullable="false" />
           <Property Name="PUBLICACION_NEG" Type="Int32" Nullable="false" />
@@ -806,9 +806,9 @@
         </EntityType>
         <EntityType Name="TBL_RANGOS">
           <Key>
-            <PropertyRef Name="RANGOid" />
+            <PropertyRef Name="RANGO_ID" />
           </Key>
-          <Property Name="RANGOid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RANGO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RANGO_NOMBRE" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="RANGO_DESCRP" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
           <Property Name="RANGO_IMAGEN" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -820,9 +820,9 @@
         </EntityType>
         <EntityType Name="TBL_USUARIOS">
           <Key>
-            <PropertyRef Name="USUARIOid" />
+            <PropertyRef Name="USUARIO_ID" />
           </Key>
-          <Property Name="USUARIOid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USUARIO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="USUARIO_CODIGO" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="USUARIO_PASSWORD" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
           <Property Name="USUARIO_MAIL" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -836,8 +836,20 @@
           <Property Name="USUARIO_RAZON_BAN" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="USUARIO_DEBAJA" Type="Boolean" Nullable="false" />
           <Property Name="USUARIO_RANGO" Type="Int32" Nullable="false" />
+          <Property Name="USUARIO_ACTIVO" Type="Boolean" Nullable="false" />
+          <Property Name="USUARIO_NOMBRE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_APELLIDO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_FECHANAC" Type="DateTime" Precision="3" />
+          <Property Name="USUARIO_HABITOS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_IDIOMAS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_IMAGEN" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_SEXO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_DATOS_PROF" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_PAIS_ID" Type="Int32" />
+          <Property Name="USUARIO_FECALT" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="TBL_MENSAJES" Relationship="ReloadDBModel.FK_TBL_MENSAJES_EMISOR" FromRole="TBL_USUARIOS" ToRole="TBL_MENSAJES" />
           <NavigationProperty Name="TBL_MENSAJES1" Relationship="ReloadDBModel.FK_TBL_MENSAJES_RECEPTOR" FromRole="TBL_USUARIOS" ToRole="TBL_MENSAJES" />
+          <NavigationProperty Name="TBL_PAISES" Relationship="ReloadDBModel.FK__TBL_USUAR__USUAR__3A4CA8FD" FromRole="TBL_USUARIOS" ToRole="TBL_PAISES" />
           <NavigationProperty Name="TBL_POST_COMENTARIO_RESPUESTAS" Relationship="ReloadDBModel.FK_TBL_POST_COMENTARIO_RESPUESTAS_USUARIO" FromRole="TBL_USUARIOS" ToRole="TBL_POST_COMENTARIO_RESPUESTAS" />
           <NavigationProperty Name="TBL_POST_COMENTARIOS" Relationship="ReloadDBModel.FK_TBL_POST_COMENTARIO_USUARIO" FromRole="TBL_USUARIOS" ToRole="TBL_POST_COMENTARIOS" />
           <NavigationProperty Name="TBL_POSTS" Relationship="ReloadDBModel.FK_TBL_POSTS_PROP" FromRole="TBL_USUARIOS" ToRole="TBL_POSTS" />
@@ -847,26 +859,14 @@
           <NavigationProperty Name="TBL_PUBLICACIONES" Relationship="ReloadDBModel.FK_TBL_PUBLICACIONES_USUARIO" FromRole="TBL_USUARIOS" ToRole="TBL_PUBLICACIONES" />
           <NavigationProperty Name="TBL_RANGOS" Relationship="ReloadDBModel.FK__TBL_USUAR__USUAR__5165187F" FromRole="TBL_USUARIOS" ToRole="TBL_RANGOS" />
           <NavigationProperty Name="TBL_USUARIOS_POSTS" Relationship="ReloadDBModel.FK_TBL_USUARIO_POST_USUARIO" FromRole="TBL_USUARIOS" ToRole="TBL_USUARIOS_POSTS" />
-          <Property Name="USUARIO_ACTIVO" Type="Boolean" Nullable="false" />
-          <Property Name="USUARIO_NOMBRE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_APELLIDO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_FECHANAC" Type="DateTime" Precision="3" />
-          <Property Name="USUARIO_HABITOS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIOidIOMAS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_IMAGEN" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_SEXO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_DATOS_PROF" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="USUARIO_PAISid" Type="Int32" />
-          <NavigationProperty Name="TBL_PAISES" Relationship="ReloadDBModel.FK__TBL_USUAR__USUAR__3A4CA8FD" FromRole="TBL_USUARIOS" ToRole="TBL_PAISES" />
-          <Property Name="USUARIO_FECALT" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="TBL_USUARIOS_POSTS">
           <Key>
-            <PropertyRef Name="USUARIO_POST_USUARIOid" />
-            <PropertyRef Name="USUARIO_POST_POSTid" />
+            <PropertyRef Name="USUARIO_POST_USUARIO_ID" />
+            <PropertyRef Name="USUARIO_POST_POST_ID" />
           </Key>
-          <Property Name="USUARIO_POST_USUARIOid" Type="Int32" Nullable="false" />
-          <Property Name="USUARIO_POST_POSTid" Type="Int32" Nullable="false" />
+          <Property Name="USUARIO_POST_USUARIO_ID" Type="Int32" Nullable="false" />
+          <Property Name="USUARIO_POST_POST_ID" Type="Int32" Nullable="false" />
           <Property Name="USUARIO_POST_DEBAJA" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TBL_POSTS" Relationship="ReloadDBModel.FK_TBL_USUARIO_POST_POST" FromRole="TBL_USUARIOS_POSTS" ToRole="TBL_POSTS" />
           <NavigationProperty Name="TBL_USUARIOS" Relationship="ReloadDBModel.FK_TBL_USUARIO_POST_USUARIO" FromRole="TBL_USUARIOS_POSTS" ToRole="TBL_USUARIOS" />
@@ -876,7 +876,7 @@
           <End Type="ReloadDBModel.TBL_POSTS" Role="TBL_POSTS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_CATEGORIAS">
-              <PropertyRef Name="CATEGORIAid" />
+              <PropertyRef Name="CATEGORIA_ID" />
             </Principal>
             <Dependent Role="TBL_POSTS">
               <PropertyRef Name="POST_CATEGORIA" />
@@ -888,10 +888,10 @@
           <End Type="ReloadDBModel.TBL_MENSAJE_RESPUESTAS" Role="TBL_MENSAJE_RESPUESTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_MENSAJES">
-              <PropertyRef Name="MENSAJEid" />
+              <PropertyRef Name="MENSAJE_ID" />
             </Principal>
             <Dependent Role="TBL_MENSAJE_RESPUESTAS">
-              <PropertyRef Name="MENSAJE_RESPUESTA_MENSAJEid" />
+              <PropertyRef Name="MENSAJE_RESPUESTA_MENSAJE_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -900,7 +900,7 @@
           <End Type="ReloadDBModel.TBL_MENSAJES" Role="TBL_MENSAJES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_MENSAJES">
               <PropertyRef Name="MENSAJE_EMISOR" />
@@ -912,10 +912,22 @@
           <End Type="ReloadDBModel.TBL_MENSAJES" Role="TBL_MENSAJES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_MENSAJES">
               <PropertyRef Name="MENSAJE_RECEPTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_USUAR__USUAR__3A4CA8FD">
+          <End Type="ReloadDBModel.TBL_PAISES" Role="TBL_PAISES" Multiplicity="0..1" />
+          <End Type="ReloadDBModel.TBL_USUARIOS" Role="TBL_USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PAISES">
+              <PropertyRef Name="PAIS_ID" />
+            </Principal>
+            <Dependent Role="TBL_USUARIOS">
+              <PropertyRef Name="USUARIO_PAIS_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -924,10 +936,10 @@
           <End Type="ReloadDBModel.TBL_POST_COMENTARIO_RESPUESTAS" Role="TBL_POST_COMENTARIO_RESPUESTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_POST_COMENTARIOS">
-              <PropertyRef Name="POST_COMENTARIOid" />
+              <PropertyRef Name="POST_COMENTARIO_ID" />
             </Principal>
             <Dependent Role="TBL_POST_COMENTARIO_RESPUESTAS">
-              <PropertyRef Name="POST_COMENTARIO_RESPUESTA_COMENTARIOid" />
+              <PropertyRef Name="POST_COMENTARIO_RESPUESTA_COMENTARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -936,10 +948,10 @@
           <End Type="ReloadDBModel.TBL_POST_COMENTARIO_RESPUESTAS" Role="TBL_POST_COMENTARIO_RESPUESTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_POST_COMENTARIO_RESPUESTAS">
-              <PropertyRef Name="POST_COMENTARIO_RESPUESTA_USUARIOid" />
+              <PropertyRef Name="POST_COMENTARIO_RESPUESTA_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -948,10 +960,10 @@
           <End Type="ReloadDBModel.TBL_POST_COMENTARIOS" Role="TBL_POST_COMENTARIOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_POSTS">
-              <PropertyRef Name="POSTid" />
+              <PropertyRef Name="POST_ID" />
             </Principal>
             <Dependent Role="TBL_POST_COMENTARIOS">
-              <PropertyRef Name="POST_COMENTARIO_POSTid" />
+              <PropertyRef Name="POST_COMENTARIO_POST_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -960,10 +972,10 @@
           <End Type="ReloadDBModel.TBL_POST_COMENTARIOS" Role="TBL_POST_COMENTARIOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_POST_COMENTARIOS">
-              <PropertyRef Name="POST_COMENTARIO_USUARIOid" />
+              <PropertyRef Name="POST_COMENTARIO_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -972,10 +984,10 @@
           <End Type="ReloadDBModel.TBL_POSTS_FAVORITOS" Role="TBL_POSTS_FAVORITOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_POSTS">
-              <PropertyRef Name="POSTid" />
+              <PropertyRef Name="POST_ID" />
             </Principal>
             <Dependent Role="TBL_POSTS_FAVORITOS">
-              <PropertyRef Name="POST_FAVORITO_POSTid" />
+              <PropertyRef Name="POST_FAVORITO_POST_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -984,7 +996,7 @@
           <End Type="ReloadDBModel.TBL_POSTS" Role="TBL_POSTS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_POSTS">
               <PropertyRef Name="POST_PROPIETARIO" />
@@ -996,10 +1008,10 @@
           <End Type="ReloadDBModel.TBL_USUARIOS_POSTS" Role="TBL_USUARIOS_POSTS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_POSTS">
-              <PropertyRef Name="POSTid" />
+              <PropertyRef Name="POST_ID" />
             </Principal>
             <Dependent Role="TBL_USUARIOS_POSTS">
-              <PropertyRef Name="USUARIO_POST_POSTid" />
+              <PropertyRef Name="USUARIO_POST_POST_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1008,10 +1020,10 @@
           <End Type="ReloadDBModel.TBL_POSTS_FAVORITOS" Role="TBL_POSTS_FAVORITOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_POSTS_FAVORITOS">
-              <PropertyRef Name="POST_FAVORITO_USUARIOid" />
+              <PropertyRef Name="POST_FAVORITO_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1020,10 +1032,10 @@
           <End Type="ReloadDBModel.TBL_PUBLICACION_COMENTARIO_RESPUESTAS" Role="TBL_PUBLICACION_COMENTARIO_RESPUESTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_PUBLICACION_COMENTARIOS">
-              <PropertyRef Name="PUBLICACION_COMENTARIOid" />
+              <PropertyRef Name="PUBLICACION_COMENTARIO_ID" />
             </Principal>
             <Dependent Role="TBL_PUBLICACION_COMENTARIO_RESPUESTAS">
-              <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIOid" />
+              <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1032,10 +1044,10 @@
           <End Type="ReloadDBModel.TBL_PUBLICACION_COMENTARIO_RESPUESTAS" Role="TBL_PUBLICACION_COMENTARIO_RESPUESTAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_PUBLICACION_COMENTARIO_RESPUESTAS">
-              <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTA_USUARIOid" />
+              <PropertyRef Name="PUBLICACION_COMENTARIO_RESPUESTA_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1044,10 +1056,10 @@
           <End Type="ReloadDBModel.TBL_PUBLICACION_COMENTARIOS" Role="TBL_PUBLICACION_COMENTARIOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_PUBLICACIONES">
-              <PropertyRef Name="PUBLICACIONid" />
+              <PropertyRef Name="PUBLICACION_ID" />
             </Principal>
             <Dependent Role="TBL_PUBLICACION_COMENTARIOS">
-              <PropertyRef Name="PUBLICACION_COMENTARIO_PUBLICACIONid" />
+              <PropertyRef Name="PUBLICACION_COMENTARIO_PUBLICACION_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1056,10 +1068,10 @@
           <End Type="ReloadDBModel.TBL_PUBLICACION_COMENTARIOS" Role="TBL_PUBLICACION_COMENTARIOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_PUBLICACION_COMENTARIOS">
-              <PropertyRef Name="PUBLICACION_COMENTARIO_USUARIOid" />
+              <PropertyRef Name="PUBLICACION_COMENTARIO_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1068,10 +1080,10 @@
           <End Type="ReloadDBModel.TBL_PUBLICACIONES" Role="TBL_PUBLICACIONES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_PUBLICACIONES">
-              <PropertyRef Name="PUBLICACION_USUARIOid" />
+              <PropertyRef Name="PUBLICACION_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1080,7 +1092,7 @@
           <End Type="ReloadDBModel.TBL_USUARIOS" Role="TBL_USUARIOS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_RANGOS">
-              <PropertyRef Name="RANGOid" />
+              <PropertyRef Name="RANGO_ID" />
             </Principal>
             <Dependent Role="TBL_USUARIOS">
               <PropertyRef Name="USUARIO_RANGO" />
@@ -1092,26 +1104,14 @@
           <End Type="ReloadDBModel.TBL_USUARIOS_POSTS" Role="TBL_USUARIOS_POSTS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIOid" />
+              <PropertyRef Name="USUARIO_ID" />
             </Principal>
             <Dependent Role="TBL_USUARIOS_POSTS">
-              <PropertyRef Name="USUARIO_POST_USUARIOid" />
+              <PropertyRef Name="USUARIO_POST_USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TBL_USUAR__USUAR__3A4CA8FD">
-          <End Type="ReloadDBModel.TBL_PAISES" Role="TBL_PAISES" Multiplicity="0..1" />
-          <End Type="ReloadDBModel.TBL_USUARIOS" Role="TBL_USUARIOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBL_PAISES">
-              <PropertyRef Name="PAISid" />
-            </Principal>
-            <Dependent Role="TBL_USUARIOS">
-              <PropertyRef Name="USUARIO_PAISid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1122,7 +1122,7 @@
               <MappingFragment StoreEntitySet="TBL_CAPTCHAS">
                 <ScalarProperty Name="CAPTCHA_RESPUESTA" ColumnName="CAPTCHA_RESPUESTA" />
                 <ScalarProperty Name="CAPTCHA_DATO" ColumnName="CAPTCHA_DATO" />
-                <ScalarProperty Name="CAPTCHAid" ColumnName="CAPTCHAid" />
+                <ScalarProperty Name="CAPTCHA_ID" ColumnName="CAPTCHA_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1131,7 +1131,7 @@
               <MappingFragment StoreEntitySet="TBL_CATEGORIAS">
                 <ScalarProperty Name="CATEGORIA_LOGO" ColumnName="CATEGORIA_LOGO" />
                 <ScalarProperty Name="CATEGORIA_NOMBRE" ColumnName="CATEGORIA_NOMBRE" />
-                <ScalarProperty Name="CATEGORIAid" ColumnName="CATEGORIAid" />
+                <ScalarProperty Name="CATEGORIA_ID" ColumnName="CATEGORIA_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1141,8 +1141,8 @@
                 <ScalarProperty Name="MENSAJE_RESPUESTA_DEBAJA" ColumnName="MENSAJE_RESPUESTA_DEBAJA" />
                 <ScalarProperty Name="MENSAJE_RESPUESTA_FECALT" ColumnName="MENSAJE_RESPUESTA_FECALT" />
                 <ScalarProperty Name="MENSAJE_RESPUESTA_CONTENIDO" ColumnName="MENSAJE_RESPUESTA_CONTENIDO" />
-                <ScalarProperty Name="MENSAJE_RESPUESTA_MENSAJEid" ColumnName="MENSAJE_RESPUESTA_MENSAJEid" />
-                <ScalarProperty Name="MENSAJE_RESPUESTAid" ColumnName="MENSAJE_RESPUESTAid" />
+                <ScalarProperty Name="MENSAJE_RESPUESTA_MENSAJE_ID" ColumnName="MENSAJE_RESPUESTA_MENSAJE_ID" />
+                <ScalarProperty Name="MENSAJE_RESPUESTA_ID" ColumnName="MENSAJE_RESPUESTA_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1155,7 +1155,7 @@
                 <ScalarProperty Name="MENSAJE_EMISOR" ColumnName="MENSAJE_EMISOR" />
                 <ScalarProperty Name="MENSAJE_CONTENIDO" ColumnName="MENSAJE_CONTENIDO" />
                 <ScalarProperty Name="MENSAJE_ASUNTO" ColumnName="MENSAJE_ASUNTO" />
-                <ScalarProperty Name="MENSAJEid" ColumnName="MENSAJEid" />
+                <ScalarProperty Name="MENSAJE_ID" ColumnName="MENSAJE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1164,7 +1164,7 @@
               <MappingFragment StoreEntitySet="TBL_PAISES">
                 <ScalarProperty Name="PAIS_NOMBRE" ColumnName="PAIS_NOMBRE" />
                 <ScalarProperty Name="PAIS_CODIGO" ColumnName="PAIS_CODIGO" />
-                <ScalarProperty Name="PAISid" ColumnName="PAISid" />
+                <ScalarProperty Name="PAIS_ID" ColumnName="PAIS_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1176,9 +1176,9 @@
                 <ScalarProperty Name="POST_COMENTARIO_RESPUESTA_NEG" ColumnName="POST_COMENTARIO_RESPUESTA_NEG" />
                 <ScalarProperty Name="POST_COMENTARIO_RESPUESTA_POS" ColumnName="POST_COMENTARIO_RESPUESTA_POS" />
                 <ScalarProperty Name="POST_COMENTARIO_RESPUESTA_CONTENIDO" ColumnName="POST_COMENTARIO_RESPUESTA_CONTENIDO" />
-                <ScalarProperty Name="POST_COMENTARIO_RESPUESTA_USUARIOid" ColumnName="POST_COMENTARIO_RESPUESTA_USUARIOid" />
-                <ScalarProperty Name="POST_COMENTARIO_RESPUESTA_COMENTARIOid" ColumnName="POST_COMENTARIO_RESPUESTA_COMENTARIOid" />
-                <ScalarProperty Name="POST_COMENTARIO_RESPUESTAid" ColumnName="POST_COMENTARIO_RESPUESTAid" />
+                <ScalarProperty Name="POST_COMENTARIO_RESPUESTA_USUARIO_ID" ColumnName="POST_COMENTARIO_RESPUESTA_USUARIO_ID" />
+                <ScalarProperty Name="POST_COMENTARIO_RESPUESTA_COMENTARIO_ID" ColumnName="POST_COMENTARIO_RESPUESTA_COMENTARIO_ID" />
+                <ScalarProperty Name="POST_COMENTARIO_RESPUESTA_ID" ColumnName="POST_COMENTARIO_RESPUESTA_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1190,9 +1190,9 @@
                 <ScalarProperty Name="POST_COMENTARIO_DEBAJA" ColumnName="POST_COMENTARIO_DEBAJA" />
                 <ScalarProperty Name="POST_COMENTARIO_FECALT" ColumnName="POST_COMENTARIO_FECALT" />
                 <ScalarProperty Name="POST_COMENTARIO_CONTENIDO" ColumnName="POST_COMENTARIO_CONTENIDO" />
-                <ScalarProperty Name="POST_COMENTARIO_POSTid" ColumnName="POST_COMENTARIO_POSTid" />
-                <ScalarProperty Name="POST_COMENTARIO_USUARIOid" ColumnName="POST_COMENTARIO_USUARIOid" />
-                <ScalarProperty Name="POST_COMENTARIOid" ColumnName="POST_COMENTARIOid" />
+                <ScalarProperty Name="POST_COMENTARIO_POST_ID" ColumnName="POST_COMENTARIO_POST_ID" />
+                <ScalarProperty Name="POST_COMENTARIO_USUARIO_ID" ColumnName="POST_COMENTARIO_USUARIO_ID" />
+                <ScalarProperty Name="POST_COMENTARIO_ID" ColumnName="POST_COMENTARIO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1216,7 +1216,7 @@
                 <ScalarProperty Name="POST_TITULO" ColumnName="POST_TITULO" />
                 <ScalarProperty Name="POST_PROPIETARIO" ColumnName="POST_PROPIETARIO" />
                 <ScalarProperty Name="POST_CANT_COMENTARIOS" ColumnName="POST_CANT_COMENTARIOS" />
-                <ScalarProperty Name="POSTid" ColumnName="POSTid" />
+                <ScalarProperty Name="POST_ID" ColumnName="POST_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1225,8 +1225,8 @@
               <MappingFragment StoreEntitySet="TBL_POSTS_FAVORITOS">
                 <ScalarProperty Name="POST_FAVORITO_FECALT" ColumnName="POST_FAVORITO_FECALT" />
                 <ScalarProperty Name="POST_FAVORITO_DEBAJA" ColumnName="POST_FAVORITO_DEBAJA" />
-                <ScalarProperty Name="POST_FAVORITO_POSTid" ColumnName="POST_FAVORITO_POSTid" />
-                <ScalarProperty Name="POST_FAVORITO_USUARIOid" ColumnName="POST_FAVORITO_USUARIOid" />
+                <ScalarProperty Name="POST_FAVORITO_POST_ID" ColumnName="POST_FAVORITO_POST_ID" />
+                <ScalarProperty Name="POST_FAVORITO_USUARIO_ID" ColumnName="POST_FAVORITO_USUARIO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1236,9 +1236,9 @@
                 <ScalarProperty Name="PUBLICACION_COMENTARIO_RESPUESTA_DEBAJA" ColumnName="PUBLICACION_COMENTARIO_RESPUESTA_DEBAJA" />
                 <ScalarProperty Name="PUBLICACION_COMENTARIO_RESPUESTA_FECALT" ColumnName="PUBLICACION_COMENTARIO_RESPUESTA_FECALT" />
                 <ScalarProperty Name="PUBLICACION_COMENTARIO_RESPUESTA_CONTENIDO" ColumnName="PUBLICACION_COMENTARIO_RESPUESTA_CONTENIDO" />
-                <ScalarProperty Name="PUBLICACION_COMENTARIO_RESPUESTA_USUARIOid" ColumnName="PUBLICACION_COMENTARIO_RESPUESTA_USUARIOid" />
-                <ScalarProperty Name="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIOid" ColumnName="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIOid" />
-                <ScalarProperty Name="PUBLICACION_COMENTARIO_RESPUESTASid" ColumnName="PUBLICACION_COMENTARIO_RESPUESTASid" />
+                <ScalarProperty Name="PUBLICACION_COMENTARIO_RESPUESTA_USUARIO_ID" ColumnName="PUBLICACION_COMENTARIO_RESPUESTA_USUARIO_ID" />
+                <ScalarProperty Name="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIO_ID" ColumnName="PUBLICACION_COMENTARIO_RESPUESTA_COMENTARIO_ID" />
+                <ScalarProperty Name="PUBLICACION_COMENTARIO_RESPUESTAS_ID" ColumnName="PUBLICACION_COMENTARIO_RESPUESTAS_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1250,9 +1250,9 @@
                 <ScalarProperty Name="PUBLICACION_NEG" ColumnName="PUBLICACION_NEG" />
                 <ScalarProperty Name="PUBLICACION_POS" ColumnName="PUBLICACION_POS" />
                 <ScalarProperty Name="PUBLICACION_CONTENIDO" ColumnName="PUBLICACION_CONTENIDO" />
-                <ScalarProperty Name="PUBLICACION_COMENTARIO_USUARIOid" ColumnName="PUBLICACION_COMENTARIO_USUARIOid" />
-                <ScalarProperty Name="PUBLICACION_COMENTARIO_PUBLICACIONid" ColumnName="PUBLICACION_COMENTARIO_PUBLICACIONid" />
-                <ScalarProperty Name="PUBLICACION_COMENTARIOid" ColumnName="PUBLICACION_COMENTARIOid" />
+                <ScalarProperty Name="PUBLICACION_COMENTARIO_USUARIO_ID" ColumnName="PUBLICACION_COMENTARIO_USUARIO_ID" />
+                <ScalarProperty Name="PUBLICACION_COMENTARIO_PUBLICACION_ID" ColumnName="PUBLICACION_COMENTARIO_PUBLICACION_ID" />
+                <ScalarProperty Name="PUBLICACION_COMENTARIO_ID" ColumnName="PUBLICACION_COMENTARIO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1265,8 +1265,8 @@
                 <ScalarProperty Name="PUBLICACION_NEG" ColumnName="PUBLICACION_NEG" />
                 <ScalarProperty Name="PUBLICACION_POS" ColumnName="PUBLICACION_POS" />
                 <ScalarProperty Name="PUBLICACION_CONTENIDO" ColumnName="PUBLICACION_CONTENIDO" />
-                <ScalarProperty Name="PUBLICACION_USUARIOid" ColumnName="PUBLICACION_USUARIOid" />
-                <ScalarProperty Name="PUBLICACIONid" ColumnName="PUBLICACIONid" />
+                <ScalarProperty Name="PUBLICACION_USUARIO_ID" ColumnName="PUBLICACION_USUARIO_ID" />
+                <ScalarProperty Name="PUBLICACION_ID" ColumnName="PUBLICACION_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1280,7 +1280,7 @@
                 <ScalarProperty Name="RANGO_IMAGEN" ColumnName="RANGO_IMAGEN" />
                 <ScalarProperty Name="RANGO_DESCRP" ColumnName="RANGO_DESCRP" />
                 <ScalarProperty Name="RANGO_NOMBRE" ColumnName="RANGO_NOMBRE" />
-                <ScalarProperty Name="RANGOid" ColumnName="RANGOid" />
+                <ScalarProperty Name="RANGO_ID" ColumnName="RANGO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1288,11 +1288,11 @@
             <EntityTypeMapping TypeName="ReloadDBModel.TBL_USUARIOS">
               <MappingFragment StoreEntitySet="TBL_USUARIOS">
                 <ScalarProperty Name="USUARIO_FECALT" ColumnName="USUARIO_FECALT" />
-                <ScalarProperty Name="USUARIO_PAISid" ColumnName="USUARIO_PAISid" />
+                <ScalarProperty Name="USUARIO_PAIS_ID" ColumnName="USUARIO_PAIS_ID" />
                 <ScalarProperty Name="USUARIO_DATOS_PROF" ColumnName="USUARIO_DATOS_PROF" />
                 <ScalarProperty Name="USUARIO_SEXO" ColumnName="USUARIO_SEXO" />
                 <ScalarProperty Name="USUARIO_IMAGEN" ColumnName="USUARIO_IMAGEN" />
-                <ScalarProperty Name="USUARIOidIOMAS" ColumnName="USUARIOidIOMAS" />
+                <ScalarProperty Name="USUARIO_IDIOMAS" ColumnName="USUARIO_IDIOMAS" />
                 <ScalarProperty Name="USUARIO_HABITOS" ColumnName="USUARIO_HABITOS" />
                 <ScalarProperty Name="USUARIO_FECHANAC" ColumnName="USUARIO_FECHANAC" />
                 <ScalarProperty Name="USUARIO_APELLIDO" ColumnName="USUARIO_APELLIDO" />
@@ -1311,7 +1311,7 @@
                 <ScalarProperty Name="USUARIO_MAIL" ColumnName="USUARIO_MAIL" />
                 <ScalarProperty Name="USUARIO_PASSWORD" ColumnName="USUARIO_PASSWORD" />
                 <ScalarProperty Name="USUARIO_CODIGO" ColumnName="USUARIO_CODIGO" />
-                <ScalarProperty Name="USUARIOid" ColumnName="USUARIOid" />
+                <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1319,8 +1319,8 @@
             <EntityTypeMapping TypeName="ReloadDBModel.TBL_USUARIOS_POSTS">
               <MappingFragment StoreEntitySet="TBL_USUARIOS_POSTS">
                 <ScalarProperty Name="USUARIO_POST_DEBAJA" ColumnName="USUARIO_POST_DEBAJA" />
-                <ScalarProperty Name="USUARIO_POST_POSTid" ColumnName="USUARIO_POST_POSTid" />
-                <ScalarProperty Name="USUARIO_POST_USUARIOid" ColumnName="USUARIO_POST_USUARIOid" />
+                <ScalarProperty Name="USUARIO_POST_POST_ID" ColumnName="USUARIO_POST_POST_ID" />
+                <ScalarProperty Name="USUARIO_POST_USUARIO_ID" ColumnName="USUARIO_POST_USUARIO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

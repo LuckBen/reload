@@ -20,7 +20,7 @@ namespace ReloadWS.DAL.Persistencia
             this.TBL_POSTS = new HashSet<TBL_POSTS>();
         }
     
-        public int CATEGORIAid { get; set; }
+        public int CATEGORIA_ID { get; set; }
         public string CATEGORIA_NOMBRE { get; set; }
         public string CATEGORIA_LOGO { get; set; }
     

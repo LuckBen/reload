@@ -57,6 +57,7 @@
     <Compile Include="Post.cs" />
     <Compile Include="PostDestacado.cs" />
     <Compile Include="Publicacion.cs" />
+    <Compile Include="Punto.cs" />
     <Compile Include="Rango.cs" />
     <Compile Include="Request\IRequest.cs" />
     <Compile Include="Request\LoginResponse.cs" />

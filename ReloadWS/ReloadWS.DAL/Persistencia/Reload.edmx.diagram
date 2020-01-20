@@ -5,25 +5,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e71ca60acee54667b6305a8b3c6e6157" Name="Diagram1" ZoomLevel="22" >
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_CAPTCHAS" Width="2.875" PointX="1" PointY="8" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_CATEGORIAS" Width="2.875" PointX="6" PointY="19" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_MENSAJE_RESPUESTAS" Width="2.875" PointX="7.5" PointY="33.75" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_MENSAJES" Width="2.875" PointX="5.25" PointY="33.375" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_PAISES" Width="2.875" PointX="4.75" PointY="7.75" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_POST_COMENTARIO_RESPUESTAS" Width="2.875" PointX="5.25" PointY="14.375" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_POST_COMENTARIOS" Width="2.875" PointX="10.5" PointY="14.375" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_POSTS" Width="2.875" PointX="8.25" PointY="13.25" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_POSTS_FAVORITOS" Width="2.875" PointX="13.5" PointY="14.75" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_PUBLICACION_COMENTARIO_RESPUESTAS" Width="2.875" PointX="5.25" PointY="10.625" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_PUBLICACION_COMENTARIOS" Width="2.875" PointX="7.5" PointY="24.875" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_PUBLICACIONES" Width="2.875" PointX="5.25" PointY="37" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_RANGOS" Width="2.875" PointX="0.75" PointY="14.5" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_USUARIOS" Width="2.875" PointX="3" PointY="13" />
-        <EntityTypeShape EntityType="ReloadDBModel.TBL_USUARIOS_POSTS" Width="2.875" PointX="13.5" PointY="11.875" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_CAPTCHAS" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_CATEGORIAS" Width="1.5" PointX="6" PointY="19.125" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_MENSAJE_RESPUESTAS" Width="1.5" PointX="7.5" PointY="37.75" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_MENSAJES" Width="1.5" PointX="5.25" PointY="37.375" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_PAISES" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_POST_COMENTARIO_RESPUESTAS" Width="1.5" PointX="10.5" PointY="14.5" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_POST_COMENTARIOS" Width="1.5" PointX="5.25" PointY="14.375" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_POSTS" Width="1.5" PointX="8.25" PointY="13.25" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_POSTS_FAVORITOS" Width="1.5" PointX="13.5" PointY="14.875" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_PUBLICACION_COMENTARIO_RESPUESTAS" Width="1.5" PointX="5.25" PointY="10.75" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_PUBLICACION_COMENTARIOS" Width="1.5" PointX="7.5" PointY="22.75" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_PUBLICACIONES" Width="1.5" PointX="5.25" PointY="33.625" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_RANGOS" Width="1.5" PointX="0.75" PointY="14.625" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_USUARIOS" Width="1.5" PointX="3" PointY="11.875" />
+        <EntityTypeShape EntityType="ReloadDBModel.TBL_USUARIOS_POSTS" Width="1.5" PointX="13.5" PointY="12" />
         <AssociationConnector Association="ReloadDBModel.FK_TBL_POSTS_CAT" />
         <AssociationConnector Association="ReloadDBModel.FK_TBL_MENSAJE_RESPUESTAS_MENSAJE" />
         <AssociationConnector Association="ReloadDBModel.FK_TBL_MENSAJES_EMISOR" />
         <AssociationConnector Association="ReloadDBModel.FK_TBL_MENSAJES_RECEPTOR" />
+        <AssociationConnector Association="ReloadDBModel.FK__TBL_USUAR__USUAR__3A4CA8FD" />
         <AssociationConnector Association="ReloadDBModel.FK_TBL_POST_COMENTARIO_RESPUESTAS_COMENTARIO" />
         <AssociationConnector Association="ReloadDBModel.FK_TBL_POST_COMENTARIO_RESPUESTAS_USUARIO" />
         <AssociationConnector Association="ReloadDBModel.FK_TBL_POST_COMENTARIO_POST" />
@@ -39,7 +40,6 @@
         <AssociationConnector Association="ReloadDBModel.FK_TBL_PUBLICACIONES_USUARIO" />
         <AssociationConnector Association="ReloadDBModel.FK__TBL_USUAR__USUAR__5165187F" />
         <AssociationConnector Association="ReloadDBModel.FK_TBL_USUARIO_POST_USUARIO" />
-        <AssociationConnector Association="ReloadDBModel.FK__TBL_USUAR__USUAR__3A4CA8FD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

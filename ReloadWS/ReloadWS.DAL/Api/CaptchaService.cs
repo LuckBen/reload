@@ -19,7 +19,7 @@ namespace ReloadWS.DAL.Api
                 captchas = (from c in db.TBL_CAPTCHAS
                             select new Captcha
                             {
-                                id = c.CAPTCHAid,
+                                id = c.CAPTCHA_ID,
                                 captcha = c.CAPTCHA_DATO,
                                 respuesta = c.CAPTCHA_RESPUESTA
                             }).ToList();

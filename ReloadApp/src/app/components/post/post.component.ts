@@ -23,6 +23,8 @@ export class PostComponent implements OnInit {
   }
 
   irPost(){
-    this.router.navigate(['/post', this.post._id]);
+    
+    this.router.navigate(['/post', this.post.id]);
+
   }
 }

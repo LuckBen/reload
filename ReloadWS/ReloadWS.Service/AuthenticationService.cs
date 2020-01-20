@@ -43,9 +43,6 @@ namespace ReloadWS.Service
 
 		DTO.Response.Response<DTO.Usuario> IAuthenticationService.login(LoginRequest loginRquest)
         {
-
-            
-
             DTO.Response.Response<DTO.Usuario> respuesta = new DTO.Response.Response<DTO.Usuario>();
 
             respuesta = BI.UsersModule.Logeo(loginRquest);

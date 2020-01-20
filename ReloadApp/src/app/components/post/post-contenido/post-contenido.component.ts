@@ -22,11 +22,11 @@ export class PostContenidoComponent implements OnInit {
 
     this.cargando = true;
     this.logeado = !(UsuarioService.usuario == null);
-
  
     let date = this.activatedRoute.snapshot.params.idpost;
 
     this.postService.getPost(date).then(data=>{
+
       this.post = data;
       document.getElementById("contenido").innerHTML = this.post.contenido;
 
@@ -43,11 +43,19 @@ export class PostContenidoComponent implements OnInit {
   }
 
   editar(){
-    this._router.navigate(['/editarPost',this.post._id]);
+    this._router.navigate(['/editarPost',this.post.id]);
   }
 
 
   ngOnInit() {
+  }
+
+  formatLabel(value: number) {
+    if (value >= 10) {
+      return value + ':)';
+    }
+
+    return value + 'P';
   }
 
 }

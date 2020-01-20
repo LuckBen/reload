@@ -1,4 +1,4 @@
-<div style="text-align: center; ">
+<div style="text-align: center; " *ngIf="!cargando">
 
     <app-cabecera-perfil class="animated fadeIn fast" [usuario]="usuario"></app-cabecera-perfil>
     <mat-tab-group mat-stretch-tabs selectedIndex="3">
@@ -17,8 +17,9 @@
 
         <mat-tab label="Posts">
 
-            <app-post style="margin-top:5px" *ngFor="let post of usuario.posts" [post]="post"></app-post>
-
+            <div class="row animated fadeIn fast" style=" padding:10px; width: 100%" *ngFor="let post of usuario.posts">
+                <app-post [post]="post" style="width: 100%"></app-post>
+            </div>
         </mat-tab>
         <mat-tab label="Temas">
 

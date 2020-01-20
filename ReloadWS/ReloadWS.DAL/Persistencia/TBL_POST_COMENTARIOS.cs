@@ -20,9 +20,9 @@ namespace ReloadWS.DAL.Persistencia
             this.TBL_POST_COMENTARIO_RESPUESTAS = new HashSet<TBL_POST_COMENTARIO_RESPUESTAS>();
         }
     
-        public int POST_COMENTARIOid { get; set; }
-        public int POST_COMENTARIO_USUARIOid { get; set; }
-        public int POST_COMENTARIO_POSTid { get; set; }
+        public int POST_COMENTARIO_ID { get; set; }
+        public int POST_COMENTARIO_USUARIO_ID { get; set; }
+        public int POST_COMENTARIO_POST_ID { get; set; }
         public string POST_COMENTARIO_CONTENIDO { get; set; }
         public System.DateTime POST_COMENTARIO_FECALT { get; set; }
         public bool POST_COMENTARIO_DEBAJA { get; set; }

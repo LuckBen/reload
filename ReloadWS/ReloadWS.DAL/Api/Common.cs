@@ -16,7 +16,7 @@ namespace ReloadWS.DAL.Api
             {
                 return (from a in db.TBL_CATEGORIAS select new Categoria
                 {
-                    id = a.CATEGORIAid,
+                    id = a.CATEGORIA_ID,
                     nombre = a.CATEGORIA_NOMBRE,
                     logo = a.CATEGORIA_LOGO
                 }).ToArray();

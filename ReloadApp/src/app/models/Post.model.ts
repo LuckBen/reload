@@ -3,7 +3,7 @@ import { Categoria } from './Categoria.model';
 import { Comentario } from './Comentario.model';
 
 export class Post{
-    public _id?:string;
+    public id?:string;
     public propietario:Sujeto;
     public titulo:string;
     public imagen?:string;
@@ -22,4 +22,5 @@ export class Post{
     public etiquetas:string;
     public seComenta:boolean;
     public contComentarios:number;
+    public contenidoEditor:string;
 }

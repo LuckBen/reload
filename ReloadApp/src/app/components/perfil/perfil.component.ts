@@ -18,11 +18,14 @@ export class PerfilComponent implements OnInit {
               private usService:UsuarioService) { }
 
   ngOnInit() {
+    
     this.cargando = true;
       this.codigo = this.route.snapshot.params.codigo;
       if(this.codigo){
+
         this.usService.obtenerUsuario(this.codigo).then(data=>{
         this.usuario = data.contenido;
+
       }).catch(data =>{
           console.log(data);
       }).finally(()=>{

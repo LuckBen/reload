@@ -20,7 +20,7 @@ namespace ReloadWS.DAL.Persistencia
             this.TBL_MENSAJE_RESPUESTAS = new HashSet<TBL_MENSAJE_RESPUESTAS>();
         }
     
-        public int MENSAJEid { get; set; }
+        public int MENSAJE_ID { get; set; }
         public string MENSAJE_ASUNTO { get; set; }
         public string MENSAJE_CONTENIDO { get; set; }
         public int MENSAJE_EMISOR { get; set; }

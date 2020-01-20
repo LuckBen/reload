@@ -29,7 +29,7 @@ namespace ReloadWS.DAL.Persistencia
             this.TBL_USUARIOS_POSTS = new HashSet<TBL_USUARIOS_POSTS>();
         }
     
-        public int USUARIOid { get; set; }
+        public int USUARIO_ID { get; set; }
         public string USUARIO_CODIGO { get; set; }
         public string USUARIO_PASSWORD { get; set; }
         public string USUARIO_MAIL { get; set; }
@@ -48,17 +48,18 @@ namespace ReloadWS.DAL.Persistencia
         public string USUARIO_APELLIDO { get; set; }
         public Nullable<System.DateTime> USUARIO_FECHANAC { get; set; }
         public string USUARIO_HABITOS { get; set; }
-        public string USUARIOidIOMAS { get; set; }
+        public string USUARIO_IDIOMAS { get; set; }
         public string USUARIO_IMAGEN { get; set; }
         public string USUARIO_SEXO { get; set; }
         public string USUARIO_DATOS_PROF { get; set; }
-        public Nullable<int> USUARIO_PAISid { get; set; }
+        public Nullable<int> USUARIO_PAIS_ID { get; set; }
         public System.DateTime USUARIO_FECALT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_MENSAJES> TBL_MENSAJES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_MENSAJES> TBL_MENSAJES1 { get; set; }
+        public virtual TBL_PAISES TBL_PAISES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_POST_COMENTARIO_RESPUESTAS> TBL_POST_COMENTARIO_RESPUESTAS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -76,6 +77,5 @@ namespace ReloadWS.DAL.Persistencia
         public virtual TBL_RANGOS TBL_RANGOS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBL_USUARIOS_POSTS> TBL_USUARIOS_POSTS { get; set; }
-        public virtual TBL_PAISES TBL_PAISES { get; set; }
     }
 }

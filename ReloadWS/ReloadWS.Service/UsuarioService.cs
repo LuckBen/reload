@@ -26,20 +26,32 @@ namespace ReloadWS.Service
             return respuesta;
         }
 
-		public Response<UsuarioInfo> saveInfo(Request<UsuarioInfoRequest> info)
+		public Response<Usuario> saveInfo(Request<UsuarioInfoRequest> info)
 		{
-			Response<UsuarioInfo> respuesta = new Response<UsuarioInfo>();
-            if(info == null)
+            if (info == null)
+            {
+                return null;
+            }
+
+            Response<Usuario> respuesta = new Response<Usuario>();
+
+            if (info == null)
             {
                 return respuesta;
             }
-			BI.UsersModule.grabarInfo(info.usuario, info.contenido.usuarioInfo);
+
+            BI.UsersModule.grabarInfo(info.usuario, info.contenido.usuarioInfo);
             BI.UsersModule.grabarMail(info.usuario, info.contenido.mail);
+
+            respuesta.contenido = BI.UsersModule.obtenerUsuario(new Request<string>
+            {
+                contenido = info.usuario
+            });
 
             respuesta.estado = BI.UsersModule.estado;
 
-			return respuesta;
-		}
+            return respuesta;
+        }
 
 		public Request<UsuarioInfo> obtenerInfo()
 		{

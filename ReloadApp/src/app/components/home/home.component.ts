@@ -35,7 +35,8 @@ export class HomeComponent implements OnInit {
   }
   
   irPost(p:Post){
-    this.router.navigate(['/post', p._id]);
+
+    this.router.navigate(['/post', p.id]);
   }
   cargarDestacados(){
     this.cargandoDestacados = true;

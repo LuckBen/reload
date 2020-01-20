@@ -33,12 +33,14 @@ export class CuentaDatosComponent implements OnInit {
 
   cambiarInfo(){
     
-      
+    
     this.usuario.info.fechaNac = this.fechaCumple.toLocaleDateString();
 
     this.cargando = true;
+    
     this.ucService.saveInfo(this.usuario).then(data=>{
       UsuarioService.usuario = data.contenido;
+      console.log('datos',data.contenido);
       this.show('Datos actualizados correctamente!','Aceptar');
     })
     .catch((err)=>{

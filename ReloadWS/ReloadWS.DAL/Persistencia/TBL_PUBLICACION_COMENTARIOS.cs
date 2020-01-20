@@ -20,9 +20,9 @@ namespace ReloadWS.DAL.Persistencia
             this.TBL_PUBLICACION_COMENTARIO_RESPUESTAS = new HashSet<TBL_PUBLICACION_COMENTARIO_RESPUESTAS>();
         }
     
-        public int PUBLICACION_COMENTARIOid { get; set; }
-        public int PUBLICACION_COMENTARIO_PUBLICACIONid { get; set; }
-        public int PUBLICACION_COMENTARIO_USUARIOid { get; set; }
+        public int PUBLICACION_COMENTARIO_ID { get; set; }
+        public int PUBLICACION_COMENTARIO_PUBLICACION_ID { get; set; }
+        public int PUBLICACION_COMENTARIO_USUARIO_ID { get; set; }
         public string PUBLICACION_CONTENIDO { get; set; }
         public int PUBLICACION_POS { get; set; }
         public int PUBLICACION_NEG { get; set; }

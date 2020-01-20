@@ -19,7 +19,7 @@ namespace ReloadWS.DAL.Api
                         select new Rango
                         {
                             descripcion = a.RANGO_DESCRP,
-                            id = a.RANGOid,
+                            id = a.RANGO_ID,
                             imagen = a.RANGO_IMAGEN,
                             nombre = a.RANGO_NOMBRE,
                             puntosDar = a.RANGO_PUNTOS_DAR,

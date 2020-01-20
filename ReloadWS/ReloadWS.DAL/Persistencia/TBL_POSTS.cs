@@ -22,7 +22,7 @@ namespace ReloadWS.DAL.Persistencia
             this.TBL_USUARIOS_POSTS = new HashSet<TBL_USUARIOS_POSTS>();
         }
     
-        public int POSTid { get; set; }
+        public int POST_ID { get; set; }
         public int POST_CANT_COMENTARIOS { get; set; }
         public int POST_PROPIETARIO { get; set; }
         public string POST_TITULO { get; set; }

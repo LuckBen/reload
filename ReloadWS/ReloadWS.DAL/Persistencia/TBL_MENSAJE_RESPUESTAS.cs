@@ -14,8 +14,8 @@ namespace ReloadWS.DAL.Persistencia
     
     public partial class TBL_MENSAJE_RESPUESTAS
     {
-        public int MENSAJE_RESPUESTAid { get; set; }
-        public int MENSAJE_RESPUESTA_MENSAJEid { get; set; }
+        public int MENSAJE_RESPUESTA_ID { get; set; }
+        public int MENSAJE_RESPUESTA_MENSAJE_ID { get; set; }
         public string MENSAJE_RESPUESTA_CONTENIDO { get; set; }
         public System.DateTime MENSAJE_RESPUESTA_FECALT { get; set; }
         public bool MENSAJE_RESPUESTA_DEBAJA { get; set; }

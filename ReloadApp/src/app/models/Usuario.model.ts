@@ -8,7 +8,7 @@ import { Suspension } from './Suspension.model';
 
 export class Usuario{
 
-    public _id:string;
+    public id:string;
     public codigo:string;
     public password?:string;
     public puntos?:number;
@@ -25,7 +25,7 @@ export class Usuario{
     public nroComentarios?:number;
 
     constructor(){
-        this._id = "";
+        this.id = "";
         this.codigo ="";
         this.password = "";
         this.puntos = 0;

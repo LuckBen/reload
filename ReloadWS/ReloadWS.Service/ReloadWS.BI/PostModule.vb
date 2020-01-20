@@ -33,9 +33,10 @@ Public Module PostModule
 
             SyncLock postsDestacados
 
-                'postsDestacados.AddRange(PostDB.obtenerPostRecientes(postsMemoriaRecientes))
-                'postsDestacados.AddRange(PostDB.obtenerPostPorPuntos(postsMemoriaPuntos))
-                'postsDestacados.AddRange(PostDB.obtenerPostPorComentarios(postsMemoriaComentarios))
+                postsDestacados.AddRange(PostDB.obtenerPostRecientes(postsMemoriaRecientes))
+                postsDestacados.AddRange(PostDB.obtenerPostPorPuntos(postsMemoriaPuntos))
+                postsDestacados.AddRange(PostDB.obtenerPostPorComentarios(postsMemoriaComentarios))
+
             End SyncLock
 
         Catch ex As Exception
@@ -75,7 +76,7 @@ Public Module PostModule
         estado.iniciar()
 
         Try
-            commentary.id = Helper.generarID()
+            'commentary.id = Helper.generarID()
 
             PostDB.comment(commentary)
         Catch ex As Exception
@@ -117,7 +118,7 @@ Public Module PostModule
     End Sub
 
     Private Sub assingDefaultValues(post As Post)
-        post.id = Helper.generarID()
+
         post.favoritos = 0
         post.puntos = 0
         post.visitas = 0
@@ -173,6 +174,20 @@ Public Module PostModule
     Public Function getPost(idPost As String) As Post
         estado.iniciar()
         Try
+            Dim tsk As New Task(Sub()
+
+                                    Dim post = postsDestacados.Where(Function(x) x.post.id = idPost).FirstOrDefault()
+
+                                    If Not (IsNothing(post)) Then
+                                        post.post.visitas = post.post.visitas + 1
+                                    End If
+
+                                    PostDB.visit(idPost)
+
+                                End Sub)
+
+            tsk.Start()
+
             Return PostDB.getPost(idPost)
         Catch ex As Exception
             estado.capturarError(ex, True)
@@ -183,6 +198,8 @@ Public Module PostModule
     Public Function getRecientes() As Post()
         estado.iniciar()
         Try
+
+            'Return (From a In PostDB.obtenerPostRecientes(30) Select a.post).ToArray()
 
             Return (From p In postsDestacados Where p.destaque = PostDestacado.TIPO_DESTAQUE.RECIENTE
                     Select p.post).OrderByDescending(Function(x) x.fechaAlta).ToArray()
@@ -200,4 +217,21 @@ Public Module PostModule
                 Select p.post).ToArray()
 
     End Function
+
+    Public Sub addPoints(contenido As Punto)
+
+        estado.iniciar()
+        Try
+
+            If (IsNothing(contenido)) Then
+                Return
+            End If
+
+            PostDB.addPoints(contenido)
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
 End Module

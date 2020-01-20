@@ -14,7 +14,7 @@ namespace ReloadWS.DAL.Persistencia
     
     public partial class TBL_CAPTCHAS
     {
-        public string CAPTCHAid { get; set; }
+        public string CAPTCHA_ID { get; set; }
         public string CAPTCHA_DATO { get; set; }
         public string CAPTCHA_RESPUESTA { get; set; }
     }

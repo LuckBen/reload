@@ -9,6 +9,7 @@ import { URL_POST_SERVICE } from './urlservicios.url';
 import { UsuarioService } from './usuario.service';
 import { post } from 'selenium-webdriver/http';
 import { Comentario } from '../models/Comentario.model';
+import{Punto} from '../models/Punto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -83,6 +84,30 @@ export class PostService {
 
   }
 
+  darPuntos(Punto:Punto):Promise<Punto>{
+
+    return new Promise<Punto>((resolve,reject)=>{
+      let url = URL_POST_SERVICE + 'darPuntos';
+      let req:Request<Punto> = new  Request<Punto>();
+      req.contenido = Punto;
+      req.usuario = UsuarioService.usuario.codigo;
+      
+      this._http.post<Response<Punto>>(url,req).subscribe(data=>{
+
+        if(data.estado.hayError){
+          reject(data.estado.mensaje);
+        }else{
+          resolve(data.contenido);
+        }
+
+      }, err=>{
+
+          reject('Ocurrió un error inesperado');
+      });
+
+    });
+
+  }
 
   comentar(comentario:Comentario):Promise<Comentario>{
     return new Promise<Comentario>((resolve,reject)=>{

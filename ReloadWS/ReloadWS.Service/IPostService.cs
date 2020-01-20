@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using ReloadWS.DTO.Response;
 using ReloadWS.DTO.Request;
+using ReloadWS.DTO;
 
 namespace ReloadWS.Service
 {
@@ -21,7 +22,14 @@ namespace ReloadWS.Service
             UriTemplate = "comentar")]
         Response<DTO.Comentario> comentar(Request<DTO.Comentario> comentario);
 
-		[OperationContract]
+        [OperationContract]
+        [WebInvoke(Method = "*",
+        ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Bare,
+        UriTemplate = "darPuntos")]
+        Response<Punto> darPuntos(Request<Punto> puntos);
+
+        [OperationContract]
 		[WebInvoke(Method = "*",
 					ResponseFormat = WebMessageFormat.Json,
 					BodyStyle = WebMessageBodyStyle.Bare,

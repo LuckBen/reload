@@ -36,7 +36,7 @@ namespace ReloadWS.DAL.Api
 
             using(ReloadEntities db = new ReloadEntities())
             {
-                return (from a in db.TBL_PAISES select new Pais { codigo = a.PAIS_CODIGO, nombre = a.PAIS_NOMBRE, id = a.PAISid }).ToArray();
+                return (from a in db.TBL_PAISES select new Pais { codigo = a.PAIS_CODIGO, nombre = a.PAIS_NOMBRE, id = a.PAIS_ID }).ToArray();
             }
 
         }

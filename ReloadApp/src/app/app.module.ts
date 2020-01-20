@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { APP_ROUTING } from './app.routes';
@@ -50,6 +51,7 @@ import { MatChipsModule} from '@angular/material/chips';
 import { ImgPaisPipe } from './pipes/img-pais.pipe';
 import { InfoComponent } from './components/perfil/info/info.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSliderModule} from '@angular/material/slider'; 
 
 /// editor
 import { EditorComponent } from './components/editor/editor.component';
@@ -131,7 +133,8 @@ import { ImgRangoPipe } from './pipes/img-rango.pipe';
     MatNativeDateModule,
     MatCardModule,
     MatChipsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSliderModule
   ],
   providers: [
     UsuarioService,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input, ViewChild, ElementRef } from '@angular/core';
 import * as $ from 'jquery';
 import 'wysibb';
 import { HelperService } from '../../../services/helper.service';
@@ -45,15 +45,12 @@ export class CrearPostComponent implements OnInit {
     this._helper.getCategorias().then(data=>{
       this.categorias = data.contenido;
     });
-    
-  
 
   }
   
   getImagen(){
     const result = this.dialog.open(InputComponent);
     result.afterClosed().subscribe(data=>{
-      console.log(data);
     });    
   }
 
@@ -63,23 +60,26 @@ export class CrearPostComponent implements OnInit {
     $(function() {
       $("#editor").wysibb();
     });
-
+    
     let idpost = this._activatedRoute.snapshot.params.idpost;
-
+    
     if(idpost){
       this.idPost = idpost;
       this.editar = true;
       this.cargando = true;
-      this._postService.getPost(this.idPost).then(data=>{
+      
+      this._postService.getPost(this.idPost).then(data=>{  
         this.contenido = data.contenido;
-        document.getElementsByClassName("wysibb-text-editor wysibb-body")[0].innerHTML = this.contenido;
-        console.log('okkkkkkkk');
+      
+        $(function() {
+          
+          $("#editor").htmlcode(this.contenido);
+        });
+        
       }).finally(()=>{
         this.cargando = false;
       });
     }
-
-
   }
   
   previsualizarPost(){
@@ -91,7 +91,6 @@ export class CrearPostComponent implements OnInit {
     });
 
     result.afterClosed().subscribe(data=>{
-      console.log(data);
     });
   }
   
@@ -102,50 +101,58 @@ export class CrearPostComponent implements OnInit {
   }
 
   publicar(){
-
-    this.contenido = this.getContenido();  
-
-    if(this.contenido.length > 10000){
-      return;
-    }
+   
+    // console.log((document.getElementById("editor") as HTMLTextAreaElement).value);
+    // console.log(document.getElementById('editor'));
 
     let post = new Post;
-    post.contenido = this.contenido;
+    post.contenido =  this.getContenido();  
+    post.contenidoEditor = post.contenido;
+    // $(function() {
+    //   post.contenidoEditor =  $("#editor").bbcode();
+    //   post.contenido =  $("#editor").htmlcode();
+      
+    // if(post.contenido.length > 10000){
+    //   return;
+    // }
+
+    
     post.etiquetas = this.etiquetas;
     post.imagen = this.imgPost;
     post.titulo = this.titulo;
     post.propietario = new Sujeto();
-    post.propietario._id = UsuarioService.usuario._id;
+    post.propietario.id = UsuarioService.usuario.id;
     post.propietario.alias = "??";
     post.propietario.codigo = UsuarioService.usuario.codigo;
     post.propietario.pais = UsuarioService.usuario.info.pais;
     post.propietario.rango = UsuarioService.usuario.rango;
     post.propietario.imagen = UsuarioService.usuario.info.imagen;
     post.seComenta = this.seComenta;
+    post.contenidoEditor = this.contenido;
     post.categoria = new Categoria();
     post.categoria = this.categorias.filter((c)=>{
-        return c._id == this.categoriaID
+        return c.id == this.categoriaID
     })[0];
-    post.categoria._id = this.categoriaID;
+    post.categoria.id = this.categoriaID;
     post.tags = this.etiquetas.split(",");
     this.cargando = true;
 
     this._postService.publicar(post).then(data=>{
       this.show('Publicado con éxito','Genial!');
       console.log(data);
-      this._router.navigate(['/post', data._id]);
+      this._router.navigate(['/post', data.id]);
     }).catch((err)=>{
       this.show(err,'Error');
     }).finally(()=>{
         this.cargando = false;
     });
-    
+  // });
       
   }
 
   show(message: string, action: string) {
     this._messageBox.open(message, action, {
-      duration: 10000,
+      duration: 2000,
     });
   }
 

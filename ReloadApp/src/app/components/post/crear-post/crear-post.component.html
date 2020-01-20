@@ -10,7 +10,7 @@
             <h4>Categoría</h4>
             <mat-form-field style="width: 100%">
                 <select matNativeControl [(ngModel)]="categoriaID" required>
-                    <option  *ngFor="let c of categorias" [value]="c._id">{{c.nombre}}</option>
+                    <option  *ngFor="let c of categorias" [value]="c.id">{{c.nombre}}</option>
                 </select>
             </mat-form-field>
         </div>
@@ -18,7 +18,7 @@
 
     <div class="row" style="margin-top:30px">
         <div class="col-8">
-            <textarea id="editor" [(ngModel)]="contenido" style="min-height: 450px; max-height: 250px"></textarea>
+            <textarea id="editor" #refEditor style="min-height: 450px; max-height: 250px"></textarea>
             <div style="text-align: right; margin-top:15px">
                 <button (click)="previsualizarPost()" mat-raised-button style="background-color:#16dc16; color:white">Previsualizar</button>
             </div>

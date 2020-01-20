@@ -1,6 +1,6 @@
 import { Sujeto } from './Sujeto.model';
 export class Comentario{
-    public _id?:string;
+    public id?:string;
     public postid:string;
     public emisor?:Sujeto;
     public receptor?:Sujeto;

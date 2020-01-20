@@ -33,7 +33,7 @@ namespace ReloadWS.Service
             return respuesta;
         }
 
-        public Response<UsuarioInfo> saveInfo(Request<UsuarioInfoRequest> info)
+        public Response<Usuario> saveInfo(Request<UsuarioInfoRequest> info)
         {
             if(info == null)
             {
@@ -41,13 +41,20 @@ namespace ReloadWS.Service
             }
             
 
-            Response<UsuarioInfo> respuesta = new Response<UsuarioInfo>();
+            Response<Usuario> respuesta = new Response<Usuario>();
+
             if (info == null)
             {
                 return respuesta;
             }
+
             BI.UsersModule.grabarInfo(info.usuario, info.contenido.usuarioInfo);
             BI.UsersModule.grabarMail(info.usuario, info.contenido.mail);
+
+            respuesta.contenido = BI.UsersModule.obtenerUsuario(new Request<string>
+            {
+                contenido = info.usuario
+            });
 
             respuesta.estado = BI.UsersModule.estado;
 
@@ -184,8 +191,6 @@ namespace ReloadWS.Service
 
         public Response<Post[]> getRecientes()
         {
-            
-
             Response<Post[]> respuesta = new Response<Post[]>();
             respuesta.contenido = BI.PostModule.getRecientes();
             respuesta.estado = BI.PostModule.estado;
@@ -205,8 +210,6 @@ namespace ReloadWS.Service
 
         public Response<Post[]> getDestacadosComentarios()
         {
-            
-
             Response<Post[]> respuesta = new Response<Post[]>();
             respuesta.contenido = BI.PostModule.getPostDestacados(PostDestacado.TIPO_DESTAQUE.COMENTARIO);
             respuesta.estado = BI.PostModule.estado;
@@ -235,6 +238,17 @@ namespace ReloadWS.Service
 
 
             return BI.RangosModule.getRangos();
+        }
+
+        public Response<Punto> darPuntos(Request<Punto> puntos)
+        {
+            Response<Punto> respuesta = new Response<Punto>();
+            BI.PostModule.addPoints(puntos?.contenido);
+            respuesta.contenido = puntos?.contenido;
+            respuesta.estado = BI.PostModule.estado;
+
+            return respuesta;
+
         }
     }
 }

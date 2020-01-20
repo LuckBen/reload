@@ -20,7 +20,7 @@ namespace ReloadWS.DAL.Persistencia
             this.TBL_USUARIOS = new HashSet<TBL_USUARIOS>();
         }
     
-        public int PAISid { get; set; }
+        public int PAIS_ID { get; set; }
         public string PAIS_CODIGO { get; set; }
         public string PAIS_NOMBRE { get; set; }
     

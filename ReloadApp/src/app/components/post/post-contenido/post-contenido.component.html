@@ -19,6 +19,27 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-4">
+            <mat-slider style="width: 100%;" thumbLabel [displayWith]="formatLabel" tickInterval="1" min="1" max="10"></mat-slider>
+        </div>
+        <div class="col-md-4">
+            <button mat-raised-button color="warn"><strong>Dar puntos</strong></button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1">
+            <button style="background-color:#ff5733; " mat-button><strong> {{ post.favoritos }} </strong> <mat-icon>star</mat-icon></button>
+        </div>
+        <div class="col-md-1">
+            <button style="background-color:#7a51fb; " mat-button><strong> {{ post.puntos }} </strong> <mat-icon>control_point</mat-icon></button>
+        </div>
+        <div class="col-md-1">
+            <button style="background-color:#51c2fb; " mat-button><strong> {{ post.visitas }} </strong> <mat-icon>visibility</mat-icon></button>
+        </div>
+    </div>
+
     <div class="row " style="margin-top:20px">
         <div class="col-md-12">
             <h3>Comentarios</h3>

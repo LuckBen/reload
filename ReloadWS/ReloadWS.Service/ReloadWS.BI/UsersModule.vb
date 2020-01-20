@@ -191,7 +191,6 @@ Public Module UsersModule
             Dim rango = BI.RangosModule.getRangos().Where(Function(x) x.puntosRequeridos = 0).FirstOrDefault()
 
             Dim usuario = New DTO.Usuario With {
-                                       .id = Helper.generarID(),
                                        .codigo = registroRequest.usuario,
                                        .password = registroRequest.password,
                                        .mail = registroRequest.mail,

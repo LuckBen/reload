@@ -59,10 +59,7 @@ export class UsuarioService {
       })
     };
 
-    console.log(url);
-
     this.http.get(url).subscribe(data=>{
-      console.log(data);
     });
   
   }
@@ -72,6 +69,7 @@ export class UsuarioService {
     let url = URL_USER_SERVICE + "saveInfo";
 
     return new Promise<Response<Usuario>>((resolve,reject)=>{
+      
       let infoReq:Request<UsuarioInfoRequest> = new Request<UsuarioInfoRequest>();
       infoReq.usuario = _usuario.codigo;
       infoReq.token = "asd";
@@ -105,15 +103,17 @@ export class UsuarioService {
       this.http.post<Response<Usuario>>(url,logRequest).subscribe((data=>{
 
         if(data.estado.hayError){
+
           reject(data.estado.mensaje);
+        }else{
+
+          UsuarioService.logeado = true;
+          UsuarioService.usuario = data.contenido;
+          resolve(data);
+          this.guardar();
         }
-        UsuarioService.logeado = true;
-        UsuarioService.usuario = data.contenido;
-        resolve(data);
-        this.guardar();
       }),
       (err)=>{
-        console.log(err);
         reject('Ocurrió un error inesperado');
       });
     

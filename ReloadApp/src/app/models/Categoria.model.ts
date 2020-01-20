@@ -1,5 +1,5 @@
 export class Categoria{
-    public _id:string;
+    public id:string;
     public nombre:string;
     public descripcion:string;
     public logo:string;

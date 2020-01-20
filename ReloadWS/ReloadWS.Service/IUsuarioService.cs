@@ -31,7 +31,7 @@ namespace ReloadWS.Service
 			ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json,
 			BodyStyle = WebMessageBodyStyle.Bare)]
-		Response<DTO.UsuarioInfo> saveInfo(Request<DTO.Request.UsuarioInfoRequest> info);
+		Response<DTO.Usuario> saveInfo(Request<DTO.Request.UsuarioInfoRequest> info);
 
         [OperationContract]
         [WebInvoke(Method = "*",

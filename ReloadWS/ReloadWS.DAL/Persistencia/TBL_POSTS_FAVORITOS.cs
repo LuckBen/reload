@@ -14,8 +14,8 @@ namespace ReloadWS.DAL.Persistencia
     
     public partial class TBL_POSTS_FAVORITOS
     {
-        public int POST_FAVORITO_USUARIOid { get; set; }
-        public int POST_FAVORITO_POSTid { get; set; }
+        public int POST_FAVORITO_USUARIO_ID { get; set; }
+        public int POST_FAVORITO_POST_ID { get; set; }
         public bool POST_FAVORITO_DEBAJA { get; set; }
         public System.DateTime POST_FAVORITO_FECALT { get; set; }
     

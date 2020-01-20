@@ -14,8 +14,8 @@ namespace ReloadWS.DAL.Persistencia
     
     public partial class TBL_USUARIOS_POSTS
     {
-        public int USUARIO_POST_USUARIOid { get; set; }
-        public int USUARIO_POST_POSTid { get; set; }
+        public int USUARIO_POST_USUARIO_ID { get; set; }
+        public int USUARIO_POST_POST_ID { get; set; }
         public bool USUARIO_POST_DEBAJA { get; set; }
     
         public virtual TBL_POSTS TBL_POSTS { get; set; }

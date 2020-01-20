@@ -16,7 +16,7 @@ namespace ReloadWS.Host
 			//System.ServiceModel.ServiceHost hostPostService = new System.ServiceModel.ServiceHost(typeof(ReloadWS.Service.PostService));
 
             try {
-
+                
                 hostReload.Open();
 				hostAuthenticationService.Open();
 				

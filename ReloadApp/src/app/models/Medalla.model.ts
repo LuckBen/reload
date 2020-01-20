@@ -1,5 +1,5 @@
 export class Medalla{
-    public _id?:string;
+    public id?:string;
     public nombre:string;
     public mensaje:string;
     public logo?:string;
