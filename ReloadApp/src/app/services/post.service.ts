@@ -11,6 +11,10 @@ import { post } from 'selenium-webdriver/http';
 import { Comentario } from '../models/Comentario.model';
 import{Punto} from '../models/Punto.model';
 
+/*
+hola:)
+*/
+
 @Injectable({
   providedIn: 'root'
 })
